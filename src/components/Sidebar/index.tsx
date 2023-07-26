@@ -12,7 +12,7 @@ function Header() {
   return (
     <Flex
       direction="column"
-      maxW={["52px", "200px"]}
+      w={{base: '52px', md: '200px'}}
       backgroundColor="gray.900"
       minHeight="100vh"
       alignItems={{ base: "center", sm: "inherit" }}
