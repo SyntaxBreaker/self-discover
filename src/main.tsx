@@ -7,6 +7,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./components/ErrorPage/index.tsx";
 import SignUp from "./components/SignUp/index.tsx";
 import Layout from "./components/Layout/index.tsx";
+import SignIn from "./components/SignIn/index.tsx";
+import AuthProvider from "./context/AuthProvider.tsx";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <App />,
+      },
+      {
+        path: "/signIn",
+        element: <SignIn />,
       },
       {
         path: "/signUp",
@@ -28,7 +34,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ChakraProvider>
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </ChakraProvider>
   </React.StrictMode>
 );
