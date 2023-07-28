@@ -8,8 +8,12 @@ import {
   Divider,
 } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
+import { useAuth } from "../../context/AuthProvider";
+import { IAuthContext } from "../../types/Auth";
 
 function Sidebar() {
+  const { user } = useAuth() as IAuthContext;
+
   return (
     <Flex
       direction="column"
@@ -64,41 +68,73 @@ function Sidebar() {
           </Box>
         </Link>
       </Tooltip>
-      <Divider position="absolute" bottom={16} />
-      <Tooltip label="Your profile" display={{ base: "initial", sm: "none" }}>
-        <Link
-          as={RouterLink}
-          to="/profile"
-          position="absolute"
-          bottom={0}
-          width="100%"
-          py={2}
-        >
-          <Box
-            paddingY={2}
-            paddingX={{ base: 0, sm: 2 }}
-            _hover={{ backgroundColor: "gray.700" }}
-            display="flex"
-            alignItems="center"
-            gap={2}
+      <Divider position="absolute" bottom={14} />
+      <Box position="absolute" bottom={0} width="100%">
+        {user ? (
+          <Tooltip
+            label="Your profile"
+            display={{ base: "initial", sm: "none" }}
           >
-            <Icon
-              viewBox="0 0 24 24"
-              boxSize={10}
-              color="white"
-              margin={{ base: "0 auto", sm: "initial" }}
-            >
-              <path
-                fill="currentColor"
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88a9.947 9.947 0 0 1 12.28 0C16.43 19.18 14.03 20 12 20z"
-              />
-            </Icon>
-            <Text color="white" display={{ base: "none", sm: "inline" }}>
-              Nickname
-            </Text>
-          </Box>
-        </Link>
-      </Tooltip>
+            <Link as={RouterLink} to="/profile">
+              <Box
+                paddingY={2}
+                paddingX={{ base: 0, sm: 2 }}
+                _hover={{ backgroundColor: "gray.700" }}
+                display="flex"
+                alignItems="center"
+                gap={2}
+              >
+                <Icon
+                  viewBox="0 0 24 24"
+                  boxSize={10}
+                  color="white"
+                  margin={{ base: "0 auto", sm: "initial" }}
+                >
+                  <path
+                    fill="currentColor"
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88a9.947 9.947 0 0 1 12.28 0C16.43 19.18 14.03 20 12 20z"
+                  />
+                </Icon>
+                <Text
+                  color="white"
+                  isTruncated
+                  display={{ base: "none", sm: "inline" }}
+                >
+                  {user.email}
+                </Text>
+              </Box>
+            </Link>
+          </Tooltip>
+        ) : (
+          <Tooltip label="Sign in" display={{ base: "initial", sm: "none" }}>
+            <Link as={RouterLink} to="/signIn">
+              <Box
+                paddingY={2}
+                paddingX={{ base: 0, sm: 2 }}
+                _hover={{ backgroundColor: "gray.700" }}
+                display="flex"
+                alignItems="center"
+                gap={2}
+              >
+                <Icon
+                  viewBox="0 0 24 24"
+                  boxSize={10}
+                  color="white"
+                  margin={{ base: "0 auto", sm: "initial" }}
+                >
+                  <path
+                    fill="currentColor"
+                    d="M12 21v-2h7V5h-7V3h7q.825 0 1.413.588T21 5v14q0 .825-.588 1.413T19 21h-7Zm-2-4l-1.375-1.45l2.55-2.55H3v-2h8.175l-2.55-2.55L10 7l5 5l-5 5Z"
+                  />
+                </Icon>
+                <Text color="white" display={{ base: "none", sm: "inline" }}>
+                  Sign In
+                </Text>
+              </Box>
+            </Link>
+          </Tooltip>
+        )}
+      </Box>
     </Flex>
   );
 }
