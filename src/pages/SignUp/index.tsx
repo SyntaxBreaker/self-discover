@@ -3,19 +3,22 @@ import {
   Button,
   Container,
   FormControl,
-  FormHelperText,
   FormLabel,
   Heading,
   Input,
+  Text,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { supabase } from "../../utils/supabase";
+import { Link as ReactRouterLink, useNavigate } from "react-router-dom";
+import { Link as ChakraLink } from "@chakra-ui/react";
 
 function SignUp() {
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLoginData((prev) => ({
@@ -34,6 +37,10 @@ function SignUp() {
 
     console.log(data);
     console.log(error);
+
+    if(!error) {
+      navigate("/signIn");
+    }
   };
 
   return (
@@ -55,7 +62,6 @@ function SignUp() {
             name="email"
             onChange={handleChange}
           />
-          <FormHelperText>We'll never share you email.</FormHelperText>
         </FormControl>
         <FormControl marginTop={4}>
           <FormLabel>Password</FormLabel>
@@ -65,11 +71,21 @@ function SignUp() {
             name="password"
             onChange={handleChange}
           />
-          <FormHelperText>We'll never share your password</FormHelperText>
         </FormControl>
         <Button marginTop={4} width="100%" type="submit">
           Sign up
         </Button>
+        <Text marginTop={4} align="center">
+          Already have an account?{" "}
+          <ChakraLink
+            as={ReactRouterLink}
+            to="/signIn"
+            textDecoration="underline"
+            color="#3182CE"
+          >
+            Sign In
+          </ChakraLink>
+        </Text>
       </Box>
     </Container>
   );
