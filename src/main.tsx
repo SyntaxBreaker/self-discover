@@ -5,9 +5,9 @@ import "./index.css";
 import { ChakraProvider } from "@chakra-ui/react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./components/ErrorPage/index.tsx";
-import SignUp from "./components/SignUp/index.tsx";
+import SignIn from "./pages/SignIn/index.tsx";
+import SignUp from "./pages/SignUp/index.tsx";
 import Layout from "./components/Layout/index.tsx";
-import SignIn from "./components/SignIn/index.tsx";
 import AuthProvider from "./context/AuthProvider.tsx";
 
 const router = createBrowserRouter([
