@@ -3,6 +3,7 @@ import {
   Button,
   Container,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   Heading,
   Input,
@@ -14,12 +15,15 @@ import { Link as ReactRouterLink, useNavigate } from "react-router-dom";
 import { Link as ChakraLink } from "@chakra-ui/react";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/Auth";
+import { AuthError } from "@supabase/supabase-js";
 
 function SignIn() {
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
   });
+  const [error, setError] = useState<AuthError | null>(null);
+
   const navigate = useNavigate();
   const { user } = useAuth() as IAuthContext;
 
@@ -33,13 +37,21 @@ function SignIn() {
   const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
 
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signInWithPassword({
       email: loginData.email,
       password: loginData.password,
     });
 
-    console.log(data);
-    console.log(error);
+    setError(error);
+  };
+
+  const resendEmail = async () => {
+    const { error } = await supabase.auth.resend({
+      type: "signup",
+      email: loginData.email,
+    });
+
+    setError(error);
   };
 
   useEffect(() => {
@@ -59,7 +71,7 @@ function SignIn() {
         padding={8}
         borderRadius={8}
       >
-        <FormControl>
+        <FormControl isInvalid={Boolean(error)}>
           <FormLabel>Email address</FormLabel>
           <Input
             type="email"
@@ -67,6 +79,22 @@ function SignIn() {
             name="email"
             onChange={handleChange}
           />
+          {error?.message === "Email not confirmed" ? (
+            <FormErrorMessage>
+              Email not confirmed.{" "}
+              <Button
+                color="#3182CE"
+                variant="link"
+                marginLeft={1}
+                size="sm"
+                onClick={resendEmail}
+              >
+                Resend verification email
+              </Button>
+            </FormErrorMessage>
+          ) : (
+            <FormErrorMessage>{error?.message}</FormErrorMessage>
+          )}
         </FormControl>
         <FormControl marginTop={4}>
           <FormLabel>Password</FormLabel>

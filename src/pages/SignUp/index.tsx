@@ -3,6 +3,7 @@ import {
   Button,
   Container,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   Heading,
   Input,
@@ -12,12 +13,15 @@ import { useState } from "react";
 import { supabase } from "../../utils/supabase";
 import { Link as ReactRouterLink, useNavigate } from "react-router-dom";
 import { Link as ChakraLink } from "@chakra-ui/react";
+import { AuthError } from "@supabase/supabase-js";
 
 function SignUp() {
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
   });
+  const [error, setError] = useState<AuthError | null>(null);
+
   const navigate = useNavigate();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,16 +34,15 @@ function SignUp() {
   const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
 
-    const { data, error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signUp({
       email: loginData.email,
       password: loginData.password,
     });
 
-    console.log(data);
-    console.log(error);
-
-    if(!error) {
+    if (!error) {
       navigate("/signIn");
+    } else {
+      setError(error);
     }
   };
 
@@ -54,7 +57,7 @@ function SignUp() {
         padding={8}
         borderRadius={8}
       >
-        <FormControl>
+        <FormControl isInvalid={Boolean(error)}>
           <FormLabel>Email address</FormLabel>
           <Input
             type="email"
@@ -62,6 +65,7 @@ function SignUp() {
             name="email"
             onChange={handleChange}
           />
+          <FormErrorMessage>{error?.message}</FormErrorMessage>
         </FormControl>
         <FormControl marginTop={4}>
           <FormLabel>Password</FormLabel>
