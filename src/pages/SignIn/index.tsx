@@ -61,7 +61,7 @@ function SignIn() {
   }, [user]);
 
   return (
-    <Container maxW="50%" py={8}>
+    <Container maxW={{ base: "100%", md: "50%" }} py={8}>
       <Heading textAlign="center">Sign in</Heading>
       <Box
         as="form"
