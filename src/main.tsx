@@ -9,6 +9,7 @@ import SignIn from "./pages/SignIn/index.tsx";
 import SignUp from "./pages/SignUp/index.tsx";
 import Layout from "./components/Layout/index.tsx";
 import AuthProvider from "./context/AuthProvider.tsx";
+import CreateArticle from "./pages/CreateArticle/index.tsx";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
         path: "/signUp",
         element: <SignUp />,
       },
+      {
+        path: "/create",
+        element: <CreateArticle />
+      }
     ],
   },
 ]);
