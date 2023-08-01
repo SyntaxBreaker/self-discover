@@ -64,7 +64,7 @@ function Sidebar() {
               />
             </Icon>
             <Text color="white" display={{ base: "none", sm: "inline" }}>
-              Create Post
+              Create Article
             </Text>
           </Box>
         </Link>
