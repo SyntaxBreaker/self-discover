@@ -14,7 +14,7 @@ import { supabase } from "../../utils/supabase";
 import { Link as ReactRouterLink, useNavigate } from "react-router-dom";
 import { Link as ChakraLink } from "@chakra-ui/react";
 import { useAuth } from "../../context/AuthProvider";
-import { IAuthContext } from "../../types/Auth";
+import { IAuthContext } from "../../types/auth";
 import { AuthError } from "@supabase/supabase-js";
 
 function SignIn() {

@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { useAuth } from "../../context/AuthProvider";
-import { IAuthContext } from "../../types/Auth";
+import { IAuthContext } from "../../types/auth";
 import SidebarMenu from "../SidebarMenu";
 
 function Sidebar() {

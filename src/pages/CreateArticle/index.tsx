@@ -13,7 +13,7 @@ import {
 import { useState } from "react";
 import { supabase } from "../../utils/supabase";
 import { useAuth } from "../../context/AuthProvider";
-import { IAuthContext } from "../../types/Auth";
+import { IAuthContext } from "../../types/auth";
 import { PostgrestError } from "@supabase/supabase-js";
 
 function CreateArticle() {
