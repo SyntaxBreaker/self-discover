@@ -15,6 +15,7 @@ import { supabase } from "../../utils/supabase";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import { PostgrestError } from "@supabase/supabase-js";
+import { useNavigate } from "react-router-dom";
 
 function CreateArticle() {
   const [formData, setFormData] = useState({
@@ -25,6 +26,7 @@ function CreateArticle() {
   const [error, setError] = useState<PostgrestError | null>(null);
 
   const { user } = useAuth() as IAuthContext;
+  const navigate = useNavigate();
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -45,17 +47,27 @@ function CreateArticle() {
       authorId: user.id,
     });
 
-    setError(error);
+    if (error) {
+      setError(error);
+    } else {
+      setFormData({
+        title: "",
+        content: "",
+        tags: "",
+      });
+
+      navigate("/");
+    }
   };
 
   return (
     <Container maxW={{ base: "100%", md: "50%" }} py={8}>
       <Heading textAlign="center">Create a new article</Heading>
       {error && (
-          <Box bgColor="#C53030" padding={4} borderTopRadius={8} marginTop={8}>
-            <Text color="white">{error.message}</Text>
-          </Box>
-        )}
+        <Box bgColor="#C53030" padding={4} borderTopRadius={8} marginTop={8}>
+          <Text color="white">{error.message}</Text>
+        </Box>
+      )}
       <Box
         as="form"
         onSubmit={handleSubmit}
