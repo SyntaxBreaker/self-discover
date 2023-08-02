@@ -3,13 +3,27 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import { ChakraProvider } from "@chakra-ui/react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  Route,
+  RouterProvider,
+  Routes,
+  Outlet,
+} from "react-router-dom";
 import ErrorPage from "./components/ErrorPage/index.tsx";
 import SignIn from "./pages/SignIn/index.tsx";
 import SignUp from "./pages/SignUp/index.tsx";
 import Layout from "./components/Layout/index.tsx";
-import AuthProvider from "./context/AuthProvider.tsx";
+import AuthProvider, { useAuth } from "./context/AuthProvider.tsx";
 import CreateArticle from "./pages/CreateArticle/index.tsx";
+import { IAuthContext } from "./types/auth.ts";
+
+function PrivateRoute() {
+  const { user } = useAuth() as IAuthContext;
+
+  return <>{user ? <Outlet /> : <Navigate to="/signIn" />}</>;
+}
 
 const router = createBrowserRouter([
   {
@@ -30,8 +44,14 @@ const router = createBrowserRouter([
       },
       {
         path: "/create",
-        element: <CreateArticle />
-      }
+        element: (
+          <Routes>
+            <Route element={<PrivateRoute />}>
+              <Route path="/" element={<CreateArticle />} />
+            </Route>
+          </Routes>
+        ),
+      },
     ],
   },
 ]);
