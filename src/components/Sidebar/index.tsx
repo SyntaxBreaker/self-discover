@@ -20,9 +20,10 @@ function Sidebar() {
       direction="column"
       w={{ base: "52px", md: "200px" }}
       backgroundColor="gray.900"
-      minHeight="100vh"
+      height="100vh"
       alignItems={{ base: "center", sm: "inherit" }}
-      position="relative"
+      position="sticky"
+      top="0"
     >
       <Tooltip label="Homepage" display={{ base: "initial", sm: "none" }}>
         <Link as={RouterLink} to="/">
