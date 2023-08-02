@@ -18,7 +18,7 @@ function SidebarMenu({ user }: { user: User }) {
   };
 
   return (
-    <Menu>
+    <Menu isLazy>
       <MenuButton
         as={Box}
         paddingY={2}
