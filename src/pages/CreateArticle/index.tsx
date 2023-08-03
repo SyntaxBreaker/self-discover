@@ -1,43 +1,23 @@
-import {
-  Box,
-  Button,
-  Container,
-  FormControl,
-  Text,
-  FormHelperText,
-  FormLabel,
-  Heading,
-  Input,
-  Textarea,
-} from "@chakra-ui/react";
+import { Box, Container, Text, Heading } from "@chakra-ui/react";
 import { useState } from "react";
 import { supabase } from "../../utils/supabase";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import { PostgrestError } from "@supabase/supabase-js";
 import { useNavigate } from "react-router-dom";
+import ArticleForm from "../../components/ArticleForm";
+import IFormData from "../../types/formData";
 
 function CreateArticle() {
-  const [formData, setFormData] = useState({
-    title: "",
-    content: "",
-    tags: "",
-  });
   const [error, setError] = useState<PostgrestError | null>(null);
 
   const { user } = useAuth() as IAuthContext;
   const navigate = useNavigate();
 
-  const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  const handleSubmit = async (
+    formData: IFormData,
+    event: React.SyntheticEvent
   ) => {
-    setFormData((prev) => ({
-      ...prev,
-      [event.target.name]: event.target.value,
-    }));
-  };
-
-  const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
 
     const { error } = await supabase.from("articles").insert({
@@ -50,12 +30,6 @@ function CreateArticle() {
     if (error) {
       setError(error);
     } else {
-      setFormData({
-        title: "",
-        content: "",
-        tags: "",
-      });
-
       navigate("/");
     }
   };
@@ -68,48 +42,7 @@ function CreateArticle() {
           <Text color="white">{error.message}</Text>
         </Box>
       )}
-      <Box
-        as="form"
-        onSubmit={handleSubmit}
-        bgColor="white"
-        padding={8}
-        borderBottomRadius={8}
-        borderRadius={error ? 0 : 8}
-        marginTop={error ? 0 : 8}
-      >
-        <FormControl>
-          <FormLabel>Title</FormLabel>
-          <Input
-            type="text"
-            value={formData.title}
-            name="title"
-            onChange={handleChange}
-            required
-          />
-        </FormControl>
-        <FormControl marginTop={4}>
-          <FormLabel>Content</FormLabel>
-          <Textarea
-            value={formData.content}
-            name="content"
-            onChange={handleChange}
-            required
-          />
-        </FormControl>
-        <FormControl marginTop={4}>
-          <FormLabel>Tags</FormLabel>
-          <Input
-            type="text"
-            value={formData.tags}
-            name="tags"
-            onChange={handleChange}
-          />
-          <FormHelperText>Tags must be separated using commas.</FormHelperText>
-        </FormControl>
-        <Button marginTop={4} width="100%" type="submit">
-          Submit
-        </Button>
-      </Box>
+      <ArticleForm error={error} handleSubmit={handleSubmit} />
     </Container>
   );
 }
