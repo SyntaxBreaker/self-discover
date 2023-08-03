@@ -9,8 +9,10 @@ import {
   Text,
   Image,
   Icon,
+  Box,
 } from "@chakra-ui/react";
 import IArticle from "../../types/article";
+import ReactMarkdown from "react-markdown";
 
 function ArticleCard({ article }: { article: IArticle }) {
   return (
@@ -36,9 +38,15 @@ function ArticleCard({ article }: { article: IArticle }) {
         <Heading size="md" marginTop={article.tags?.length > 0 ? 4 : 0}>
           {article.title}
         </Heading>
-        <Text marginTop={2} fontWeight="400" noOfLines={5}>
+        <Box
+          as={ReactMarkdown}
+          marginTop={4}
+          fontSize="lg"
+          letterSpacing="0.8px"
+          noOfLines={5}
+        >
           {article.content}
-        </Text>
+        </Box>
       </CardBody>
       <CardFooter alignItems="center" gap={1}>
         <Icon viewBox="0 0 24 24">
