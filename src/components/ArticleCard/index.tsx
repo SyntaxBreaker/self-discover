@@ -16,7 +16,7 @@ import ReactMarkdown from "react-markdown";
 
 function ArticleCard({ article }: { article: IArticle }) {
   return (
-    <Card key={article.id}>
+    <Card key={article.id} position="static">
       <CardHeader padding="0">
         <Image
           objectFit="cover"
