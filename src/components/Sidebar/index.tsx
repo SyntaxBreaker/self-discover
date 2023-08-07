@@ -41,7 +41,7 @@ function Sidebar() {
                 d="M12 22q-.825 0-1.413-.588T10 20h4q0 .825-.588 1.413T12 22Zm-4-3v-2h8v2H8Zm.25-3q-1.725-1.025-2.738-2.75T4.5 9.5q0-3.125 2.188-5.313T12 2q3.125 0 5.313 2.188T19.5 9.5q0 2.025-1.012 3.75T15.75 16h-7.5Z"
               />
             </Icon>
-            <Text color="white" display={{ base: "none", sm: "inline" }}>
+            <Text color="white" display={{ base: "none", md: "inline" }}>
               LearnShare
             </Text>
           </Box>
@@ -64,7 +64,7 @@ function Sidebar() {
                 d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
               />
             </Icon>
-            <Text color="white" display={{ base: "none", sm: "inline" }}>
+            <Text color="white" display={{ base: "none", md: "inline" }}>
               Create Article
             </Text>
           </Box>
@@ -96,7 +96,7 @@ function Sidebar() {
                     d="M12 21v-2h7V5h-7V3h7q.825 0 1.413.588T21 5v14q0 .825-.588 1.413T19 21h-7Zm-2-4l-1.375-1.45l2.55-2.55H3v-2h8.175l-2.55-2.55L10 7l5 5l-5 5Z"
                   />
                 </Icon>
-                <Text color="white" display={{ base: "none", sm: "inline" }}>
+                <Text color="white" display={{ base: "none", md: "inline" }}>
                   Sign In
                 </Text>
               </Box>
