@@ -40,7 +40,7 @@ function App() {
         alignItems="flex-start"
       >
         {articles?.map((article) => (
-          <ArticleCard article={article} />
+          <ArticleCard article={article} key={article.id} />
         ))}
       </SimpleGrid>
     </Container>
