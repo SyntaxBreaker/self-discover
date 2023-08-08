@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import IArticle from "../../types/article";
 import {
+  Alert,
   Badge,
   Box,
   Button,
@@ -13,16 +15,49 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
+import { supabase } from "../../utils/supabase";
 
 function Article() {
+  const [status, setStatus] = useState<null | {
+    type: "success" | "error";
+    message: string;
+  }>(null);
+
   const { article, error } = useLoaderData() as {
     article: IArticle;
     error: string;
   };
   const { user } = useAuth() as IAuthContext;
 
+  const removeArticle = async () => {
+    const { error } = await supabase
+      .from("articles")
+      .delete()
+      .eq("id", article.id);
+
+    if (error) {
+      setStatus({
+        type: "error",
+        message: error.message,
+      });
+    } else {
+      setStatus({
+        type: "success",
+        message: "The article was successfully removed",
+      });
+      setTimeout(() => {
+        window.location.replace("/");
+      }, 5000);
+    }
+  };
+
   return (
     <Container maxW={{ base: "100%", md: "50%" }} py={8}>
+      {status && (
+        <Alert marginBottom={2} status={status.type}>
+          {status.message}
+        </Alert>
+      )}
       {error || !article ? (
         <Box bgColor="#C53030" padding={4} borderRadius={8} marginTop={8}>
           <Text color="white">
@@ -44,10 +79,12 @@ function Article() {
                   .join(".")}
               </Text>
             </Stack>
-            {user && user.id === article.authorId && (
+            {user && user.id === article.author_id && (
               <Stack direction="row" padding={2}>
                 <Button size="lg">Edit</Button>
-                <Button size="lg">Remove</Button>
+                <Button size="lg" onClick={removeArticle}>
+                  Remove
+                </Button>
               </Stack>
             )}
           </Stack>

@@ -24,7 +24,7 @@ function CreateArticle() {
       title: formData.title,
       content: formData.content,
       tags: `{${formData.tags.split(",")}}` || null,
-      authorId: user.id,
+      author_id: user.id,
     });
 
     if (error) {

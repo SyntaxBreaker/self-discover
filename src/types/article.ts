@@ -1,6 +1,6 @@
 export default interface IArticle {
   id: number;
-  authorId: string;
+  author_id: string;
   title: string;
   content: string;
   tags: string[] | [];
