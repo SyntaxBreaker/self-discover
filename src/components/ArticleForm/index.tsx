@@ -10,21 +10,24 @@ import {
 import { PostgrestError } from "@supabase/supabase-js";
 import IFormData from "../../types/formData";
 import { useState } from "react";
+import IArticle from "../../types/article";
 
 function ArticleForm({
   error,
   handleSubmit,
+  article,
 }: {
   error: PostgrestError | null;
   handleSubmit: (
     formData: IFormData,
     event: React.SyntheticEvent
   ) => Promise<void>;
+  article?: IArticle;
 }) {
   const [formData, setFormData] = useState({
-    title: "",
-    content: "",
-    tags: "",
+    title: article?.title ?? "",
+    content: article?.content ?? "",
+    tags: (article?.tags.toString() as string) ?? [],
   });
 
   const handleChange = (

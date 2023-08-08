@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import IArticle from "../../types/article";
 import {
   Alert,
@@ -81,7 +81,9 @@ function Article() {
             </Stack>
             {user && user.id === article.author_id && (
               <Stack direction="row" padding={2}>
-                <Button size="lg">Edit</Button>
+                <Button size="lg" as={Link} to={`/edit/${article.id}`}>
+                  Edit
+                </Button>
                 <Button size="lg" onClick={removeArticle}>
                   Remove
                 </Button>
