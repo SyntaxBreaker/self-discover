@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "./utils/supabase";
 import IArticle from "./types/article";
 import ArticleCard from "./components/ArticleCard";
+import { Link } from "react-router-dom";
 
 function App() {
   const [articles, setArticles] = useState<IArticle[] | null>(null);
@@ -40,7 +41,9 @@ function App() {
         alignItems="flex-start"
       >
         {articles?.map((article) => (
-          <ArticleCard article={article} key={article.id} />
+          <Link to={`/article/${article.id}`} key={article.id}>
+            <ArticleCard article={article} />
+          </Link>
         ))}
       </SimpleGrid>
     </Container>
