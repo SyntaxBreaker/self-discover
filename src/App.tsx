@@ -1,4 +1,4 @@
-import { Box, Container, SimpleGrid, Text } from "@chakra-ui/react";
+import { Alert, AlertIcon, Container, SimpleGrid } from "@chakra-ui/react";
 import "./App.css";
 import { useEffect, useState } from "react";
 import { supabase } from "./utils/supabase";
@@ -29,11 +29,10 @@ function App() {
   return (
     <Container maxW={{ base: "100%", md: "50%" }} py={8}>
       {error && (
-        <Box bgColor="#C53030" padding={4} borderRadius={8}>
-          <Text color="white" align="center">
-            Unable to load articles. Please check your internet connection.
-          </Text>
-        </Box>
+        <Alert status="error" padding={4} borderRadius={8}>
+          <AlertIcon />
+          Unable to load articles. Please check your internet connection.
+        </Alert>
       )}
       <SimpleGrid
         spacing={4}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Alert, Container, Heading } from "@chakra-ui/react";
+import { Alert, AlertIcon, Container, Heading } from "@chakra-ui/react";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import IArticle from "../../types/article";
 import { useAuth } from "../../context/AuthProvider";
@@ -21,7 +21,7 @@ function EditArticle() {
   const { Id } = useParams();
 
   useEffect(() => {
-    if (user.id !== article.author_id) {
+    if (!article || user.id !== article.author_id) {
       navigate("/");
     }
   }, []);
@@ -52,8 +52,16 @@ function EditArticle() {
   return (
     <Container maxW={{ base: "100%", md: "50%" }} py={8}>
       <Heading textAlign="center">Edit the article</Heading>
-      {error && <Alert status="error">{error.message}</Alert>}
-      {loadingError && <Alert status="error">{loadingError}</Alert>}
+      {error && (
+        <Alert status="error">
+          <AlertIcon /> {error.message}
+        </Alert>
+      )}
+      {loadingError && (
+        <Alert status="error">
+          <AlertIcon /> {loadingError}
+        </Alert>
+      )}
       <ArticleForm
         error={error}
         handleSubmit={handleSubmit}

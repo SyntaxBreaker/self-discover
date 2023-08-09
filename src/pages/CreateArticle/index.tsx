@@ -1,4 +1,4 @@
-import { Box, Container, Text, Heading } from "@chakra-ui/react";
+import { Container, Heading, AlertIcon, Alert } from "@chakra-ui/react";
 import { useState } from "react";
 import { supabase } from "../../utils/supabase";
 import { useAuth } from "../../context/AuthProvider";
@@ -38,9 +38,10 @@ function CreateArticle() {
     <Container maxW={{ base: "100%", md: "50%" }} py={8}>
       <Heading textAlign="center">Create a new article</Heading>
       {error && (
-        <Box bgColor="#C53030" padding={4} borderTopRadius={8} marginTop={8}>
-          <Text color="white">{error.message}</Text>
-        </Box>
+        <Alert status="error" padding={4} borderTopRadius={8} marginTop={8}>
+          <AlertIcon />
+          {error.message}
+        </Alert>
       )}
       <ArticleForm error={error} handleSubmit={handleSubmit} />
     </Container>

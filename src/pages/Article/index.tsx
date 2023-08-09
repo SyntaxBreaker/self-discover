@@ -3,6 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import IArticle from "../../types/article";
 import {
   Alert,
+  AlertIcon,
   Badge,
   Box,
   Button,
@@ -54,16 +55,20 @@ function Article() {
   return (
     <Container maxW={{ base: "100%", md: "50%" }} py={8}>
       {status && (
-        <Alert marginBottom={2} status={status.type}>
+        <Alert
+          status={status.type}
+          marginBottom={2}
+          padding={4}
+          borderRadius={8}
+        >
           {status.message}
         </Alert>
       )}
       {error || !article ? (
-        <Box bgColor="#C53030" padding={4} borderRadius={8} marginTop={8}>
-          <Text color="white">
-            {error ? error : "This article doesn't exist"}
-          </Text>
-        </Box>
+        <Alert status="error" padding={4} marginBottom={2} borderRadius={8}>
+          <AlertIcon />
+          {error ? error : "This article doesn't exist"}
+        </Alert>
       ) : (
         <Box>
           <Stack direction="row" justify="space-between" wrap="wrap">
