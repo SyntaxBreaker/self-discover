@@ -19,6 +19,7 @@ function SignUp() {
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
+    username: ""
   });
   const [error, setError] = useState<AuthError | null>(null);
 
@@ -37,6 +38,11 @@ function SignUp() {
     const { error } = await supabase.auth.signUp({
       email: loginData.email,
       password: loginData.password,
+      options: {
+        data: {
+          username: loginData.username ?? loginData.email.split('@')[0]
+        }
+      }
     });
 
     if (!error) {
@@ -73,6 +79,15 @@ function SignUp() {
             type="password"
             value={loginData.password}
             name="password"
+            onChange={handleChange}
+          />
+        </FormControl>
+        <FormControl marginTop={4}>
+          <FormLabel>Username</FormLabel>
+          <Input
+            type="text"
+            value={loginData.username}
+            name="username"
             onChange={handleChange}
           />
         </FormControl>
