@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     const getArticles = async () => {
-      const { data, error } = await supabase.from("articles").select();
+      const { data, error } = await supabase.from("articles").select().order('id', {ascending: false});
 
       if (error) {
         setError(true);
