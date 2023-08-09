@@ -44,7 +44,7 @@ function SidebarMenu({ user }: { user: User }) {
             isTruncated
             display={{ base: "none", sm: "inline" }}
           >
-            {user.email}
+            {user.user_metadata.username}
           </Text>
         </Flex>
       </MenuButton>
