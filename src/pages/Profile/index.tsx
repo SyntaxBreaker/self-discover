@@ -1,5 +1,4 @@
 import {
-  Badge,
   Button,
   Container,
   Flex,
@@ -16,6 +15,7 @@ import { useLoaderData } from "react-router-dom";
 import IArticle from "../../types/article";
 import ArticleCard from "../../components/ArticleCard";
 import { Link as RouterLink } from "react-router-dom";
+import InterestList from "../../components/InterestList";
 
 function TablerWorld() {
   return (
@@ -119,13 +119,9 @@ function Profile() {
               </Text>
             </Stack>
           </Flex>
-          <Stack direction="row" marginTop={4} flexWrap="wrap">
-            {user.user_metadata.interests.map((interest: string) => (
-              <Badge colorScheme="green" padding={1} key={interest}>
-                {interest}
-              </Badge>
-            ))}
-          </Stack>
+          {user.user_metadata.interests && (
+            <InterestList interests={user.user_metadata.interests} />
+          )}
         </Flex>
       </Flex>
       <SimpleGrid
