@@ -21,6 +21,8 @@ import { IAuthContext } from "./types/auth.ts";
 import Article from "./pages/Article/index.tsx";
 import EditArticle from "./pages/EditArticle/index.tsx";
 import { getArticleById } from "./utils/databaseOperations.ts";
+import Profile from "./pages/Profile/index.tsx";
+import { supabase } from "./utils/supabase.ts";
 
 function PrivateRoute() {
   const { user } = useAuth() as IAuthContext;
@@ -76,6 +78,32 @@ const router = createBrowserRouter([
           const data = await getArticleById(params.Id);
           return data;
         },
+      },
+      {
+        path: "/profile",
+        element: <PrivateRoute />,
+        children: [
+          {
+            index: true,
+            element: <Profile />,
+            loader: async () => {
+              const {
+                data: { user },
+              } = await supabase.auth.getUser();
+              if (user) {
+                const { error, data } = await supabase
+                  .from("articles")
+                  .select()
+                  .eq("author_id", user.id);
+
+                return {
+                  articles: data && data,
+                  error: error,
+                };
+              }
+            },
+          },
+        ],
       },
     ],
   },

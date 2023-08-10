@@ -12,7 +12,10 @@ function App() {
 
   useEffect(() => {
     const getArticles = async () => {
-      const { data, error } = await supabase.from("articles").select().order('id', {ascending: false});
+      const { data, error } = await supabase
+        .from("articles")
+        .select()
+        .order("id", { ascending: false });
 
       if (error) {
         setError(true);
@@ -36,7 +39,7 @@ function App() {
       )}
       <SimpleGrid
         spacing={4}
-        templateColumns="repeat(auto-fill, minmax(360px, 1fr))"
+        templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }}
         alignItems="flex-start"
       >
         {articles?.map((article) => (

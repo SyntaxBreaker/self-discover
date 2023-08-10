@@ -26,7 +26,7 @@ function ArticleCard({ article }: { article: IArticle }) {
       </CardHeader>
       <CardBody>
         {article.tags && (
-          <Stack direction="row">
+          <Stack direction="row" flexWrap="wrap">
             {article.tags.map((tag) => (
               <Badge colorScheme="blue" key={tag}>
                 {tag}
