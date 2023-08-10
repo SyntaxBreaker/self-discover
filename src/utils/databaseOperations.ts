@@ -9,4 +9,16 @@ const getArticleById = async (id: string | undefined) => {
   };
 };
 
-export { getArticleById };
+const getArticlesByAuthorId = async (authorId: string) => {
+  const { error, data } = await supabase
+    .from("articles")
+    .select()
+    .eq("author_id", authorId);
+
+  return {
+    articles: data && data,
+    error: error,
+  };
+};
+
+export { getArticleById, getArticlesByAuthorId };
