@@ -65,6 +65,7 @@ function ArticleForm({
           value={formData.content}
           name="content"
           onChange={handleChange}
+          height="250px"
           required
         />
       </FormControl>
