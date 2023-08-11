@@ -100,6 +100,7 @@ function Article() {
             components={ChakraUIRenderer()}
             letterSpacing="0.8px"
             marginTop={8}
+            className="react-markdown"
           >
             {article.content}
           </Box>

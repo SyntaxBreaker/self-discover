@@ -1,5 +1,4 @@
 import { Alert, AlertIcon, Container, SimpleGrid } from "@chakra-ui/react";
-import "./App.css";
 import { useEffect, useState } from "react";
 import { supabase } from "./utils/supabase";
 import IArticle from "./types/article";
