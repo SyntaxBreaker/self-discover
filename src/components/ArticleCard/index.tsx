@@ -38,7 +38,9 @@ function ArticleCard({ article }: { article: IArticle }) {
           {article.title}
         </Heading>
         <Box marginTop={4} fontSize="lg" letterSpacing="0.8px" noOfLines={5}>
-          {article.content}
+          {article.content.split("\n").map((line, index) => (
+            <Text key={index}>{line}</Text>
+          ))}
         </Box>
       </CardBody>
       <CardFooter alignItems="center" gap={1}>
