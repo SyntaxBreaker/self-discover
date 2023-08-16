@@ -13,6 +13,12 @@ function ArticleList({
 }) {
   return (
     <>
+      {articles && articles.length <= 0 && (
+        <Alert status="info">
+          <AlertIcon />
+          There are no articles.
+        </Alert>
+      )}
       {error && (
         <Alert status="error" padding={4} borderRadius={8}>
           <AlertIcon />
