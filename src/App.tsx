@@ -1,13 +1,13 @@
-import { Alert, AlertIcon, Container, SimpleGrid } from "@chakra-ui/react";
+import { Container } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { supabase } from "./utils/supabase";
 import IArticle from "./types/article";
-import ArticleCard from "./components/ArticleCard";
-import { Link } from "react-router-dom";
+import ArticleList from "./components/ArticleList";
+import { PostgrestError } from "@supabase/supabase-js";
 
 function App() {
   const [articles, setArticles] = useState<IArticle[] | null>(null);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<PostgrestError | null>(null);
 
   useEffect(() => {
     const getArticles = async () => {
@@ -17,10 +17,10 @@ function App() {
         .order("id", { ascending: false });
 
       if (error) {
-        setError(true);
+        setError(error);
         setArticles(null);
       } else {
-        setError(false);
+        setError(null);
         setArticles(data);
       }
     };
@@ -30,23 +30,7 @@ function App() {
 
   return (
     <Container maxW={{ base: "100%", md: "50%" }} py={8}>
-      {error && (
-        <Alert status="error" padding={4} borderRadius={8}>
-          <AlertIcon />
-          Unable to load articles. Please check your internet connection.
-        </Alert>
-      )}
-      <SimpleGrid
-        spacing={4}
-        templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }}
-        alignItems="flex-start"
-      >
-        {articles?.map((article) => (
-          <Link to={`/article/${article.id}`} key={article.id}>
-            <ArticleCard article={article} />
-          </Link>
-        ))}
-      </SimpleGrid>
+      <ArticleList articles={articles} error={error} />
     </Container>
   );
 }
