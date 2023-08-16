@@ -1,27 +1,21 @@
-# React + TypeScript + Vite
+# LearnShare
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a web application that allows users to add, edit, and remove articles for self-development. It is built with Vite, React, Typescript, Chakra UI, and React Router. The application also implements tags, so users can easily find articles that are relevant to their interests.
 
-Currently, two official plugins are available:
+## Features
+- Add, edit, and remove articles
+- View a list of all articles, your articles, or a list of articles in a specific tag
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+- Vite
+- React
+- Typescript
+- Chakra UI
+- React Router
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## To use the project:
+- Clone the repository from GitHub
+- Install the dependencies with `npm install`
+- Change the name of the .env.example file to .env and fill in this file
+- Run the development server with `npm run dev`
+- Open the application in your browser at `localhost:5173`
