@@ -1,5 +1,4 @@
 import {
-  Badge,
   Card,
   CardBody,
   CardFooter,
@@ -10,8 +9,10 @@ import {
   Image,
   Icon,
   Box,
+  Tag,
 } from "@chakra-ui/react";
 import IArticle from "../../types/article";
+import { Link } from "react-router-dom";
 
 function ArticleCard({ article }: { article: IArticle }) {
   return (
@@ -28,9 +29,14 @@ function ArticleCard({ article }: { article: IArticle }) {
         {article.tags && (
           <Stack direction="row" flexWrap="wrap">
             {article.tags.map((tag) => (
-              <Badge colorScheme="blue" key={tag}>
-                {tag}
-              </Badge>
+              <Link to={`/tag/${tag}`} key={tag}>
+                <Tag
+                  colorScheme="blue"
+                  _hover={{ bg: "#2B6CB0", color: "white" }}
+                >
+                  {tag}
+                </Tag>
+              </Link>
             ))}
           </Stack>
         )}

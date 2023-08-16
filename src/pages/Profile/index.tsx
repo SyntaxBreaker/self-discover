@@ -1,11 +1,11 @@
 import {
+  Box,
   Button,
   Container,
   Flex,
   Icon,
   Image,
   Link,
-  SimpleGrid,
   Stack,
   Text,
 } from "@chakra-ui/react";
@@ -13,16 +13,16 @@ import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import { useLoaderData } from "react-router-dom";
 import IArticle from "../../types/article";
-import ArticleCard from "../../components/ArticleCard";
-import { Link as RouterLink } from "react-router-dom";
 import InterestList from "../../components/InterestList";
 import { MaterialSymbolsCall, TablerWorld } from "../../components/Icons";
+import ArticleList from "../../components/ArticleList";
+import { PostgrestError } from "@supabase/supabase-js";
 
 function Profile() {
   const { user } = useAuth() as IAuthContext;
-  const { articles } = useLoaderData() as {
+  const { articles, error } = useLoaderData() as {
     articles: IArticle[];
-    error: string;
+    error: PostgrestError | null;
   };
 
   return (
@@ -71,18 +71,9 @@ function Profile() {
           )}
         </Flex>
       </Flex>
-      <SimpleGrid
-        spacing={4}
-        templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }}
-        alignItems="flex-start"
-        marginTop={16}
-      >
-        {articles?.map((article) => (
-          <RouterLink to={`/article/${article.id}`} key={article.id}>
-            <ArticleCard article={article} />
-          </RouterLink>
-        ))}
-      </SimpleGrid>
+      <Box marginTop={16}>
+        <ArticleList articles={articles} error={error} />
+      </Box>
     </Container>
   );
 }

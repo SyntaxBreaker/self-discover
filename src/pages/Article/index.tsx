@@ -4,12 +4,12 @@ import IArticle from "../../types/article";
 import {
   Alert,
   AlertIcon,
-  Badge,
   Box,
   Button,
   Container,
   Heading,
   Stack,
+  Tag,
   Text,
 } from "@chakra-ui/react";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
@@ -107,9 +107,15 @@ function Article() {
           {article.tags && (
             <Stack direction="row" marginTop={8} wrap="wrap">
               {article.tags.map((tag) => (
-                <Badge colorScheme="blue" padding={2} key={tag}>
-                  {tag}
-                </Badge>
+                <Link to={`/tag/${tag}`} key={tag}>
+                  <Tag
+                    colorScheme="blue"
+                    padding={2}
+                    _hover={{ bg: "#2B6CB0", color: "white" }}
+                  >
+                    {tag}
+                  </Tag>
+                </Link>
               ))}
             </Stack>
           )}

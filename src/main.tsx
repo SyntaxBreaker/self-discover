@@ -96,9 +96,11 @@ const router = createBrowserRouter([
               } = await supabase.auth.getUser();
 
               if (user) {
-                const data = await getArticlesByAuthorId(user.id);
+                const { articles, error } = await getArticlesByAuthorId(
+                  user.id
+                );
 
-                return data;
+                return { articles, error };
               }
             },
           },
