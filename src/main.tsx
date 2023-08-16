@@ -26,6 +26,7 @@ import {
 } from "./utils/databaseOperations.ts";
 import Profile from "./pages/Profile/index.tsx";
 import { supabase } from "./utils/supabase.ts";
+import Tag from "./pages/Tag/index.tsx";
 
 function PrivateRoute() {
   const { user } = useAuth() as IAuthContext;
@@ -102,6 +103,18 @@ const router = createBrowserRouter([
             },
           },
         ],
+      },
+      {
+        path: "/tag/:tag",
+        element: <Tag />,
+        loader: async ({ params }) => {
+          const { data, error } = await supabase
+            .from("articles")
+            .select()
+            .contains("tags", [params.tag]);
+
+          return { articles: data, error: error };
+        },
       },
     ],
   },

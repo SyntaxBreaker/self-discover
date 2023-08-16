@@ -23,7 +23,7 @@ function CreateArticle() {
     const { error } = await supabase.from("articles").insert({
       title: formData.title,
       content: formData.content,
-      tags: `{${formData.tags.split(",")}}` || null,
+      tags: `{${formData.tags.toLocaleLowerCase().split(",")}}` || null,
       author_id: user.id,
     });
 

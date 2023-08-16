@@ -37,7 +37,7 @@ function EditArticle() {
       .update({
         title: formData.title,
         content: formData.content,
-        tags: `{${formData.tags.split(",")}}` || null,
+        tags: `{${formData.tags.toLocaleLowerCase().split(",")}}` || null,
         author_id: user.id,
       })
       .eq("id", Id);
