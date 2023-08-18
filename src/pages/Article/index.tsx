@@ -12,11 +12,10 @@ import {
   Tag,
   Text,
 } from "@chakra-ui/react";
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import { supabase } from "../../utils/supabase";
+import DOMPurify from "isomorphic-dompurify";
 
 function Article() {
   const [status, setStatus] = useState<null | {
@@ -96,14 +95,13 @@ function Article() {
             )}
           </Stack>
           <Box
-            as={ReactMarkdown}
-            components={ChakraUIRenderer()}
             letterSpacing="0.8px"
             marginTop={8}
             className="react-markdown"
-          >
-            {article.content}
-          </Box>
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(article.content),
+            }}
+          />
           {article.tags && (
             <Stack direction="row" marginTop={8} wrap="wrap">
               {article.tags.map((tag) => (

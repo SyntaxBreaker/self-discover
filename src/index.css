@@ -7,14 +7,32 @@
   font-family: 'Lato', sans-serif;
 }
 
-.react-markdown p {
-  margin: 16px 0;
+.react-markdown h2 {
+  font-size: 30px;
 }
 
-.react-markdown p:first-child {
-  margin: 0 0 16px 0;
+.react-markdown h3 {
+  font-size: 24px;
 }
 
-.react-markdown p:last-child {
-  margin: 16px 0 0 0;
+.react-markdown li {
+  margin-left: 32px;
+}
+
+.react-markdown blockquote {
+  margin: 0;
+}
+
+.react-markdown blockquote {
+  padding: 20px;
+  background: #eee;
+  border-radius: 5px;
+}
+
+.react-markdown blockquote::before {
+  content: '\201C';
+}
+
+.react-markdown blockquote::after {
+  content: '\201D';
 }

@@ -5,12 +5,13 @@ import {
   FormHelperText,
   FormLabel,
   Input,
-  Textarea,
 } from "@chakra-ui/react";
 import { PostgrestError } from "@supabase/supabase-js";
 import IFormData from "../../types/formData";
 import { useState } from "react";
 import IArticle from "../../types/article";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 function ArticleForm({
   error,
@@ -39,6 +40,15 @@ function ArticleForm({
     }));
   };
 
+  const modules = {
+    toolbar: [
+      [{ header: [2, 3, false] }],
+      ["bold", "italic", "underline", "strike", "blockquote"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link"],
+    ],
+  };
+
   return (
     <Box
       as="form"
@@ -61,15 +71,17 @@ function ArticleForm({
       </FormControl>
       <FormControl marginTop={4}>
         <FormLabel>Content</FormLabel>
-        <Textarea
+        <ReactQuill
+          theme="snow"
           value={formData.content}
-          name="content"
-          onChange={handleChange}
-          height="250px"
-          required
+          onChange={(newContent) =>
+            setFormData((prev) => ({ ...prev, content: newContent }))
+          }
+          style={{ height: "250px" }}
+          modules={modules}
         />
       </FormControl>
-      <FormControl marginTop={4}>
+      <FormControl marginTop={16}>
         <FormLabel>Tags</FormLabel>
         <Input
           type="text"
@@ -79,7 +91,7 @@ function ArticleForm({
         />
         <FormHelperText>Tags must be separated using commas.</FormHelperText>
       </FormControl>
-      <Button marginTop={4} width="100%" type="submit">
+      <Button marginTop={8} width="100%" type="submit">
         Submit
       </Button>
     </Box>
