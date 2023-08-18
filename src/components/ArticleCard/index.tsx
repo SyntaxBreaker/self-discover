@@ -1,7 +1,6 @@
 import {
   Card,
   CardBody,
-  CardFooter,
   CardHeader,
   Heading,
   Stack,
@@ -21,9 +20,10 @@ function ArticleCard({ article }: { article: IArticle }) {
       <CardHeader padding="0">
         <Image
           objectFit="cover"
-          maxW="100%"
           src="https://images.pexels.com/photos/5905485/pexels-photo-5905485.jpeg?&w=1920&h=1280"
           borderTopRadius="6px"
+          height="200px"
+          width="full"
         />
       </CardHeader>
       <CardBody>
