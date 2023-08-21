@@ -4,10 +4,15 @@ import { supabase } from "./utils/supabase";
 import IArticle from "./types/article";
 import ArticleList from "./components/ArticleList";
 import { PostgrestError } from "@supabase/supabase-js";
+import DataFilter from "./components/DataFilter";
 
 function App() {
   const [articles, setArticles] = useState<IArticle[] | null>(null);
   const [error, setError] = useState<PostgrestError | null>(null);
+  const [filterKeyword, setFilterKeyword] = useState("");
+  const [filteredArticles, setFilteredArticles] = useState<
+    IArticle[] | null | undefined
+  >(null);
 
   useEffect(() => {
     const getArticles = async () => {
@@ -28,9 +33,29 @@ function App() {
     getArticles();
   }, []);
 
+  useEffect(() => {
+    if (filterKeyword.length === 0) {
+      setFilteredArticles(null);
+    } else {
+      const filteredData = articles?.filter(
+        (article) =>
+          article.title.includes(filterKeyword) ||
+          (article.tags as string[]).includes(filterKeyword.toLowerCase())
+      );
+      setFilteredArticles(filteredData);
+    }
+  }, [filterKeyword]);
+
   return (
     <Container maxW={{ base: "100%", md: "50%" }} py={8}>
-      <ArticleList articles={articles} error={error} />
+      <DataFilter
+        filterKeyword={filterKeyword}
+        setFilterKeyword={setFilterKeyword}
+      />
+      <ArticleList
+        articles={filteredArticles ? filteredArticles : articles}
+        error={error}
+      />
     </Container>
   );
 }
