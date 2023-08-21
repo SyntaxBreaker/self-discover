@@ -39,7 +39,9 @@ function App() {
     } else {
       const filteredData = articles?.filter(
         (article) =>
-          article.title.includes(filterKeyword) ||
+          article.title
+            .toLocaleLowerCase()
+            .includes(filterKeyword.toLocaleLowerCase()) ||
           (article.tags as string[]).includes(filterKeyword.toLowerCase())
       );
       setFilteredArticles(filteredData);
