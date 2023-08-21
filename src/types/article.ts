@@ -5,4 +5,5 @@ export default interface IArticle {
   content: string;
   tags: string[] | [];
   created_at: string;
+  nickname: string;
 }
