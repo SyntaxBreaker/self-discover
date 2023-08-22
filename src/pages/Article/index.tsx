@@ -75,20 +75,24 @@ function Article() {
               <Heading as="h1" size="2xl">
                 {article.title}
               </Heading>
-              <Text>
-                {article.created_at
-                  .split("T")[0]
-                  .split("-")
-                  .reverse()
-                  .join(".")}
-              </Text>
+              <Stack direction="row" alignItems="center">
+                <Text fontWeight="bold">Created by {article.nickname}</Text>
+                <Text>&#183;</Text>
+                <Text>
+                  {article.created_at
+                    .split("T")[0]
+                    .split("-")
+                    .reverse()
+                    .join(".")}
+                </Text>
+              </Stack>
             </Stack>
             {user && user.id === article.author_id && (
               <Stack direction="row" padding={2}>
                 <Button size="lg" as={Link} to={`/edit/${article.id}`}>
                   Edit
                 </Button>
-                <Button size="lg" onClick={removeArticle}>
+                <Button size="lg" colorScheme="red" onClick={removeArticle}>
                   Remove
                 </Button>
               </Stack>
