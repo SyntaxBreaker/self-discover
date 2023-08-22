@@ -7,7 +7,7 @@ import {
   Icon,
   Divider,
 } from "@chakra-ui/react";
-import { Link as RouterLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import SidebarMenu from "../SidebarMenu";
@@ -26,7 +26,7 @@ function Sidebar() {
       top="0"
     >
       <Tooltip label="Homepage" display={{ base: "initial", sm: "none" }}>
-        <Link as={RouterLink} to="/">
+        <Link as={NavLink} to="/" _activeLink={{ fontWeight: "900" }}>
           <Box
             paddingY={2}
             paddingX={{ base: 0, sm: 2 }}
@@ -49,7 +49,7 @@ function Sidebar() {
       </Tooltip>
       <Divider />
       <Tooltip label="Create Post" display={{ base: "initial", sm: "none" }}>
-        <Link as={RouterLink} to="/create">
+        <Link as={NavLink} to="/create" _activeLink={{ fontWeight: "900" }}>
           <Box
             paddingY={2}
             paddingX={{ base: 0, sm: 2 }}
@@ -76,7 +76,7 @@ function Sidebar() {
           <SidebarMenu user={user} />
         ) : (
           <Tooltip label="Sign in" display={{ base: "initial", sm: "none" }}>
-            <Link as={RouterLink} to="/signIn">
+            <Link as={NavLink} to="/signIn" _activeLink={{ fontWeight: "900" }}>
               <Box
                 paddingY={2}
                 paddingX={{ base: 0, sm: 2 }}

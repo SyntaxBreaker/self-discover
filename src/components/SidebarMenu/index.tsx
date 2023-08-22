@@ -9,7 +9,7 @@ import {
   MenuList,
 } from "@chakra-ui/react";
 import { User } from "@supabase/supabase-js";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { supabase } from "../../utils/supabase";
 
 function SidebarMenu({ user }: { user: User }) {
@@ -49,7 +49,11 @@ function SidebarMenu({ user }: { user: User }) {
         </Flex>
       </MenuButton>
       <MenuList>
-        <MenuItem as={Link} to="/profile">
+        <MenuItem
+          as={NavLink}
+          to="/profile"
+          _activeLink={{ fontWeight: "900" }}
+        >
           Profile
         </MenuItem>
         <MenuItem onClick={signOut}>Log out</MenuItem>
