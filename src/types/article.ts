@@ -6,4 +6,5 @@ export default interface IArticle {
   tags: string[] | [];
   created_at: string;
   nickname: string;
+  likes: string[] | [];
 }

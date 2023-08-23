@@ -65,7 +65,12 @@ function ArticleCard({ article }: { article: IArticle }) {
         <Stack direction="row" spacing="24px">
           <Flex alignItems="center" gap={2}>
             <Icon as={AkarIconsThumbsUp} />
-            <Text>475 likes</Text>
+            <Text>
+              {article.likes && article.likes.length > 0
+                ? article.likes.length
+                : 0}{" "}
+              {article.likes?.length === 1 ? "like" : "likes"}
+            </Text>
           </Flex>
           <Flex alignItems="center" gap={2}>
             <Icon as={Fa6RegularComments} />
