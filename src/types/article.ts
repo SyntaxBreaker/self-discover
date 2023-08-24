@@ -1,3 +1,5 @@
+import IComment from "./comment";
+
 export default interface IArticle {
   id: number;
   author_id: string;
@@ -7,4 +9,5 @@ export default interface IArticle {
   created_at: string;
   nickname: string;
   likes: string[] | [];
+  comments: IComment[] | [];
 }

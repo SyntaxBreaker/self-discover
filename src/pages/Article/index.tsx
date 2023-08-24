@@ -19,6 +19,8 @@ import { IAuthContext } from "../../types/auth";
 import { supabase } from "../../utils/supabase";
 import DOMPurify from "isomorphic-dompurify";
 import { AkarIconsThumbsUp, Fa6RegularComments } from "../../components/Icons";
+import IComment from "../../types/comment";
+import CommentList from "../../components/CommentList";
 
 function Article() {
   const { article, error } = useLoaderData() as {
@@ -31,6 +33,7 @@ function Article() {
     message: string;
   }>(null);
   const [likes, setLikes] = useState<string[]>(article.likes || []);
+  const [comments, setComments] = useState<IComment[]>(article.comments || []);
 
   const { user } = useAuth() as IAuthContext;
 
@@ -135,7 +138,13 @@ function Article() {
             </Stack>
             {user && user.id === article.author_id && (
               <Stack direction="row" padding={2}>
-                <Button size="lg" as={Link} to={`/edit/${article.id}`}>
+                <Button
+                  size="lg"
+                  colorScheme="blue"
+                  variant="outline"
+                  as={Link}
+                  to={`/edit/${article.id}`}
+                >
                   Edit
                 </Button>
                 <Button size="lg" colorScheme="red" onClick={removeArticle}>
@@ -171,9 +180,13 @@ function Article() {
               _hover={{ cursor: "pointer", fontWeight: "bold" }}
             >
               <Icon as={Fa6RegularComments} />
-              <Text>239 comments</Text>
+              <Text>
+                {comments.length > 0 ? comments.length : 0}{" "}
+                {comments.length === 1 ? "comment" : "comments"}
+              </Text>
             </Flex>
           </Stack>
+          <CommentList comments={comments} setComments={setComments} />
         </Box>
       )}
     </Container>

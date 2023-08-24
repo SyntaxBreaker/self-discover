@@ -1,7 +1,10 @@
 import { supabase } from "./supabase";
 
 const getArticleById = async (id: string | undefined) => {
-  const { data, error } = await supabase.from("articles").select().eq("id", id);
+  const { data, error } = await supabase
+    .from("articles")
+    .select(`*, comments(*)`)
+    .eq("id", id);
 
   return {
     article: data && data[0],

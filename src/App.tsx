@@ -18,7 +18,7 @@ function App() {
     const getArticles = async () => {
       const { data, error } = await supabase
         .from("articles")
-        .select()
+        .select(`*, comments(*)`)
         .order("id", { ascending: false });
 
       if (error) {

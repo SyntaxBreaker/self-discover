@@ -74,7 +74,12 @@ function ArticleCard({ article }: { article: IArticle }) {
           </Flex>
           <Flex alignItems="center" gap={2}>
             <Icon as={Fa6RegularComments} />
-            <Text>239 comments</Text>
+            <Text>
+              {article.comments && article.comments.length > 0
+                ? article.comments.length
+                : 0}{" "}
+              {article.comments?.length === 1 ? "comment" : "comments"}
+            </Text>
           </Flex>
         </Stack>
       </CardFooter>
