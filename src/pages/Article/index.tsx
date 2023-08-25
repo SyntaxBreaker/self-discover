@@ -21,6 +21,7 @@ import DOMPurify from "isomorphic-dompurify";
 import { AkarIconsThumbsUp, Fa6RegularComments } from "../../components/Icons";
 import IComment from "../../types/comment";
 import CommentList from "../../components/CommentList";
+import toggleLike from "../../utils/toggleLike";
 
 function Article() {
   const { article, error } = useLoaderData() as {
@@ -56,32 +57,6 @@ function Article() {
       setTimeout(() => {
         window.location.replace("/");
       }, 5000);
-    }
-  };
-
-  const toggleLike = async () => {
-    let updatedLikes;
-    if (likes.length === 0 || !likes.includes(user.id)) {
-      setLikes((prev) => [...prev, user.id]);
-      updatedLikes = [...likes, user.id];
-    } else {
-      updatedLikes = likes.filter((like) => like !== user.id);
-    }
-
-    const { error } = await supabase
-      .from("articles")
-      .update({
-        likes: updatedLikes,
-      })
-      .eq("id", article.id);
-
-    if (error) {
-      setStatus({
-        type: "error",
-        message: error.message,
-      });
-    } else {
-      setLikes(updatedLikes);
     }
   };
 
@@ -166,7 +141,17 @@ function Article() {
               alignItems="center"
               gap={2}
               _hover={{ cursor: "pointer", fontWeight: "bold" }}
-              onClick={toggleLike}
+              onClick={() =>
+                user &&
+                toggleLike({
+                  table: "articles",
+                  likes: likes,
+                  setLikes: setLikes,
+                  id: article.id,
+                  userId: user.id,
+                  setStatus: setStatus,
+                })
+              }
             >
               <Icon as={AkarIconsThumbsUp} />
               <Text>

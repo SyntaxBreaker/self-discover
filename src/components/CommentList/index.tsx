@@ -15,23 +15,15 @@ function CommentList({
   const { user } = useAuth() as IAuthContext;
 
   return (
-    <>
-      {comments.length > 0 && (
-        <Box marginTop={16} borderRadius={4}>
-          <Heading as="h2" size="md">
-            Comments
-          </Heading>
-          {user && <CommentForm setComments={setComments} />}
-          {comments.map((comment) => (
-            <Comment
-              comment={comment}
-              setComments={setComments}
-              key={comment.id}
-            />
-          ))}
-        </Box>
-      )}
-    </>
+    <Box marginTop={16} borderRadius={4}>
+      <Heading as="h2" size="md">
+        Comments
+      </Heading>
+      {user && <CommentForm setComments={setComments} />}
+      {comments.map((comment) => (
+        <Comment comment={comment} setComments={setComments} key={comment.id} />
+      ))}
+    </Box>
   );
 }
 

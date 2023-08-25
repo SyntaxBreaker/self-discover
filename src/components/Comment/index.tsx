@@ -4,6 +4,7 @@ import {
   Card,
   Flex,
   FormControl,
+  Icon,
   Stack,
   Text,
 } from "@chakra-ui/react";
@@ -14,6 +15,8 @@ import { supabase } from "../../utils/supabase";
 import { useState } from "react";
 import ReactQuill from "react-quill";
 import DOMPurify from "dompurify";
+import { AkarIconsThumbsUp } from "../Icons";
+import toggleLike from "../../utils/toggleLike";
 
 function Comment({
   comment,
@@ -24,6 +27,7 @@ function Comment({
 }) {
   const [updatedComment, setUpdatedComment] = useState(comment.content);
   const [isEditing, setIsEditing] = useState(false);
+  const [likes, setLikes] = useState(comment.likes);
 
   const { user } = useAuth() as IAuthContext;
 
@@ -126,6 +130,28 @@ function Comment({
           }}
         />
       )}
+      <Stack
+        direction="row"
+        alignItems="center"
+        marginTop={2}
+        _hover={user && { cursor: "pointer", fontWeight: "bold" }}
+        onClick={() =>
+          user &&
+          toggleLike({
+            table: "comments",
+            likes: likes,
+            setLikes: setLikes,
+            id: comment.id,
+            userId: user.id,
+          })
+        }
+      >
+        <Icon as={AkarIconsThumbsUp} />
+        <Text>
+          {likes.length > 0 ? likes.length : 0}{" "}
+          {likes.length === 1 ? "like" : "likes"}
+        </Text>
+      </Stack>
     </Flex>
   );
 }
