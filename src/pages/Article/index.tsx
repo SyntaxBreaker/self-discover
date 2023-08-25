@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import IArticle from "../../types/article";
 import {
@@ -37,6 +37,7 @@ function Article() {
   const [comments, setComments] = useState<IComment[]>(article.comments || []);
 
   const { user } = useAuth() as IAuthContext;
+  const myRef = useRef<HTMLDivElement | null>(null);
 
   const removeArticle = async () => {
     const { error } = await supabase
@@ -140,7 +141,7 @@ function Article() {
             <Flex
               alignItems="center"
               gap={2}
-              _hover={{ cursor: "pointer", fontWeight: "bold" }}
+              _hover={user && { cursor: "pointer", fontWeight: "bold" }}
               onClick={() =>
                 user &&
                 toggleLike({
@@ -163,6 +164,9 @@ function Article() {
               alignItems="center"
               gap={2}
               _hover={{ cursor: "pointer", fontWeight: "bold" }}
+              onClick={() =>
+                myRef.current?.scrollIntoView({ behavior: "smooth" })
+              }
             >
               <Icon as={Fa6RegularComments} />
               <Text>
@@ -171,7 +175,9 @@ function Article() {
               </Text>
             </Flex>
           </Stack>
-          <CommentList comments={comments} setComments={setComments} />
+          <Box ref={myRef}>
+            <CommentList comments={comments} setComments={setComments} />
+          </Box>
         </Box>
       )}
     </Container>
