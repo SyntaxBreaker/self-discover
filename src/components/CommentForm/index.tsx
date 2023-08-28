@@ -49,23 +49,17 @@ function CommentForm({
 
   return (
     <Box marginTop={4} as={Card} padding={4}>
-      <Flex direction="column" as="form" onSubmit={handleSubmit}>
+      <Flex direction="column" as="form" onSubmit={handleSubmit} gap={4}>
         <FormControl marginTop={4}>
           <ReactQuill
             theme="snow"
             value={content}
             onChange={(newContent) => setContent(newContent)}
-            style={{ height: "250px", paddingBottom: 48 }}
             modules={modules}
             placeholder="Add a new commment..."
           />
         </FormControl>
-        <Button
-          marginTop={{ base: 8, sm: 2 }}
-          alignSelf="flex-end"
-          colorScheme="blue"
-          type="submit"
-        >
+        <Button alignSelf="flex-end" colorScheme="blue" type="submit">
           Submit
         </Button>
       </Flex>
