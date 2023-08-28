@@ -75,7 +75,14 @@ function Comment({
   };
 
   return (
-    <Flex direction="column" marginTop={4} gap={1} as={Card} padding={4}>
+    <Flex
+      direction="column"
+      marginTop={4}
+      gap={1}
+      as={Card}
+      padding={4}
+      position="static"
+    >
       <Stack
         direction="row"
         justifyContent="space-between"
@@ -94,6 +101,7 @@ function Comment({
         {user && user.id === comment.author_id && !isEditing && (
           <Stack direction="row">
             <Button
+              position="static"
               variant="outline"
               size="sm"
               colorScheme="blue"
@@ -101,29 +109,35 @@ function Comment({
             >
               Edit
             </Button>
-            <Button size="sm" colorScheme="red" onClick={removeComment}>
+            <Button
+              position="static"
+              size="sm"
+              colorScheme="red"
+              onClick={removeComment}
+            >
               Remove
             </Button>
           </Stack>
         )}
       </Stack>
       {isEditing ? (
-        <Flex direction="column" as="form" onSubmit={editComment}>
-          <FormControl marginTop={4}>
+        <Flex
+          direction="column"
+          as="form"
+          onSubmit={editComment}
+          gap={2}
+          marginTop={4}
+        >
+          <FormControl position="static">
             <ReactQuill
               theme="snow"
               value={updatedComment}
               onChange={(newContent) => setUpdatedComment(newContent)}
-              style={{ height: "250px", paddingBottom: 48 }}
               modules={modules}
+              style={{ position: "static" }}
             />
           </FormControl>
-          <Button
-            marginTop={2}
-            alignSelf="flex-end"
-            colorScheme="blue"
-            type="submit"
-          >
+          <Button alignSelf="flex-end" colorScheme="blue" type="submit">
             Submit
           </Button>
         </Flex>
