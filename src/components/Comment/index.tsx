@@ -82,10 +82,16 @@ function Comment({
         alignItems="center"
         flexWrap="wrap"
       >
-        <Text fontSize="lg" fontWeight="bold">
-          {comment.nickname}
-        </Text>
-        {user && user.id === comment.author_id && (
+        <Stack direction="row" alignItems="center">
+          <Text fontSize="lg" fontWeight="bold">
+            {comment.nickname}
+          </Text>
+          <Text fontSize="sm">&#183;</Text>
+          <Text fontSize="sm">
+            {comment.created_at.split("T")[0].split("-").reverse().join(".")}
+          </Text>
+        </Stack>
+        {user && user.id === comment.author_id && !isEditing && (
           <Stack direction="row">
             <Button
               variant="outline"
