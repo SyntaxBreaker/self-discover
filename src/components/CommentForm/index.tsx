@@ -61,7 +61,7 @@ function CommentForm({
           />
         </FormControl>
         <Button
-          marginTop={2}
+          marginTop={{ base: 8, sm: 2 }}
           alignSelf="flex-end"
           colorScheme="blue"
           type="submit"
