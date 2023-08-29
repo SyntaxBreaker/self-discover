@@ -1,4 +1,4 @@
-import { Box, Button, Card, Flex, FormControl } from "@chakra-ui/react";
+import { Button, Flex, FormControl } from "@chakra-ui/react";
 import { useState } from "react";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
@@ -48,22 +48,32 @@ function CommentForm({
   };
 
   return (
-    <Box marginTop={4} as={Card} padding={4}>
-      <Flex direction="column" as="form" onSubmit={handleSubmit} gap={4}>
-        <FormControl marginTop={4}>
-          <ReactQuill
-            theme="snow"
-            value={content}
-            onChange={(newContent) => setContent(newContent)}
-            modules={modules}
-            placeholder="Add a new commment..."
-          />
-        </FormControl>
-        <Button alignSelf="flex-end" colorScheme="blue" type="submit">
-          Submit
-        </Button>
-      </Flex>
-    </Box>
+    <Flex
+      direction="column"
+      as="form"
+      onSubmit={handleSubmit}
+      bgColor="white"
+      marginTop={4}
+      padding={4}
+      borderRadius={6}
+      display="flex"
+      flexDirection="column"
+      gap={4}
+      boxShadow={"base"}
+    >
+      <FormControl position="static">
+        <ReactQuill
+          theme="snow"
+          value={content}
+          onChange={(newContent) => setContent(newContent)}
+          modules={modules}
+          style={{ position: "static" }}
+        />
+      </FormControl>
+      <Button alignSelf="flex-end" colorScheme="blue" type="submit">
+        Submit
+      </Button>
+    </Flex>
   );
 }
 

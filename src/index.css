@@ -7,6 +7,10 @@
   font-family: 'Lato', sans-serif;
 }
 
+.ql-container {
+  position: static !important;
+}
+
 .react-markdown h2 {
   font-size: 30px;
 }

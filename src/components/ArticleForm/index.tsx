@@ -61,8 +61,9 @@ function ArticleForm({
       display="flex"
       flexDirection="column"
       gap={4}
+      position="static"
     >
-      <FormControl>
+      <FormControl position="static">
         <FormLabel>Title</FormLabel>
         <Input
           type="text"
@@ -70,9 +71,10 @@ function ArticleForm({
           name="title"
           onChange={handleChange}
           required
+          position="static"
         />
       </FormControl>
-      <FormControl>
+      <FormControl position="static">
         <FormLabel>Content</FormLabel>
         <ReactQuill
           theme="snow"
@@ -83,17 +85,18 @@ function ArticleForm({
           modules={modules}
         />
       </FormControl>
-      <FormControl>
+      <FormControl position="static">
         <FormLabel>Tags</FormLabel>
         <Input
           type="text"
           value={formData.tags}
           name="tags"
           onChange={handleChange}
+          position="static"
         />
         <FormHelperText>Tags must be separated using commas.</FormHelperText>
       </FormControl>
-      <Button width="100%" type="submit">
+      <Button width="100%" type="submit" position="static">
         Submit
       </Button>
     </Box>
