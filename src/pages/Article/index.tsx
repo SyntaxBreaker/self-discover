@@ -141,7 +141,7 @@ function Article() {
             <Flex
               alignItems="center"
               gap={2}
-              _hover={user && { cursor: "pointer", fontWeight: "bold" }}
+              _hover={user && { cursor: "pointer" }}
               onClick={() =>
                 user &&
                 toggleLike({
@@ -155,7 +155,7 @@ function Article() {
               }
             >
               <Icon as={AkarIconsThumbsUp} />
-              <Text>
+              <Text fontWeight={likes.includes(user.id) ? "bold" : "normal"}>
                 {likes.length > 0 ? likes.length : 0}{" "}
                 {likes.length === 1 ? "like" : "likes"}
               </Text>

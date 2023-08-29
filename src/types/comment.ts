@@ -5,5 +5,5 @@ export default interface IComment {
   created_at: string;
   id: number;
   nickname: string;
-  likes: string[] | [];
+  likes: string[];
 }
