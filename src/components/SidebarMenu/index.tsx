@@ -52,9 +52,17 @@ function SidebarMenu({ user }: { user: User }) {
         <MenuItem
           as={NavLink}
           to="/profile"
-          _activeLink={{ fontWeight: "900" }}
+          _activeLink={{ fontWeight: 900 }}
+          end
         >
           Profile
+        </MenuItem>
+        <MenuItem
+          as={NavLink}
+          to="/profile/edit"
+          _activeLink={{ fontWeight: 900 }}
+        >
+          Edit Profile
         </MenuItem>
         <MenuItem onClick={signOut}>Log out</MenuItem>
       </MenuList>

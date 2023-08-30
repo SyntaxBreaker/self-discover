@@ -27,6 +27,7 @@ import {
 import Profile from "./pages/Profile/index.tsx";
 import { supabase } from "./utils/supabase.ts";
 import Tag from "./pages/Tag/index.tsx";
+import EditProfile from "./pages/EditProfile/index.tsx";
 
 function PrivateRoute() {
   const { user } = useAuth() as IAuthContext;
@@ -102,6 +103,21 @@ const router = createBrowserRouter([
 
                 return { articles, error };
               }
+            },
+          },
+          {
+            path: "edit",
+            element: <EditProfile />,
+            loader: async () => {
+              const {
+                data: { user },
+                error,
+              } = await supabase.auth.getUser();
+
+              return {
+                user,
+                error,
+              };
             },
           },
         ],

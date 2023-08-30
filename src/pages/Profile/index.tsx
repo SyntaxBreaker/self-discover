@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
-import { useLoaderData } from "react-router-dom";
+import { NavLink, useLoaderData } from "react-router-dom";
 import IArticle from "../../types/article";
 import InterestList from "../../components/InterestList";
 import { MaterialSymbolsCall, TablerWorld } from "../../components/Icons";
@@ -48,7 +48,9 @@ function Profile() {
             flexWrap={{ base: "wrap", md: "nowrap" }}
           >
             <Text fontSize="5xl">{user.user_metadata.username}</Text>
-            <Button size="md">Edit profile</Button>
+            <Button size="md" as={NavLink} to="/profile/edit">
+              Edit profile
+            </Button>
           </Stack>
           <Flex direction="row" alignItems="center" gap={4} flexWrap="wrap">
             {user.user_metadata.website && (
