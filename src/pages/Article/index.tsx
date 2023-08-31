@@ -80,22 +80,39 @@ function Article() {
         </Alert>
       ) : (
         <Box>
-          {user && user.id === article.author_id && (
-            <Stack direction="row" justifyContent="flex-end">
-              <Button
-                size="lg"
-                colorScheme="blue"
-                variant="outline"
-                as={Link}
-                to={`/edit/${article.id}`}
-              >
-                Edit
-              </Button>
-              <Button size="lg" colorScheme="red" onClick={removeArticle}>
-                Remove
-              </Button>
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Stack direction="row">
+              <Text fontWeight="bold">Created by {article.nickname}</Text>
+              <Text>&#183;</Text>
+              <Text>
+                {article.created_at
+                  .split("T")[0]
+                  .split("-")
+                  .reverse()
+                  .join(".")}
+              </Text>
             </Stack>
-          )}
+            {user && user.id === article.author_id && (
+              <Stack direction="row">
+                <Button
+                  size="sm"
+                  colorScheme="blue"
+                  variant="outline"
+                  as={Link}
+                  to={`/edit/${article.id}`}
+                >
+                  Edit
+                </Button>
+                <Button size="sm" colorScheme="red" onClick={removeArticle}>
+                  Remove
+                </Button>
+              </Stack>
+            )}
+          </Stack>
           <Stack
             direction="row"
             justify="space-between"
@@ -106,17 +123,6 @@ function Article() {
               <Heading as="h1" size="2xl">
                 {article.title}
               </Heading>
-              <Stack direction="row" marginTop={2} alignItems="center">
-                <Text fontWeight="bold">Created by {article.nickname}</Text>
-                <Text>&#183;</Text>
-                <Text>
-                  {article.created_at
-                    .split("T")[0]
-                    .split("-")
-                    .reverse()
-                    .join(".")}
-                </Text>
-              </Stack>
               {article.tags && (
                 <Stack direction="row" marginTop={2} wrap="wrap">
                   {article.tags.map((tag) => (
