@@ -14,7 +14,7 @@ import { IAuthContext } from "../../types/auth";
 import { NavLink, useLoaderData } from "react-router-dom";
 import IArticle from "../../types/article";
 import InterestList from "../../components/InterestList";
-import { MaterialSymbolsCall, TablerWorld } from "../../components/Icons";
+import { TablerWorld } from "../../components/Icons";
 import ArticleList from "../../components/ArticleList";
 import { PostgrestError } from "@supabase/supabase-js";
 
@@ -24,6 +24,8 @@ function Profile() {
     articles: IArticle[];
     error: PostgrestError | null;
   };
+
+  console.log(user);
 
   return (
     <Container maxW={{ base: "100%", md: "50%" }} py={8}>
@@ -36,7 +38,11 @@ function Profile() {
         <Image
           boxSize="150px"
           objectFit="cover"
-          src="https://bit.ly/dan-abramov"
+          src={
+            user.user_metadata.avatar_url
+              ? user.user_metadata.avatar_url
+              : "https://bit.ly/dan-abramov"
+          }
           alt="Your profile picture"
           borderRadius="full"
         />
@@ -52,22 +58,14 @@ function Profile() {
               Edit profile
             </Button>
           </Stack>
-          <Flex direction="row" alignItems="center" gap={4} flexWrap="wrap">
-            {user.user_metadata.website && (
-              <Stack direction="row" alignItems="center">
-                <Icon as={TablerWorld} />
-                <Link href={user.user_metadata.website}>
-                  {user.user_metadata.website.split("www.")[1]}
-                </Link>
-              </Stack>
-            )}
+          {user.user_metadata.website && (
             <Stack direction="row" alignItems="center">
-              <Icon as={MaterialSymbolsCall} />
-              <Text>
-                {user.phone ? user.phone : "Phone number unavailable"}
-              </Text>
+              <Icon as={TablerWorld} />
+              <Link href={user.user_metadata.website}>
+                {user.user_metadata.website.split(/https?:\/\//)[1]}
+              </Link>
             </Stack>
-          </Flex>
+          )}
           {user.user_metadata.interests && (
             <InterestList interests={user.user_metadata.interests} />
           )}
