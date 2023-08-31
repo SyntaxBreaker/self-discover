@@ -7,6 +7,7 @@ import { PostgrestError } from "@supabase/supabase-js";
 import { useNavigate } from "react-router-dom";
 import ArticleForm from "../../components/ArticleForm";
 import IFormData from "../../types/formData";
+import generateRandomImage from "../../utils/generateRandomImage";
 
 function CreateArticle() {
   const [error, setError] = useState<PostgrestError | null>(null);
@@ -20,12 +21,15 @@ function CreateArticle() {
   ) => {
     event.preventDefault();
 
+    const image = await generateRandomImage();
+
     const { error } = await supabase.from("articles").insert({
       title: formData.title,
       content: formData.content,
       tags: `{${formData.tags.toLocaleLowerCase().split(",")}}` || null,
       author_id: user.id,
-      nickname: user.user_metadata.username ?? user.email?.split('@')[0]
+      nickname: user.user_metadata.username ?? user.email?.split("@")[0],
+      image: image.download_url,
     });
 
     if (error) {

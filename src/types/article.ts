@@ -10,4 +10,5 @@ export default interface IArticle {
   nickname: string;
   likes: string[] | [];
   comments: IComment[] | [];
+  image: string;
 }

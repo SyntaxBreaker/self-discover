@@ -22,7 +22,7 @@ function ArticleCard({ article }: { article: IArticle }) {
       <CardHeader padding="0">
         <Image
           objectFit="cover"
-          src="https://images.pexels.com/photos/5905485/pexels-photo-5905485.jpeg?&w=1920&h=1280"
+          src={article.image}
           borderTopRadius="6px"
           height="240px"
           width="full"

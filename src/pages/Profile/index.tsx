@@ -25,8 +25,6 @@ function Profile() {
     error: PostgrestError | null;
   };
 
-  console.log(user);
-
   return (
     <Container maxW={{ base: "100%", md: "50%" }} py={8}>
       <Flex
