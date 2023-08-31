@@ -80,7 +80,28 @@ function Article() {
         </Alert>
       ) : (
         <Box>
-          <Stack direction="row" justify="space-between" wrap="wrap">
+          {user && user.id === article.author_id && (
+            <Stack direction="row" justifyContent="flex-end">
+              <Button
+                size="lg"
+                colorScheme="blue"
+                variant="outline"
+                as={Link}
+                to={`/edit/${article.id}`}
+              >
+                Edit
+              </Button>
+              <Button size="lg" colorScheme="red" onClick={removeArticle}>
+                Remove
+              </Button>
+            </Stack>
+          )}
+          <Stack
+            direction="row"
+            justify="space-between"
+            wrap="wrap"
+            marginTop={4}
+          >
             <Stack>
               <Heading as="h1" size="2xl">
                 {article.title}
@@ -112,22 +133,6 @@ function Article() {
                 </Stack>
               )}
             </Stack>
-            {user && user.id === article.author_id && (
-              <Stack direction="row" padding={2}>
-                <Button
-                  size="lg"
-                  colorScheme="blue"
-                  variant="outline"
-                  as={Link}
-                  to={`/edit/${article.id}`}
-                >
-                  Edit
-                </Button>
-                <Button size="lg" colorScheme="red" onClick={removeArticle}>
-                  Remove
-                </Button>
-              </Stack>
-            )}
           </Stack>
           <Box
             letterSpacing="0.8px"
@@ -155,7 +160,9 @@ function Article() {
               }
             >
               <Icon as={AkarIconsThumbsUp} />
-              <Text fontWeight={likes.includes(user.id) ? "bold" : "normal"}>
+              <Text
+                fontWeight={user && likes.includes(user.id) ? "bold" : "normal"}
+              >
                 {likes.length > 0 ? likes.length : 0}{" "}
                 {likes.length === 1 ? "like" : "likes"}
               </Text>

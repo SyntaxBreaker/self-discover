@@ -167,7 +167,7 @@ function Comment({
         }
       >
         <Icon as={AkarIconsThumbsUp} />
-        <Text fontWeight={likes.includes(user.id) ? "bold" : "normal"}>
+        <Text fontWeight={user && likes.includes(user.id) ? "bold" : "normal"}>
           {likes.length > 0 ? likes.length : 0}{" "}
           {likes.length === 1 ? "like" : "likes"}
         </Text>
