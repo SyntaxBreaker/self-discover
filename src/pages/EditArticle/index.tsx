@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Alert, AlertIcon, Container, Heading } from "@chakra-ui/react";
+import { Alert, AlertIcon, Heading } from "@chakra-ui/react";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import IArticle from "../../types/article";
 import { useAuth } from "../../context/AuthProvider";
@@ -8,6 +8,7 @@ import ArticleForm from "../../components/ArticleForm";
 import { PostgrestError } from "@supabase/supabase-js";
 import IFormData from "../../types/formData";
 import { supabase } from "../../utils/supabase";
+import ResponsiveContainer from "../../components/ResponsiveContainer";
 
 function EditArticle() {
   const [error, setError] = useState<PostgrestError | null>(null);
@@ -51,7 +52,7 @@ function EditArticle() {
   };
 
   return (
-    <Container maxW={{ base: "100%", md: "50%" }} py={8}>
+    <ResponsiveContainer>
       <Heading textAlign="center">Edit the article</Heading>
       {error && (
         <Alert status="error">
@@ -68,7 +69,7 @@ function EditArticle() {
         handleSubmit={handleSubmit}
         article={article}
       />
-    </Container>
+    </ResponsiveContainer>
   );
 }
 

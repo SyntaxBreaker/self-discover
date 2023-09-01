@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Container,
   Flex,
   Icon,
   Image,
@@ -17,6 +16,7 @@ import InterestList from "../../components/InterestList";
 import { TablerWorld } from "../../components/Icons";
 import ArticleList from "../../components/ArticleList";
 import { PostgrestError } from "@supabase/supabase-js";
+import ResponsiveContainer from "../../components/ResponsiveContainer";
 
 function Profile() {
   const { user } = useAuth() as IAuthContext;
@@ -26,7 +26,7 @@ function Profile() {
   };
 
   return (
-    <Container maxW={{ base: "100%", md: "50%" }} py={8}>
+    <ResponsiveContainer>
       <Flex
         direction="row"
         gap={8}
@@ -72,7 +72,7 @@ function Profile() {
       <Box marginTop={16}>
         <ArticleList articles={articles} error={error} />
       </Box>
-    </Container>
+    </ResponsiveContainer>
   );
 }
 

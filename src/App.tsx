@@ -1,10 +1,10 @@
-import { Container } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { supabase } from "./utils/supabase";
 import IArticle from "./types/article";
 import ArticleList from "./components/ArticleList";
 import { PostgrestError } from "@supabase/supabase-js";
 import DataFilter from "./components/DataFilter";
+import ResponsiveContainer from "./components/ResponsiveContainer";
 
 function App() {
   const [articles, setArticles] = useState<IArticle[] | null>(null);
@@ -49,7 +49,7 @@ function App() {
   }, [filterKeyword]);
 
   return (
-    <Container maxW={{ base: "100%", md: "50%" }} py={8}>
+    <ResponsiveContainer>
       <DataFilter
         filterKeyword={filterKeyword}
         setFilterKeyword={setFilterKeyword}
@@ -58,7 +58,7 @@ function App() {
         articles={filteredArticles ? filteredArticles : articles}
         error={error}
       />
-    </Container>
+    </ResponsiveContainer>
   );
 }
 

@@ -1,8 +1,8 @@
 import { useLoaderData } from "react-router-dom";
 import IArticle from "../../types/article";
 import { PostgrestError } from "@supabase/supabase-js";
-import { Container } from "@chakra-ui/react";
 import ArticleList from "../../components/ArticleList";
+import ResponsiveContainer from "../../components/ResponsiveContainer";
 
 function Tag() {
   const { articles, error } = useLoaderData() as {
@@ -11,9 +11,9 @@ function Tag() {
   };
 
   return (
-    <Container maxW={{ base: "100%", md: "50%" }} py={8}>
+    <ResponsiveContainer>
       <ArticleList articles={articles} error={error} />
-    </Container>
+    </ResponsiveContainer>
   );
 }
 

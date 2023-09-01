@@ -1,7 +1,6 @@
 import {
   Alert,
   Button,
-  Container,
   Flex,
   FormControl,
   FormHelperText,
@@ -13,6 +12,7 @@ import { AuthError, User } from "@supabase/supabase-js";
 import { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { supabase } from "../../utils/supabase";
+import ResponsiveContainer from "../../components/ResponsiveContainer";
 
 interface IAlertData {
   status: "success" | "error" | null;
@@ -70,7 +70,7 @@ function EditProfile() {
   };
 
   return (
-    <Container maxW={{ base: "100%", md: "50%" }} py={8}>
+    <ResponsiveContainer>
       <Heading textAlign="center">Edit profile</Heading>
       <Flex
         as="form"
@@ -131,7 +131,7 @@ function EditProfile() {
           Submit
         </Button>
       </Flex>
-    </Container>
+    </ResponsiveContainer>
   );
 }
 

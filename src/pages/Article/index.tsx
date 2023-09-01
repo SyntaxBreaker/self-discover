@@ -6,7 +6,6 @@ import {
   AlertIcon,
   Box,
   Button,
-  Container,
   Flex,
   Heading,
   Icon,
@@ -22,6 +21,7 @@ import { AkarIconsThumbsUp, Fa6RegularComments } from "../../components/Icons";
 import IComment from "../../types/comment";
 import CommentList from "../../components/CommentList";
 import toggleLike from "../../utils/toggleLike";
+import ResponsiveContainer from "../../components/ResponsiveContainer";
 
 function Article() {
   const { article, error } = useLoaderData() as {
@@ -62,7 +62,7 @@ function Article() {
   };
 
   return (
-    <Container maxW={{ base: "100%", md: "50%" }} py={8}>
+    <ResponsiveContainer>
       {status && (
         <Alert
           status={status.type}
@@ -192,7 +192,7 @@ function Article() {
           </Box>
         </Box>
       )}
-    </Container>
+    </ResponsiveContainer>
   );
 }
 

@@ -1,4 +1,4 @@
-import { Container, Heading, AlertIcon, Alert } from "@chakra-ui/react";
+import { Heading, AlertIcon, Alert } from "@chakra-ui/react";
 import { useState } from "react";
 import { supabase } from "../../utils/supabase";
 import { useAuth } from "../../context/AuthProvider";
@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import ArticleForm from "../../components/ArticleForm";
 import IFormData from "../../types/formData";
 import generateRandomImage from "../../utils/generateRandomImage";
+import ResponsiveContainer from "../../components/ResponsiveContainer";
 
 function CreateArticle() {
   const [error, setError] = useState<PostgrestError | null>(null);
@@ -40,7 +41,7 @@ function CreateArticle() {
   };
 
   return (
-    <Container maxW={{ base: "100%", md: "50%" }} py={8}>
+    <ResponsiveContainer>
       <Heading textAlign="center">Create a new article</Heading>
       {error && (
         <Alert status="error" padding={4} borderTopRadius={8} marginTop={8}>
@@ -49,7 +50,7 @@ function CreateArticle() {
         </Alert>
       )}
       <ArticleForm error={error} handleSubmit={handleSubmit} />
-    </Container>
+    </ResponsiveContainer>
   );
 }
 

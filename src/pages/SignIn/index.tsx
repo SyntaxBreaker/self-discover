@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Container,
   FormControl,
   FormErrorMessage,
   FormLabel,
@@ -16,6 +15,7 @@ import { Link as ChakraLink } from "@chakra-ui/react";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import { AuthError } from "@supabase/supabase-js";
+import ResponsiveContainer from "../../components/ResponsiveContainer";
 
 function SignIn() {
   const [loginData, setLoginData] = useState({
@@ -61,7 +61,7 @@ function SignIn() {
   }, [user]);
 
   return (
-    <Container maxW={{ base: "100%", md: "50%" }} py={8}>
+    <ResponsiveContainer>
       <Heading textAlign="center">Sign in</Heading>
       <Box
         as="form"
@@ -120,7 +120,7 @@ function SignIn() {
           </ChakraLink>
         </Text>
       </Box>
-    </Container>
+    </ResponsiveContainer>
   );
 }
 

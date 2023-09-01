@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Container,
   FormControl,
   FormErrorMessage,
   FormLabel,
@@ -14,6 +13,7 @@ import { supabase } from "../../utils/supabase";
 import { Link as ReactRouterLink, useNavigate } from "react-router-dom";
 import { Link as ChakraLink } from "@chakra-ui/react";
 import { AuthError } from "@supabase/supabase-js";
+import ResponsiveContainer from "../../components/ResponsiveContainer";
 
 function SignUp() {
   const [loginData, setLoginData] = useState({
@@ -53,7 +53,7 @@ function SignUp() {
   };
 
   return (
-    <Container maxW={{ base: "100%", md: "50%" }} py={8}>
+    <ResponsiveContainer>
       <Heading textAlign="center">Sign up</Heading>
       <Box
         as="form"
@@ -107,7 +107,7 @@ function SignUp() {
           </ChakraLink>
         </Text>
       </Box>
-    </Container>
+    </ResponsiveContainer>
   );
 }
 
