@@ -15,7 +15,7 @@ function CommentList({
   const { user } = useAuth() as IAuthContext;
 
   return (
-    <Box marginTop={16} borderRadius={4}>
+    <Box marginTop={8} borderRadius={4}>
       <Heading as="h2" size="md">
         Comments
       </Heading>
