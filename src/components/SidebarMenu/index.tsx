@@ -28,7 +28,11 @@ function SidebarMenu({ user }: { user: User }) {
         color="white"
         isTruncated
       >
-        <Flex alignItems="center" gap={2}>
+        <Flex
+          alignItems="center"
+          justifyContent={{ base: "center", sm: "initial" }}
+          gap={2}
+        >
           {user.user_metadata.avatar_url ? (
             <Image
               src={user.user_metadata.avatar_url}
