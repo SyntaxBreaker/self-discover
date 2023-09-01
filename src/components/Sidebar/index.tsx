@@ -21,7 +21,7 @@ function Sidebar() {
       w={{ base: "52px", md: "200px" }}
       backgroundColor="gray.900"
       height="100vh"
-      alignItems={{ base: "center", sm: "inherit" }}
+      alignItems={{ base: "center", md: "inherit" }}
       position="sticky"
       top="0"
     >
