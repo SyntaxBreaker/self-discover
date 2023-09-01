@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { AuthError, User } from "@supabase/supabase-js";
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { supabase } from "../../utils/supabase";
 
 interface IAlertData {
@@ -24,6 +24,7 @@ function EditProfile() {
     user: User | null;
     error: AuthError | null;
   };
+  const navigate = useNavigate();
 
   const [userInformation, setUserInformation] = useState({
     username: user?.user_metadata.username ?? "",
@@ -63,6 +64,8 @@ function EditProfile() {
         status: "success",
         message: "Profile updated successfully",
       });
+
+      setTimeout(() => navigate(0), 1000);
     }
   };
 
