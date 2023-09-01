@@ -84,8 +84,9 @@ function Article() {
             direction="row"
             justifyContent="space-between"
             alignItems="center"
+            flexWrap="wrap"
           >
-            <Stack direction="row">
+            <Stack direction="row" flexWrap="wrap" gap={1}>
               <Text fontWeight="bold">Created by {article.nickname}</Text>
               <Text>&#183;</Text>
               <Text>
@@ -117,28 +118,11 @@ function Article() {
             direction="row"
             justify="space-between"
             wrap="wrap"
-            marginTop={4}
+            marginTop={8}
           >
-            <Stack>
-              <Heading as="h1" size="2xl">
-                {article.title}
-              </Heading>
-              {article.tags && (
-                <Stack direction="row" marginTop={2} wrap="wrap">
-                  {article.tags.map((tag) => (
-                    <Link to={`/tag/${tag}`} key={tag}>
-                      <Tag
-                        colorScheme="blue"
-                        padding={2}
-                        _hover={{ bg: "#2B6CB0", color: "white" }}
-                      >
-                        {tag}
-                      </Tag>
-                    </Link>
-                  ))}
-                </Stack>
-              )}
-            </Stack>
+            <Heading as="h1" size="2xl">
+              {article.title}
+            </Heading>
           </Stack>
           <Box
             letterSpacing="0.8px"
@@ -148,6 +132,21 @@ function Article() {
               __html: DOMPurify.sanitize(article.content),
             }}
           />
+          {article.tags && (
+            <Stack direction="row" marginTop={8} wrap="wrap">
+              {article.tags.map((tag) => (
+                <Link to={`/tag/${tag}`} key={tag}>
+                  <Tag
+                    colorScheme="blue"
+                    padding={2}
+                    _hover={{ bg: "#2B6CB0", color: "white" }}
+                  >
+                    {tag}
+                  </Tag>
+                </Link>
+              ))}
+            </Stack>
+          )}
           <Stack direction="row" spacing="24px" marginTop={8}>
             <Flex
               alignItems="center"
