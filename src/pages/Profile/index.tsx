@@ -51,7 +51,7 @@ function Profile() {
             justifyContent="space-between"
             flexWrap={{ base: "wrap", md: "nowrap" }}
           >
-            <Text fontSize="5xl">{user.user_metadata.username}</Text>
+            <Text fontSize="2xl">{user.user_metadata.username}</Text>
             <Button size="md" as={NavLink} to="/profile/edit">
               Edit profile
             </Button>
