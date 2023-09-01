@@ -19,7 +19,7 @@ function SignUp() {
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
-    username: ""
+    username: "",
   });
   const [error, setError] = useState<AuthError | null>(null);
 
@@ -40,9 +40,9 @@ function SignUp() {
       password: loginData.password,
       options: {
         data: {
-          username: loginData.username ?? loginData.email.split('@')[0]
-        }
-      }
+          username: loginData.username ?? loginData.email.split("@")[0],
+        },
+      },
     });
 
     if (!error) {
@@ -89,6 +89,7 @@ function SignUp() {
             value={loginData.username}
             name="username"
             onChange={handleChange}
+            maxLength={14}
           />
         </FormControl>
         <Button marginTop={4} width="100%" type="submit">
