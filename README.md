@@ -5,6 +5,8 @@ This project is a web application that allows users to add, edit, and remove art
 ## Features
 - Add, edit, and remove articles
 - View a list of all articles, your articles, or a list of articles in a specific tag
+- Comment system: Allow users to leave comments on articles
+- Like system: Enable users to like articles they enjoy
 
 ## Tech Stack
 - Vite
