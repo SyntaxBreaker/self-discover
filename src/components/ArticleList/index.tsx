@@ -27,7 +27,7 @@ function ArticleList({
       )}
       <SimpleGrid
         spacing={4}
-        templateColumns={{ base: "1fr", xl: "repeat(2, 1fr)", '2xl': "repeat(3, 1fr)" }}
+        templateColumns={{ base: "1fr", xl: "repeat(2, 1fr)"}}
         alignItems="flex-start"
       >
         {articles?.map((article) => (
