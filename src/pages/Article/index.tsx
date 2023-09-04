@@ -33,8 +33,8 @@ function Article() {
     type: "success" | "error";
     message: string;
   }>(null);
-  const [likes, setLikes] = useState<string[]>(article.likes || []);
-  const [comments, setComments] = useState<IComment[]>(article.comments || []);
+  const [likes, setLikes] = useState<string[]>(article?.likes || []);
+  const [comments, setComments] = useState<IComment[]>(article?.comments || []);
 
   const { user } = useAuth() as IAuthContext;
   const myRef = useRef<HTMLDivElement | null>(null);
