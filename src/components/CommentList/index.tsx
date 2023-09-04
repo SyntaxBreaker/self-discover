@@ -16,9 +16,12 @@ function CommentList({
 
   return (
     <Box marginTop={8} borderRadius={4}>
-      <Heading as="h2" size="md">
-        Comments
-      </Heading>
+      {comments.length > 0 ||
+        (user && (
+          <Heading as="h2" size="md">
+            Comments
+          </Heading>
+        ))}
       {user && <CommentForm setComments={setComments} />}
       {comments.map((comment) => (
         <Comment comment={comment} setComments={setComments} key={comment.id} />
