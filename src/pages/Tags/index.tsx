@@ -51,6 +51,7 @@ function Tags() {
           </Stack>
           <TagList
             tags={filteredTags && filteredTags.length > 0 ? filteredTags : tags}
+            size="lg"
           />
         </>
       )}

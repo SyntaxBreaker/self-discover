@@ -12,9 +12,9 @@ import {
   CardFooter,
 } from "@chakra-ui/react";
 import IArticle from "../../types/article";
-import { Link } from "react-router-dom";
 import "react-quill/dist/quill.core.css";
 import { AkarIconsThumbsUp, Fa6RegularComments } from "../Icons";
+import TagList from "../TagList";
 
 function ArticleCard({ article }: { article: IArticle }) {
   return (
@@ -48,20 +48,12 @@ function ArticleCard({ article }: { article: IArticle }) {
         </Heading>
         {article.tags && (
           <Stack direction="row" flexWrap="wrap" marginTop={4}>
-            {article.tags.slice(0, 8).map((tag) => (
-              <Link to={`/tag/${tag}`} key={tag}>
-                <Tag
-                  colorScheme="blue"
-                  _hover={{ bg: "#2B6CB0", color: "white" }}
-                >
-                  {tag}
-                </Tag>
-              </Link>
-            ))}
+            <TagList tags={article.tags.slice(0, 8)} size="md" />
             {article.tags.length > 8 && (
               <Tag
                 colorScheme="blue"
                 _hover={{ bg: "#2B6CB0", color: "white" }}
+                size="md"
               >
                 and more...
               </Tag>

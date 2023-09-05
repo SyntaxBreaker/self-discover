@@ -1,7 +1,12 @@
 import { Stack, Tag } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
-function TagList({ tags }: { tags: string[] }) {
+interface IProps {
+  tags: string[];
+  size?: "sm" | "md" | "lg";
+}
+
+function TagList({ tags, size = "md" }: IProps) {
   return (
     <Stack direction="row" flexWrap="wrap">
       {tags.map((tag) => (
@@ -9,7 +14,7 @@ function TagList({ tags }: { tags: string[] }) {
           <Tag
             colorScheme="blue"
             _hover={{ bg: "#2B6CB0", color: "white" }}
-            size="lg"
+            size={size}
           >
             {tag}
           </Tag>

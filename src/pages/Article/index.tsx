@@ -10,7 +10,6 @@ import {
   Heading,
   Icon,
   Stack,
-  Tag,
   Text,
 } from "@chakra-ui/react";
 import { useAuth } from "../../context/AuthProvider";
@@ -22,6 +21,7 @@ import IComment from "../../types/comment";
 import CommentList from "../../components/CommentList";
 import toggleLike from "../../utils/toggleLike";
 import ResponsiveContainer from "../../components/ResponsiveContainer";
+import TagList from "../../components/TagList";
 
 function Article() {
   const { article, error } = useLoaderData() as {
@@ -133,18 +133,8 @@ function Article() {
             }}
           />
           {article.tags && (
-            <Stack direction="row" marginTop={8} wrap="wrap">
-              {article.tags.map((tag) => (
-                <Link to={`/tag/${tag}`} key={tag}>
-                  <Tag
-                    colorScheme="blue"
-                    padding={2}
-                    _hover={{ bg: "#2B6CB0", color: "white" }}
-                  >
-                    {tag}
-                  </Tag>
-                </Link>
-              ))}
+            <Stack marginTop={8}>
+              <TagList tags={article.tags} size="lg" />
             </Stack>
           )}
           <Stack direction="row" spacing="24px" marginTop={8}>
