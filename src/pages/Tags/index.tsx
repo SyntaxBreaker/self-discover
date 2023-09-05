@@ -39,8 +39,9 @@ function Tags() {
             direction="row"
             justifyContent="space-between"
             alignItems="center"
+            marginBottom={8}
           >
-            <Heading size="lg" flexBasis="100%" marginBottom={8}>
+            <Heading size="lg" flexBasis="100%">
               Tag list
             </Heading>
             <DataFilter

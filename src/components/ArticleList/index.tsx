@@ -1,4 +1,4 @@
-import { Alert, AlertIcon, SimpleGrid } from "@chakra-ui/react";
+import { Alert, AlertIcon, SimpleGrid, Stack } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import ArticleCard from "../ArticleCard";
 import IArticle from "../../types/article";
@@ -12,7 +12,7 @@ function ArticleList({
   error: PostgrestError | null;
 }) {
   return (
-    <>
+    <Stack marginTop={8}>
       {articles && articles.length <= 0 && (
         <Alert status="info">
           <AlertIcon />
@@ -27,7 +27,7 @@ function ArticleList({
       )}
       <SimpleGrid
         spacing={4}
-        templateColumns={{ base: "1fr", xl: "repeat(2, 1fr)"}}
+        templateColumns={{ base: "1fr", xl: "repeat(2, 1fr)" }}
         alignItems="flex-start"
       >
         {articles?.map((article) => (
@@ -36,7 +36,7 @@ function ArticleList({
           </Link>
         ))}
       </SimpleGrid>
-    </>
+    </Stack>
   );
 }
 

@@ -8,7 +8,7 @@ function DataFilter({
   setFilterKeyword: React.Dispatch<React.SetStateAction<string>>;
 }) {
   return (
-    <FormControl marginBottom={8}>
+    <FormControl>
       <Input
         type="text"
         name="search"
