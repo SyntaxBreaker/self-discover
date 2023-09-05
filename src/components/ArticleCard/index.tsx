@@ -48,7 +48,7 @@ function ArticleCard({ article }: { article: IArticle }) {
         </Heading>
         {article.tags && (
           <Stack direction="row" flexWrap="wrap" marginTop={4}>
-            {article.tags.map((tag) => (
+            {article.tags.slice(0, 8).map((tag) => (
               <Link to={`/tag/${tag}`} key={tag}>
                 <Tag
                   colorScheme="blue"
@@ -58,6 +58,14 @@ function ArticleCard({ article }: { article: IArticle }) {
                 </Tag>
               </Link>
             ))}
+            {article.tags.length > 8 && (
+              <Tag
+                colorScheme="blue"
+                _hover={{ bg: "#2B6CB0", color: "white" }}
+              >
+                and more...
+              </Tag>
+            )}
           </Stack>
         )}
       </CardBody>
