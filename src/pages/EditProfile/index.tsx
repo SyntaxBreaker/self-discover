@@ -42,7 +42,7 @@ function EditProfile() {
       ...prev,
       [event.target.name]:
         event.target.name === "interests"
-          ? event.target.value.trim().split(",")
+          ? event.target.value.split(",")
           : event.target.value,
     }));
   };
