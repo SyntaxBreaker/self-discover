@@ -28,6 +28,7 @@ import Profile from "./pages/Profile/index.tsx";
 import { supabase } from "./utils/supabase.ts";
 import Tag from "./pages/Tag/index.tsx";
 import EditProfile from "./pages/EditProfile/index.tsx";
+import Tags from "./pages/Tags/index.tsx";
 
 function PrivateRoute() {
   const { user } = useAuth() as IAuthContext;
@@ -123,6 +124,25 @@ const router = createBrowserRouter([
             },
           },
         ],
+      },
+      {
+        path: "/tags",
+        element: <Tags />,
+        loader: async () => {
+          const { data, error } = await supabase
+            .from("articles")
+            .select("tags");
+
+          const tags = new Set();
+          data?.forEach((element) =>
+            element.tags.map((tag: string) => tags.add(tag))
+          );
+
+          return {
+            tagList: Array.from(tags),
+            error,
+          };
+        },
       },
       {
         path: "/tag/:tag",

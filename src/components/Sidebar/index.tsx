@@ -11,6 +11,7 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import SidebarMenu from "../SidebarMenu";
+import { TeenyiconsHashtagOutline } from "../Icons";
 
 function Sidebar() {
   const { user } = useAuth() as IAuthContext;
@@ -66,6 +67,23 @@ function Sidebar() {
             </Icon>
             <Text color="white" display={{ base: "none", lg: "inline" }}>
               Create Article
+            </Text>
+          </Box>
+        </Link>
+      </Tooltip>
+      <Tooltip label="Tags" display={{ base: "initial", lg: "none" }}>
+        <Link as={NavLink} to="/tags" _activeLink={{ fontWeight: "900" }}>
+          <Box
+            paddingY={2}
+            paddingX={{ base: 0, sm: 2 }}
+            _hover={{ backgroundColor: "gray.700" }}
+            display="flex"
+            alignItems="center"
+            gap={2}
+          >
+            <Icon as={TeenyiconsHashtagOutline} />
+            <Text color="white" display={{ base: "none", lg: "inline" }}>
+              Tag List
             </Text>
           </Box>
         </Link>
