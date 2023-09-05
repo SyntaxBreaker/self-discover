@@ -38,9 +38,10 @@ function EditArticle() {
       .update({
         title: formData.title,
         content: formData.content,
-        tags: `{${formData.tags.toLocaleLowerCase().split(",")}}` || null,
+        tags:
+          `{${formData.tags.toLocaleLowerCase().split(",").sort()}}` || null,
         author_id: user.id,
-        nickname: user.user_metadata.username ?? user.email?.split('@')[0]
+        nickname: user.user_metadata.username ?? user.email?.split("@")[0],
       })
       .eq("id", Id);
 
