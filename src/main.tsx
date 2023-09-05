@@ -133,13 +133,13 @@ const router = createBrowserRouter([
             .from("articles")
             .select("tags");
 
-          const tags = new Set();
+          const tagList = new Set();
           data?.forEach((element) =>
-            element.tags.map((tag: string) => tags.add(tag))
+            element.tags.map((tag: string) => tagList.add(tag))
           );
 
           return {
-            tagList: Array.from(tags),
+            tags: Array.from(tagList),
             error,
           };
         },
