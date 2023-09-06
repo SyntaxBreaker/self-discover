@@ -15,6 +15,7 @@ function DataFilter({
         value={filterKeyword}
         onChange={(e) => setFilterKeyword(e.target.value)}
         placeholder="Search..."
+        background="white"
       />
     </FormControl>
   );
