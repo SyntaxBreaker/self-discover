@@ -29,6 +29,7 @@ import { supabase } from "./utils/supabase.ts";
 import Tag from "./pages/Tag/index.tsx";
 import EditProfile from "./pages/EditProfile/index.tsx";
 import Tags from "./pages/Tags/index.tsx";
+import Chat from "./pages/Chat/index.tsx";
 
 function PrivateRoute() {
   const { user } = useAuth() as IAuthContext;
@@ -154,6 +155,14 @@ const router = createBrowserRouter([
             .contains("tags", [params.tag]);
 
           return { articles: data, error: error };
+        },
+      },
+      {
+        path: "/chat",
+        element: <Chat />,
+        loader: async () => {
+          const { data, error } = await supabase.from("chats").select();
+          return { chatCollection: data, erorr: error };
         },
       },
     ],

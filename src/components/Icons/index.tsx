@@ -107,6 +107,67 @@ function TeenyiconsHashtagOutline() {
   );
 }
 
+function JamMessagesF() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="40px"
+      height="40px"
+      viewBox="-2 -2.5 24 24"
+    >
+      <path
+        fill="white"
+        d="M3.656 17.979A1 1 0 0 1 2 17.243V15a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H8.003l-4.347 2.979zM16 10.017a7.136 7.136 0 0 0 0 .369v-.37c.005-.107.006-1.447.004-4.019a3 3 0 0 0-3-2.997H5V2a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2v2.243a1 1 0 0 1-1.656.736L16 13.743v-3.726z"
+      ></path>
+    </svg>
+  );
+}
+
+function MaterialSymbolsLightbulb() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="40px"
+      height="40px"
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill="white"
+        d="M12 22q-.825 0-1.413-.588T10 20h4q0 .825-.588 1.413T12 22Zm-4-3v-2h8v2H8Zm.25-3q-1.725-1.025-2.738-2.75T4.5 9.5q0-3.125 2.188-5.313T12 2q3.125 0 5.313 2.188T19.5 9.5q0 2.025-1.012 3.75T15.75 16h-7.5Z"
+      ></path>
+    </svg>
+  );
+}
+
+function MaterialSymbolsAdd() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="40px"
+      height="40px"
+      viewBox="0 0 24 24"
+    >
+      <path fill="white" d="M11 13H5v-2h6V5h2v6h6v2h-6v6h-2v-6Z"></path>
+    </svg>
+  );
+}
+
+function MaterialSymbolsLogin() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="40px"
+      height="40px"
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill="white"
+        d="M12 21v-2h7V5h-7V3h7q.825 0 1.413.588T21 5v14q0 .825-.588 1.413T19 21h-7Zm-2-4l-1.375-1.45l2.55-2.55H3v-2h8.175l-2.55-2.55L10 7l5 5l-5 5Z"
+      ></path>
+    </svg>
+  );
+}
+
 export {
   TablerWorld,
   MaterialSymbolsCall,
@@ -114,4 +175,8 @@ export {
   AkarIconsThumbsUp,
   Fa6RegularComments,
   TeenyiconsHashtagOutline,
+  JamMessagesF,
+  MaterialSymbolsLightbulb,
+  MaterialSymbolsAdd,
+  MaterialSymbolsLogin,
 };
