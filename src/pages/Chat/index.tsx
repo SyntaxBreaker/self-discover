@@ -1,17 +1,9 @@
 import {
-  Avatar,
   Button,
   Card,
   Flex,
   FormControl,
   Heading,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Portal,
-  Stack,
-  Text,
   Textarea,
 } from "@chakra-ui/react";
 import ResponsiveContainer from "../../components/ResponsiveContainer";
@@ -22,6 +14,7 @@ import { supabase } from "../../utils/supabase";
 import IChat from "../../types/chat";
 import { useLoaderData } from "react-router-dom";
 import { PostgrestError } from "@supabase/supabase-js";
+import MessageContainer from "../../components/MessageContainer";
 
 function Chat() {
   const { chatCollection } = useLoaderData() as {
@@ -52,9 +45,6 @@ function Chat() {
       setMessage("");
     }
   };
-  const removeChatMessage = async (id: number) => {
-    await supabase.from("chats").delete().eq("id", id);
-  };
 
   useEffect(() => {
     const subscription = supabase
@@ -63,14 +53,22 @@ function Chat() {
         "postgres_changes",
         { event: "*", schema: "public", table: "chats" },
         (payload) => {
-          const isPayloadNotEmpty = Object.keys(payload.new).length;
-          if (isPayloadNotEmpty) {
+          if (payload.eventType === "INSERT") {
             setChats((prevData) => [...prevData, payload.new as IChat]);
           } else if (payload.eventType === "DELETE") {
             const filteredData = chats.filter(
               (chat) => chat.id !== payload.old.id
             );
             setChats(filteredData);
+          } else if (payload.eventType === "UPDATE") {
+            const updatedChats = [...chats];
+            const index = updatedChats.findIndex(
+              (item) => item.id === payload.old.id
+            );
+            if (index !== -1) {
+              updatedChats[index] = payload.new as IChat;
+              setChats(updatedChats);
+            }
           } else {
             return;
           }
@@ -100,44 +98,7 @@ function Chat() {
           paddingX={2}
         >
           {chats?.map((chat) => (
-            <Stack
-              key={chat.id}
-              direction={user?.id === chat.user_id ? "row-reverse" : "row"}
-            >
-              <Avatar src={chat.avatar_url} />
-              <Stack
-                direction="column"
-                width="75%"
-                padding={4}
-                backgroundColor={
-                  user?.id === chat.user_id ? "blue.50" : "gray.100"
-                }
-                borderRadius={4}
-              >
-                <Stack
-                  direction="row"
-                  fontSize="xs"
-                  alignItems="center"
-                  justifyContent="space-between"
-                >
-                  <Text>{chat.username}</Text>
-                  {user?.id === chat.user_id && (
-                    <Menu>
-                      <MenuButton>&#8942;</MenuButton>
-                      <Portal>
-                        <MenuList>
-                          <MenuItem>Edit</MenuItem>
-                          <MenuItem onClick={() => removeChatMessage(chat.id)}>
-                            Delete
-                          </MenuItem>
-                        </MenuList>
-                      </Portal>
-                    </Menu>
-                  )}
-                </Stack>
-                <Text>{chat.message}</Text>
-              </Stack>
-            </Stack>
+            <MessageContainer chat={chat} key={chat.id} />
           ))}
         </Flex>
         {user?.email && (
