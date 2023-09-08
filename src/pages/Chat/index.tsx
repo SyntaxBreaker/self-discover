@@ -94,14 +94,22 @@ function Chat() {
                 width="75%"
                 padding={4}
                 backgroundColor={
-                  user?.id === chat.user_id ? "blue.200" : "gray.100"
+                  user?.id === chat.user_id ? "blue.50" : "gray.100"
                 }
                 borderRadius={4}
               >
+                <Stack direction="row" fontSize="xs" alignItems="center">
+                  <Text>{chat.username}</Text>
+                  <Text fontSize="sm">&#183;</Text>
+                  <Text>
+                    {chat.created_at
+                      .split("T")[0]
+                      .split("-")
+                      .reverse()
+                      .join(".")}
+                  </Text>
+                </Stack>
                 <Text>{chat.message}</Text>
-                <Text alignSelf="self-end">
-                  {chat.created_at.split("T")[0].split("-").reverse().join(".")}
-                </Text>
               </Stack>
             </Stack>
           ))}
