@@ -5,6 +5,11 @@ import {
   Flex,
   FormControl,
   Heading,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Portal,
   Stack,
   Text,
   Textarea,
@@ -47,6 +52,9 @@ function Chat() {
       setMessage("");
     }
   };
+  const removeChatMessage = async (id: number) => {
+    await supabase.from("chats").delete().eq("id", id);
+  };
 
   useEffect(() => {
     const subscription = supabase
@@ -55,8 +63,16 @@ function Chat() {
         "postgres_changes",
         { event: "*", schema: "public", table: "chats" },
         (payload) => {
-          if (payload.new) {
+          const isPayloadNotEmpty = Object.keys(payload.new).length;
+          if (isPayloadNotEmpty) {
             setChats((prevData) => [...prevData, payload.new as IChat]);
+          } else if (payload.eventType === "DELETE") {
+            const filteredData = chats.filter(
+              (chat) => chat.id !== payload.old.id
+            );
+            setChats(filteredData);
+          } else {
+            return;
           }
         }
       )
@@ -98,16 +114,26 @@ function Chat() {
                 }
                 borderRadius={4}
               >
-                <Stack direction="row" fontSize="xs" alignItems="center">
+                <Stack
+                  direction="row"
+                  fontSize="xs"
+                  alignItems="center"
+                  justifyContent="space-between"
+                >
                   <Text>{chat.username}</Text>
-                  <Text fontSize="sm">&#183;</Text>
-                  <Text>
-                    {chat.created_at
-                      .split("T")[0]
-                      .split("-")
-                      .reverse()
-                      .join(".")}
-                  </Text>
+                  {user?.id === chat.user_id && (
+                    <Menu>
+                      <MenuButton>&#8942;</MenuButton>
+                      <Portal>
+                        <MenuList>
+                          <MenuItem>Edit</MenuItem>
+                          <MenuItem onClick={() => removeChatMessage(chat.id)}>
+                            Delete
+                          </MenuItem>
+                        </MenuList>
+                      </Portal>
+                    </Menu>
+                  )}
                 </Stack>
                 <Text>{chat.message}</Text>
               </Stack>
