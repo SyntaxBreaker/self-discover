@@ -9,17 +9,19 @@ interface IProps {
 function TagList({ tags, size = "md" }: IProps) {
   return (
     <Stack direction="row" flexWrap="wrap">
-      {tags.map((tag) => (
-        <Link to={`/tag/${tag}`} key={tag}>
-          <Tag
-            colorScheme="blue"
-            _hover={{ bg: "#2B6CB0", color: "white" }}
-            size={size}
-          >
-            {tag}
-          </Tag>
-        </Link>
-      ))}
+      {[...tags]
+        .sort((a, b) => a.localeCompare(b))
+        .map((tag) => (
+          <Link to={`/tag/${tag}`} key={tag}>
+            <Tag
+              colorScheme="blue"
+              _hover={{ bg: "#2B6CB0", color: "white" }}
+              size={size}
+            >
+              {tag}
+            </Tag>
+          </Link>
+        ))}
     </Stack>
   );
 }
