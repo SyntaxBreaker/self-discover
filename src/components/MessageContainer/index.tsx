@@ -65,7 +65,9 @@ function MessageContainer({ chat }: { chat: IChat }) {
               <MenuButton>&#8942;</MenuButton>
               <Portal>
                 <MenuList>
-                  <MenuItem onClick={() => setIsEditing(true)}>Edit</MenuItem>
+                  <MenuItem onClick={() => setIsEditing(!isEditing)}>
+                    {isEditing ? "Discard changes" : "Edit"}
+                  </MenuItem>
                   <MenuItem onClick={() => removeChatMessage(chat.id)}>
                     Delete
                   </MenuItem>
@@ -89,9 +91,19 @@ function MessageContainer({ chat }: { chat: IChat }) {
                 backgroundColor="white"
               />
             </FormControl>
-            <Button type="submit" colorScheme="blue">
-              Edit
-            </Button>
+            <Stack direction="row">
+              <Button
+                variant="outline"
+                flexBasis="50%"
+                colorScheme="blue"
+                onClick={() => setIsEditing(false)}
+              >
+                Cancel
+              </Button>
+              <Button type="submit" colorScheme="blue" flexBasis="50%">
+                Edit
+              </Button>
+            </Stack>
           </Flex>
         ) : (
           <Text>{chat.message}</Text>
