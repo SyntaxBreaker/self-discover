@@ -4,7 +4,10 @@ import {
   Flex,
   FormControl,
   Heading,
+  Image,
+  Stack,
   Textarea,
+  Text,
 } from "@chakra-ui/react";
 import ResponsiveContainer from "../../components/ResponsiveContainer";
 import { useEffect, useRef, useState } from "react";
@@ -15,6 +18,7 @@ import IChat from "../../types/chat";
 import { useLoaderData } from "react-router-dom";
 import { PostgrestError } from "@supabase/supabase-js";
 import MessageContainer from "../../components/MessageContainer";
+import chattingImage from "../../assets/images/chatting.svg";
 
 function Chat() {
   const { chatCollection } = useLoaderData() as {
@@ -88,7 +92,9 @@ function Chat() {
   return (
     <ResponsiveContainer>
       <Card padding={4} maxHeight="800px">
-        <Heading size="lg">Welcome to our chat!</Heading>
+        <Heading size="lg" textAlign="center">
+          Welcome to our chat!
+        </Heading>
         <Flex
           marginTop={4}
           direction="column"
@@ -97,9 +103,18 @@ function Chat() {
           ref={ref}
           paddingX={2}
         >
-          {chats?.map((chat) => (
-            <MessageContainer chat={chat} key={chat.id} />
-          ))}
+          {chats.length > 0 ? (
+            chats.map((chat) => <MessageContainer chat={chat} key={chat.id} />)
+          ) : (
+            <Stack alignItems="center">
+              <Image boxSize="250px" src={chattingImage} alt="" />
+              <Text textAlign="center" color="gray.600">
+                Welcome to the general chat! It is a place for everyone to
+                discuss anything and everything. Please be respectful of other
+                members.
+              </Text>
+            </Stack>
+          )}
         </Flex>
         {user?.email && (
           <Flex
