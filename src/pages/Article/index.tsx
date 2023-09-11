@@ -35,6 +35,7 @@ function Article() {
   }>(null);
   const [likes, setLikes] = useState<string[]>(article?.likes || []);
   const [comments, setComments] = useState<IComment[]>(article?.comments || []);
+  const [isTagListExpanded, setIsTagListExpanded] = useState(false);
 
   const { user } = useAuth() as IAuthContext;
   const myRef = useRef<HTMLDivElement | null>(null);
@@ -134,7 +135,19 @@ function Article() {
           />
           {article.tags && (
             <Stack marginTop={8}>
-              <TagList tags={article.tags} size="lg" />
+              <TagList
+                tags={
+                  isTagListExpanded ? article.tags : article.tags.slice(0, 8)
+                }
+                size="lg"
+              />
+              <Button
+                onClick={() => setIsTagListExpanded(!isTagListExpanded)}
+                colorScheme="blue"
+                variant="outline"
+              >
+                {isTagListExpanded ? "Show less" : "Show more"}
+              </Button>
             </Stack>
           )}
           <Stack direction="row" spacing="24px" marginTop={8}>
