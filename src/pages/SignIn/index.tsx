@@ -114,7 +114,7 @@ function SignIn() {
             as={ReactRouterLink}
             to="/signUp"
             textDecoration="underline"
-            color="#3182CE"
+            color="blue"
           >
             Sign Up
           </ChakraLink>

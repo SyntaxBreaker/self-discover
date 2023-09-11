@@ -26,6 +26,7 @@ function ArticleCard({ article }: { article: IArticle }) {
           borderTopRadius="6px"
           height="240px"
           width="full"
+          alt=""
         />
       </CardHeader>
       <CardBody>
