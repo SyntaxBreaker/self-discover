@@ -138,7 +138,7 @@ function Chat() {
                 required
               />
             </FormControl>
-            <Button type="submit" width="100%" colorScheme="blue">
+            <Button type="submit" width="100%" colorScheme="facebook">
               Send
             </Button>
           </Flex>

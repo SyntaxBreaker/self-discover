@@ -105,7 +105,7 @@ function SignIn() {
             onChange={handleChange}
           />
         </FormControl>
-        <Button marginTop={4} width="100%" type="submit">
+        <Button marginTop={4} width="100%" type="submit" colorScheme="facebook">
           Sign in
         </Button>
         <Text marginTop={4} align="center">

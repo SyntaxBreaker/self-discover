@@ -102,7 +102,7 @@ function Article() {
               <Stack direction="row">
                 <Button
                   size="sm"
-                  colorScheme="blue"
+                  colorScheme="facebook"
                   variant="outline"
                   as={Link}
                   to={`/edit/${article.id}`}
@@ -143,7 +143,7 @@ function Article() {
               />
               <Button
                 onClick={() => setIsTagListExpanded(!isTagListExpanded)}
-                colorScheme="blue"
+                colorScheme="facebook"
                 variant="outline"
               >
                 {isTagListExpanded ? "Show less" : "Show more"}

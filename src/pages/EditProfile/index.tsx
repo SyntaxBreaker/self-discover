@@ -127,7 +127,7 @@ function EditProfile() {
             Interests must be separated using commas.
           </FormHelperText>
         </FormControl>
-        <Button width="100%" type="submit">
+        <Button width="100%" type="submit" colorScheme="facebook">
           Submit
         </Button>
       </Flex>

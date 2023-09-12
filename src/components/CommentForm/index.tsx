@@ -70,7 +70,7 @@ function CommentForm({
           style={{ position: "static" }}
         />
       </FormControl>
-      <Button alignSelf="flex-end" colorScheme="blue" type="submit">
+      <Button alignSelf="flex-end" colorScheme="facebook" type="submit">
         Submit
       </Button>
     </Flex>

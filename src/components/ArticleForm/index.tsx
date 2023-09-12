@@ -96,7 +96,12 @@ function ArticleForm({
         />
         <FormHelperText>Tags must be separated using commas.</FormHelperText>
       </FormControl>
-      <Button width="100%" type="submit" position="static">
+      <Button
+        width="100%"
+        type="submit"
+        position="static"
+        colorScheme="facebook"
+      >
         Submit
       </Button>
     </Box>

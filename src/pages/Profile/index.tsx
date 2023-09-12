@@ -52,7 +52,12 @@ function Profile() {
             flexWrap={{ base: "wrap", md: "nowrap" }}
           >
             <Text fontSize="2xl">{user.user_metadata.username}</Text>
-            <Button size="md" as={NavLink} to="/profile/edit">
+            <Button
+              size="md"
+              as={NavLink}
+              to="/profile/edit"
+              colorScheme="facebook"
+            >
               Edit profile
             </Button>
           </Stack>

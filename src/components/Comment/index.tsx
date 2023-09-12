@@ -104,7 +104,7 @@ function Comment({
               position="static"
               variant="outline"
               size="sm"
-              colorScheme="blue"
+              colorScheme="facebook"
               onClick={() => setIsEditing(!isEditing)}
             >
               Edit
