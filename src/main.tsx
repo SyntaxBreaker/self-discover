@@ -30,6 +30,7 @@ import Tag from "./pages/Tag/index.tsx";
 import EditProfile from "./pages/EditProfile/index.tsx";
 import Tags from "./pages/Tags/index.tsx";
 import Chat from "./pages/Chat/index.tsx";
+import FAQ from "./pages/FAQ/index.tsx";
 
 function PrivateRoute() {
   const { user } = useAuth() as IAuthContext;
@@ -164,6 +165,10 @@ const router = createBrowserRouter([
           const { data, error } = await supabase.from("chats").select();
           return { chatCollection: data, erorr: error };
         },
+      },
+      {
+        path: "/faq",
+        element: <FAQ />,
       },
     ],
   },

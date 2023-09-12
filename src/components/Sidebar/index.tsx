@@ -15,6 +15,7 @@ import {
   JamMessagesF,
   MaterialSymbolsAdd,
   MaterialSymbolsLightbulb,
+  MdiFrequentlyAskedQuestions,
   TeenyiconsHashtagOutline,
 } from "../Icons";
 
@@ -96,6 +97,23 @@ function Sidebar() {
             <Icon as={JamMessagesF} />
             <Text color="white" display={{ base: "none", lg: "inline" }}>
               Chat
+            </Text>
+          </Box>
+        </Link>
+      </Tooltip>
+      <Tooltip label="FAQ" display={{ base: "initial", lg: "none" }}>
+        <Link as={NavLink} to="/faq" _activeLink={{ fontWeight: "900" }}>
+          <Box
+            paddingY={2}
+            paddingX={{ base: 0, sm: 2 }}
+            _hover={{ backgroundColor: "gray.700" }}
+            display="flex"
+            alignItems="center"
+            gap={2}
+          >
+            <Icon as={MdiFrequentlyAskedQuestions} />
+            <Text color="white" display={{ base: "none", lg: "inline" }}>
+              FAQ
             </Text>
           </Box>
         </Link>
