@@ -141,13 +141,15 @@ function Article() {
                 }
                 size="lg"
               />
-              <Button
-                onClick={() => setIsTagListExpanded(!isTagListExpanded)}
-                colorScheme="facebook"
-                variant="outline"
-              >
-                {isTagListExpanded ? "Show less" : "Show more"}
-              </Button>
+              {article.tags.length > 8 && (
+                <Button
+                  onClick={() => setIsTagListExpanded(!isTagListExpanded)}
+                  colorScheme="facebook"
+                  variant="outline"
+                >
+                  {isTagListExpanded ? "Show less" : "Show more"}
+                </Button>
+              )}
             </Stack>
           )}
           <Stack direction="row" spacing="24px" marginTop={8}>
