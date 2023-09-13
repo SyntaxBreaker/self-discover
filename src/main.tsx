@@ -31,6 +31,7 @@ import EditProfile from "./pages/EditProfile/index.tsx";
 import Tags from "./pages/Tags/index.tsx";
 import Chat from "./pages/Chat/index.tsx";
 import FAQ from "./pages/FAQ/index.tsx";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 function PrivateRoute() {
   const { user } = useAuth() as IAuthContext;
@@ -178,6 +179,14 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ChakraProvider>
       <AuthProvider>
+        <HelmetProvider>
+          <Helmet>
+            <meta
+              name="description"
+              content="Discover a wealth of self-development resources with our library of articles. Enhance your productivity, motivation, and relationships today."
+            />
+          </Helmet>
+        </HelmetProvider>
         <RouterProvider router={router} />
       </AuthProvider>
     </ChakraProvider>
