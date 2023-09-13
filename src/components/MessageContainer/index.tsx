@@ -48,7 +48,7 @@ function MessageContainer({ chat }: { chat: IChat }) {
       <Avatar src={chat.avatar_url} />
       <Stack
         direction="column"
-        width="75%"
+        maxWidth="75%"
         padding={4}
         backgroundColor={user?.id === chat.user_id ? "blue.50" : "gray.100"}
         borderRadius={4}
