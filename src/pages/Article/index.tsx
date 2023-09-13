@@ -103,13 +103,17 @@ function Article() {
                 <Button
                   size="sm"
                   colorScheme="facebook"
-                  variant="outline"
                   as={Link}
                   to={`/edit/${article.id}`}
                 >
                   Edit
                 </Button>
-                <Button size="sm" colorScheme="red" onClick={removeArticle}>
+                <Button
+                  size="sm"
+                  colorScheme="red"
+                  variant="outline"
+                  onClick={removeArticle}
+                >
                   Remove
                 </Button>
               </Stack>
