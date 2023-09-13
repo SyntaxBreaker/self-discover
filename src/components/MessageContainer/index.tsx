@@ -45,7 +45,7 @@ function MessageContainer({ chat }: { chat: IChat }) {
       key={chat.id}
       direction={user?.id === chat.user_id ? "row-reverse" : "row"}
     >
-      <Avatar src={chat.avatar_url} />
+      <Avatar src={chat.avatar_url} name={chat.username} />
       <Stack
         direction="column"
         maxWidth="75%"
