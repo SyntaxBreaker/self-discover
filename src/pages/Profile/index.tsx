@@ -64,7 +64,7 @@ function Profile() {
           {user.user_metadata.website && (
             <Stack direction="row" alignItems="center">
               <Icon as={TablerWorld} />
-              <Link href={user.user_metadata.website}>
+              <Link href={user.user_metadata.website} isExternal={true}>
                 {user.user_metadata.website.split(/https?:\/\//)[1]}
               </Link>
             </Stack>
