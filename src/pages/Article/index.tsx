@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import IArticle from "../../types/article";
 import {
@@ -40,6 +40,8 @@ function Article() {
   const { user } = useAuth() as IAuthContext;
   const myRef = useRef<HTMLDivElement | null>(null);
 
+  let redirectTimeout: ReturnType<typeof setTimeout>;
+
   const removeArticle = async () => {
     const { error } = await supabase
       .from("articles")
@@ -56,11 +58,17 @@ function Article() {
         type: "success",
         message: "The article was successfully removed",
       });
-      setTimeout(() => {
+      redirectTimeout = setTimeout(() => {
         window.location.replace("/");
       }, 5000);
     }
   };
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(redirectTimeout);
+    };
+  }, []);
 
   return (
     <ResponsiveContainer>
