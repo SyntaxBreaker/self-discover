@@ -50,7 +50,7 @@ function EditProfile() {
   const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
 
-    const { error } = await supabase.auth.updateUser({
+    const { data, error } = await supabase.auth.updateUser({
       data: userInformation,
     });
 
@@ -60,6 +60,18 @@ function EditProfile() {
         message: error.message,
       });
     } else {
+      const { id } = data.user;
+
+      await supabase
+        .from("profiles")
+        .update({
+          username: userInformation.username,
+          avatar_url: userInformation.avatar_url,
+          website: userInformation.website,
+          interests: userInformation.interests,
+        })
+        .eq("id", id);
+
       setAlertData({
         status: "success",
         message: "Profile updated successfully",

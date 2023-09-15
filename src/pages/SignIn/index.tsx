@@ -37,12 +37,23 @@ function SignIn() {
   const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
 
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email: loginData.email,
       password: loginData.password,
     });
 
-    setError(error);
+    if (!error) {
+      const { user } = data;
+
+      await supabase
+        .from("profiles")
+        .update({
+          username: user.user_metadata.username,
+        })
+        .eq("id", user.id);
+    } else {
+      setError(error);
+    }
   };
 
   const resendEmail = async () => {
