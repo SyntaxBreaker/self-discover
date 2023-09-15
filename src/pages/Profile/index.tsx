@@ -69,9 +69,10 @@ function Profile() {
               </Link>
             </Stack>
           )}
-          {user.user_metadata.interests && (
-            <InterestList interests={user.user_metadata.interests} />
-          )}
+          {user.user_metadata.interests &&
+            user.user_metadata.interests.length > 0 && (
+              <InterestList interests={user.user_metadata.interests} />
+            )}
         </Flex>
       </Flex>
       <Box marginTop={16}>

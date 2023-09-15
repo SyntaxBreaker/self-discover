@@ -38,12 +38,16 @@ function EditProfile() {
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+
     setUserInformation((prev) => ({
       ...prev,
-      [event.target.name]:
-        event.target.name === "interests"
-          ? event.target.value.split(",")
-          : event.target.value,
+      [name]:
+        name === "interests"
+          ? value.length > 0
+            ? value.split(",")
+            : []
+          : value,
     }));
   };
 
