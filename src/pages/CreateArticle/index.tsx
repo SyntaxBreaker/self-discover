@@ -22,15 +22,18 @@ function CreateArticle() {
   ) => {
     event.preventDefault();
 
-    const image = await generateRandomImage();
+    const imageURL = await generateRandomImage();
 
     const { error } = await supabase.from("articles").insert({
       title: formData.title,
       content: formData.content,
-      tags: formData.tags.length > 0 ? formData.tags.toLocaleLowerCase().split(',').sort() : [],
+      tags:
+        formData.tags.length > 0
+          ? formData.tags.toLocaleLowerCase().split(",").sort()
+          : [],
       author_id: user.id,
       nickname: user.user_metadata.username ?? user.email?.split("@")[0],
-      image: image.download_url,
+      image: imageURL,
     });
 
     if (error) {
