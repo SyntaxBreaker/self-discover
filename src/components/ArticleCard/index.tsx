@@ -44,7 +44,7 @@ function ArticleCard({ article }: { article: IArticle }) {
             {article.created_at.split("T")[0].split("-").reverse().join(".")}
           </Text>
         </Flex>
-        <Heading size="lg" marginTop={article.tags?.length > 0 ? 4 : 0}>
+        <Heading size="lg" marginTop={4}>
           {article.title}
         </Heading>
         {article.tags && (
@@ -63,7 +63,11 @@ function ArticleCard({ article }: { article: IArticle }) {
         )}
       </CardBody>
       <CardFooter marginTop="-4">
-        <Stack direction="row" spacing="24px">
+        <Stack
+          direction="row"
+          spacing="24px"
+          marginTop={article.tags?.length > 0 ? 0 : -4}
+        >
           <Flex alignItems="center" gap={2}>
             <Icon as={AkarIconsThumbsUp} />
             <Text>
