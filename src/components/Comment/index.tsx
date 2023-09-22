@@ -98,7 +98,7 @@ function Comment({
             {comment.created_at.split("T")[0].split("-").reverse().join(".")}
           </Text>
         </Stack>
-        {user && user.id === comment.author_id && !isEditing && (
+        {user && user.id === comment.author_id && (
           <Stack direction="row">
             <Button
               position="static"
@@ -107,13 +107,14 @@ function Comment({
               colorScheme="facebook"
               onClick={() => setIsEditing(!isEditing)}
             >
-              Edit
+              {!isEditing ? "Edit" : "Cancel"}
             </Button>
             <Button
               position="static"
               size="sm"
               colorScheme="red"
               onClick={removeComment}
+              isDisabled={isEditing}
             >
               Remove
             </Button>
