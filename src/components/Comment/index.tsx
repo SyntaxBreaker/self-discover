@@ -105,7 +105,12 @@ function Comment({
               variant="outline"
               size="sm"
               colorScheme="facebook"
-              onClick={() => setIsEditing(!isEditing)}
+              onClick={() => {
+                if (isEditing) {
+                  setUpdatedComment(comment.content);
+                }
+                setIsEditing(!isEditing);
+              }}
             >
               {!isEditing ? "Edit" : "Cancel"}
             </Button>
