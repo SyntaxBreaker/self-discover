@@ -50,10 +50,12 @@ function App() {
 
   return (
     <ResponsiveContainer>
-      <DataFilter
-        filterKeyword={filterKeyword}
-        setFilterKeyword={setFilterKeyword}
-      />
+      {articles && articles.length > 0 &&
+        <DataFilter
+          filterKeyword={filterKeyword}
+          setFilterKeyword={setFilterKeyword}
+        />
+      }
       <ArticleList
         articles={filteredArticles ? filteredArticles : articles}
         error={error}
