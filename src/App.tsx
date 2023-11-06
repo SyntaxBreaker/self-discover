@@ -42,7 +42,7 @@ function App() {
           article.title
             .toLocaleLowerCase()
             .includes(filterKeyword.toLocaleLowerCase()) ||
-          (article.tags as string[]).includes(filterKeyword.toLowerCase())
+          (article.tags as string[]).some(tag => tag.includes(filterKeyword.toLowerCase()))
       );
       setFilteredArticles(filteredData);
     }
