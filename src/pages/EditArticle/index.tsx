@@ -54,7 +54,7 @@ function EditArticle() {
 
   return (
     <ResponsiveContainer>
-      <Heading as="h1" size="xl" textAlign="center">Edit the article</Heading>
+      <Heading as="h1" size="xl" textAlign="center" color="gray.700">Edit the article</Heading>
       {error && (
         <Alert status="error">
           <AlertIcon /> {error.message}

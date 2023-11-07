@@ -39,7 +39,7 @@ function Tags() {
             alignItems="center"
             marginBottom={8}
           >
-            <Heading as="h1" size="lg" flexBasis="100%">
+            <Heading as="h1" size="lg" flexBasis="100%" color="gray.700">
               Tag list
             </Heading>
             <DataFilter

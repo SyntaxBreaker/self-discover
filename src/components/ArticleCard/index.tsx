@@ -44,7 +44,7 @@ function ArticleCard({ article }: { article: IArticle }) {
             {article.created_at.split("T")[0].split("-").reverse().join(".")}
           </Text>
         </Flex>
-        <Heading size="lg" marginTop={4}>
+        <Heading size="lg" marginTop={4} color="gray.700">
           {article.title}
         </Heading>
         {article.tags && (

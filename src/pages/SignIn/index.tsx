@@ -73,7 +73,7 @@ function SignIn() {
 
   return (
     <ResponsiveContainer>
-      <Heading as="h1" size="xl" textAlign="center">Sign in</Heading>
+      <Heading as="h1" size="xl" textAlign="center" color="gray.700">Sign in</Heading>
       <Box
         as="form"
         onSubmit={handleSubmit}

@@ -52,7 +52,7 @@ const faqList: IFaqList[] = [
 function FAQ() {
   return (
     <ResponsiveContainer>
-      <Heading as="h1" size="xl" textAlign="center">Frequently Asked Questions</Heading>
+      <Heading as="h1" size="xl" textAlign="center" color="gray.700">Frequently Asked Questions</Heading>
       <Accordion
         allowMultiple
         marginTop={8}

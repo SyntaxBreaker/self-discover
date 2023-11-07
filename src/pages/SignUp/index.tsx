@@ -54,7 +54,7 @@ function SignUp() {
 
   return (
     <ResponsiveContainer>
-      <Heading as="h1" size="xl" textAlign="center">Sign up</Heading>
+      <Heading as="h1" size="xl" textAlign="center" color="gray.700">Sign up</Heading>
       <Box
         as="form"
         onSubmit={handleSubmit}

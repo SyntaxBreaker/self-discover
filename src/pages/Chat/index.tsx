@@ -92,7 +92,7 @@ function Chat() {
   return (
     <ResponsiveContainer>
       <Card padding={4} maxHeight="800px">
-        <Heading as="h1" size="lg" textAlign="center">
+        <Heading as="h1" size="lg" textAlign="center" color="gray.700">
           Welcome to our chat!
         </Heading>
         <Flex

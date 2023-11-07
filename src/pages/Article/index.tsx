@@ -130,7 +130,7 @@ function Article() {
             wrap="wrap"
             marginTop={8}
           >
-            <Heading as="h1" size="2xl">
+            <Heading as="h1" size="2xl" color="gray.700">
               {article.title}
             </Heading>
           </Stack>
