@@ -3,7 +3,6 @@ import { Link, useLoaderData } from "react-router-dom";
 import IArticle from "../../types/article";
 import {
   Alert,
-  AlertIcon,
   Box,
   Button,
   Flex,
@@ -22,6 +21,7 @@ import CommentList from "../../components/CommentList";
 import toggleLike from "../../utils/toggleLike";
 import ResponsiveContainer from "../../components/ResponsiveContainer";
 import TagList from "../../components/TagList";
+import Error from "../../components/Error";
 
 function Article() {
   const { article, error } = useLoaderData() as {
@@ -83,10 +83,7 @@ function Article() {
         </Alert>
       )}
       {error || !article ? (
-        <Alert status="error" padding={4} marginBottom={2} borderRadius={8}>
-          <AlertIcon />
-          {error ? error : "This article doesn't exist"}
-        </Alert>
+        <Error errorMessage="This article doesn&apos;t exist" />
       ) : (
         <Box>
           <Stack

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Alert, AlertIcon, Heading, Stack } from "@chakra-ui/react";
+import { Heading, Stack } from "@chakra-ui/react";
 import ResponsiveContainer from "../../components/ResponsiveContainer";
 import { useLoaderData } from "react-router-dom";
 import { PostgrestError } from "@supabase/supabase-js";
 import DataFilter from "../../components/DataFilter";
 import TagList from "../../components/TagList";
+import Error from "../../components/Error";
 
 function Tags() {
   const { tags, error } = useLoaderData() as {
@@ -29,10 +30,7 @@ function Tags() {
   return (
     <ResponsiveContainer>
       {error ? (
-        <Alert status="error" padding={4} marginBottom={2} borderRadius={8}>
-          <AlertIcon />
-          {error && error.message}
-        </Alert>
+        <Error errorMessage={error.message} />
       ) : (
         <>
           <Stack
