@@ -8,6 +8,7 @@ import {
   Stack,
   Textarea,
   Text,
+  Box,
 } from "@chakra-ui/react";
 import ResponsiveContainer from "../../components/ResponsiveContainer";
 import { useEffect, useRef, useState } from "react";
@@ -15,7 +16,7 @@ import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import { supabase } from "../../utils/supabase";
 import IChat from "../../types/chat";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { PostgrestError } from "@supabase/supabase-js";
 import MessageContainer from "../../components/MessageContainer";
 import chattingImage from "../../assets/images/chatting.svg";
@@ -116,7 +117,7 @@ function Chat() {
             </Stack>
           )}
         </Flex>
-        {user?.email && (
+        {user?.email ? (
           <Flex
             as="form"
             onSubmit={handleSubmit}
@@ -142,7 +143,13 @@ function Chat() {
               Send
             </Button>
           </Flex>
-        )}
+        ) :
+          <Link to="/signIn">
+            <Box as={Button} colorScheme="facebook" marginTop={4} width="100%">
+              Sign in
+            </Box>
+          </Link>
+        }
       </Card>
     </ResponsiveContainer>
   );
