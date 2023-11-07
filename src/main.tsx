@@ -11,7 +11,7 @@ import {
   Routes,
   Outlet,
 } from "react-router-dom";
-import ErrorPage from "./components/ErrorPage/index.tsx";
+import Error from "./components/Error/index.tsx";
 import SignIn from "./pages/SignIn/index.tsx";
 import SignUp from "./pages/SignUp/index.tsx";
 import Layout from "./components/Layout/index.tsx";
@@ -42,7 +42,7 @@ function PrivateRoute() {
 const router = createBrowserRouter([
   {
     element: <Layout />,
-    errorElement: <ErrorPage />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
