@@ -44,7 +44,7 @@ function Sidebar() {
           >
             <Icon as={MaterialSymbolsLightbulb} />
             <Text color="white" display={{ base: "none", lg: "inline" }}>
-              LearnShare
+              SelfDiscover
             </Text>
           </Box>
         </Link>

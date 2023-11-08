@@ -120,7 +120,7 @@ function SignIn() {
           Sign in
         </Button>
         <Text marginTop={4} align="center">
-          New to LearnShare?{" "}
+          New to SelfDiscover?{" "}
           <ChakraLink
             as={ReactRouterLink}
             to="/signUp"
