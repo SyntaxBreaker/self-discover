@@ -1,5 +1,5 @@
 import { Stack, Tag } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface IProps {
   tags: string[];
@@ -7,20 +7,26 @@ interface IProps {
 }
 
 function TagList({ tags, size = "md" }: IProps) {
+  const navigate = useNavigate();
+
   return (
     <Stack direction="row" flexWrap="wrap">
       {[...tags]
         .sort((a, b) => a.localeCompare(b))
         .map((tag) => (
-          <Link to={`/tag/${tag}`} key={tag}>
-            <Tag
-              colorScheme="blue"
-              _hover={{ bg: "#2B6CB0", color: "white" }}
-              size={size}
-            >
-              {tag}
-            </Tag>
-          </Link>
+          <Tag
+            key={tag}
+            colorScheme="blue"
+            _hover={{ bg: "#2B6CB0", color: "white" }}
+            size={size}
+            onClick={(e) => {
+              e.preventDefault();
+              navigate(`/tag/${tag}`);
+            }}
+            role="link"
+          >
+            {tag}
+          </Tag>
         ))}
     </Stack>
   );
