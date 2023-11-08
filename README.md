@@ -1,4 +1,4 @@
-# LearnShare
+# SelfDiscover
 
 This project is a web application that allows users to add, edit, and remove articles for self-development. It is built with Vite, React, Typescript, Chakra UI, and React Router. The application also implements tags, so users can easily find articles that are relevant to their interests.
 
