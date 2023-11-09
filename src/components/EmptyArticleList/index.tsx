@@ -11,7 +11,7 @@ function EmptyArticleList() {
         <Flex alignSelf="center" flexDirection="column" gap={2}>
             <Image src={postImage} alt="" boxSize="sm" />
             <Heading fontSize="lg" textAlign="center" fontWeight="bold" color="gray.700">Oops! It&apos;s empty here.</Heading>
-            <Text fontSize="sm" textAlign="center" color="gray.500">{user ? 'Start by adding a new article.' : 'Please log in to add an article.'}</Text>
+            <Text fontSize="sm" textAlign="center" color="gray.600">{user ? 'Start by adding a new article.' : 'Please log in to add an article.'}</Text>
             {<Box as={Button} colorScheme="facebook" textAlign="center">
                 <Link to={user ? '/create' : '/signIn'}>
                     {user ? 'Add Article' : 'Sign in'}

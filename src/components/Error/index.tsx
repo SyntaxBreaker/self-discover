@@ -11,7 +11,7 @@ export default function Error({errorMessage}: {errorMessage?: string}) {
     <Container textAlign="center">
       <Image src={ErrorImage} alt="" sizes="sm" />
       <Heading as="h1" size="lg" color="gray.700">Sorry, an unexpected error has occured!</Heading>
-      <Text marginTop={4} color="gray.500">
+      <Text marginTop={4} color="gray.600">
         {errorMessage || error?.statusText || error?.message}
       </Text>
       <Button
