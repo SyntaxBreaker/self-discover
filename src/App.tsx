@@ -5,14 +5,18 @@ import ArticleList from "./components/ArticleList";
 import { PostgrestError } from "@supabase/supabase-js";
 import DataFilter from "./components/DataFilter";
 import ResponsiveContainer from "./components/ResponsiveContainer";
+import { Flex } from "@chakra-ui/react";
+import SortingOptions from "./components/SortingOptions";
+import sortArticles from "./utils/sortArticles";
 
 function App() {
   const [articles, setArticles] = useState<IArticle[] | null>(null);
   const [error, setError] = useState<PostgrestError | null>(null);
   const [filterKeyword, setFilterKeyword] = useState("");
   const [filteredArticles, setFilteredArticles] = useState<
-    IArticle[] | null | undefined
+    IArticle[] | null
   >(null);
+  const [currentSorting, setCurrentSorting] = useState("latest");
 
   useEffect(() => {
     const getArticles = async () => {
@@ -44,17 +48,28 @@ function App() {
             .includes(filterKeyword.toLocaleLowerCase()) ||
           (article.tags as string[]).some(tag => tag.includes(filterKeyword.toLowerCase()))
       );
-      setFilteredArticles(filteredData);
+      setFilteredArticles(filteredData ? filteredData : null);
     }
   }, [filterKeyword]);
+
+  useEffect(() => {
+    if (filterKeyword.length === 0) {
+      setArticles(sortArticles(articles, currentSorting));
+    } else {
+      setFilteredArticles(sortArticles(filteredArticles, currentSorting));
+    }
+  }, [currentSorting])
 
   return (
     <ResponsiveContainer>
       {articles && articles.length > 0 &&
-        <DataFilter
-          filterKeyword={filterKeyword}
-          setFilterKeyword={setFilterKeyword}
-        />
+        <Flex direction="column" gap={4}>
+          <DataFilter
+            filterKeyword={filterKeyword}
+            setFilterKeyword={setFilterKeyword}
+          />
+          <SortingOptions currentSorting={currentSorting} setCurrentSorting={setCurrentSorting} />
+        </Flex>
       }
       <ArticleList
         articles={filteredArticles ? filteredArticles : articles}
