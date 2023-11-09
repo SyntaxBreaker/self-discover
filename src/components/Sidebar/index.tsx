@@ -14,7 +14,7 @@ import SidebarMenu from "../SidebarMenu";
 import {
   JamMessagesF,
   MaterialSymbolsAdd,
-  MaterialSymbolsLightbulb,
+  RiMentalHealthFill,
   MdiFrequentlyAskedQuestions,
   TeenyiconsHashtagOutline,
 } from "../Icons";
@@ -42,7 +42,7 @@ function Sidebar() {
             alignItems="center"
             gap={2}
           >
-            <Icon as={MaterialSymbolsLightbulb} />
+            <Icon as={RiMentalHealthFill} />
             <Text color="white" display={{ base: "none", lg: "inline" }}>
               SelfDiscover
             </Text>
