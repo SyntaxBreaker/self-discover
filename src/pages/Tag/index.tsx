@@ -17,7 +17,7 @@ function Tag() {
       <Heading
         textAlign="center"
         as="h1"
-        size="xl"
+        size="lg"
         color="gray.700"
         marginBottom={8}
       >

@@ -5,7 +5,7 @@ import ArticleList from "./components/ArticleList";
 import { PostgrestError } from "@supabase/supabase-js";
 import DataFilter from "./components/DataFilter";
 import ResponsiveContainer from "./components/ResponsiveContainer";
-import { Flex } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 import SortingOptions from "./components/SortingOptions";
 import sortArticles from "./utils/sortArticles";
 
@@ -66,6 +66,9 @@ function App() {
     <ResponsiveContainer>
       {articles && articles.length > 0 && (
         <Flex direction="column" gap={4}>
+          <Heading as="h1" size="lg" textAlign="center" color="gray.700">
+            All Articles
+          </Heading>
           <DataFilter
             filterKeyword={filterKeyword}
             setFilterKeyword={setFilterKeyword}

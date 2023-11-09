@@ -87,7 +87,7 @@ function EditProfile() {
 
   return (
     <ResponsiveContainer>
-      <Heading as="h1" size="xl" textAlign="center" color="gray.700">
+      <Heading as="h1" size="lg" textAlign="center" color="gray.700">
         Edit profile
       </Heading>
       <Flex
