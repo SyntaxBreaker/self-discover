@@ -21,7 +21,7 @@ function Tags() {
       setFilteredTags(null);
     } else {
       const filteredData = tags.filter((tag) =>
-        tag.toLocaleLowerCase().includes(filterKeyword)
+        tag.toLocaleLowerCase().includes(filterKeyword),
       );
       setFilteredTags(filteredData);
     }

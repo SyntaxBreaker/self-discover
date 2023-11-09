@@ -39,7 +39,7 @@ function Comment({
 
     if (!error) {
       setComments((prev) =>
-        prev.filter((element) => element.id !== comment.id)
+        prev.filter((element) => element.id !== comment.id),
       );
     }
   };

@@ -21,7 +21,7 @@ function ArticleForm({
   error: PostgrestError | null;
   handleSubmit: (
     formData: IFormData,
-    event: React.SyntheticEvent
+    event: React.SyntheticEvent,
   ) => Promise<void>;
   article?: IArticle;
 }) {
@@ -32,7 +32,7 @@ function ArticleForm({
   });
 
   const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData((prev) => ({
       ...prev,

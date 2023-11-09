@@ -102,7 +102,7 @@ const router = createBrowserRouter([
 
               if (user) {
                 const { articles, error } = await getArticlesByAuthorId(
-                  user.id
+                  user.id,
                 );
 
                 return { articles, error };
@@ -138,7 +138,7 @@ const router = createBrowserRouter([
 
           const tagList = new Set();
           data?.forEach((element) =>
-            element.tags.map((tag: string) => tagList.add(tag))
+            element.tags.map((tag: string) => tagList.add(tag)),
           );
 
           return {
@@ -190,5 +190,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <RouterProvider router={router} />
       </AuthProvider>
     </ChakraProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

@@ -15,23 +15,23 @@ function ArticleList({
 }) {
   return (
     <Stack marginTop={8}>
-      {error ?
+      {error ? (
         <Error errorMessage="Unable to load articles." />
-        : articles?.length === 0 ?
-          <EmptyArticleList />
-          :
-          <SimpleGrid
-            spacing={4}
-            templateColumns={{ base: "1fr", xl: "repeat(2, 1fr)" }}
-            alignItems="flex-start"
-          >
-            {articles?.map((article) => (
-              <Link to={`/article/${article.id}`} key={article.id}>
-                <ArticleCard article={article} />
-              </Link>
-            ))}
-          </SimpleGrid>
-      }
+      ) : articles?.length === 0 ? (
+        <EmptyArticleList />
+      ) : (
+        <SimpleGrid
+          spacing={4}
+          templateColumns={{ base: "1fr", xl: "repeat(2, 1fr)" }}
+          alignItems="flex-start"
+        >
+          {articles?.map((article) => (
+            <Link to={`/article/${article.id}`} key={article.id}>
+              <ArticleCard article={article} />
+            </Link>
+          ))}
+        </SimpleGrid>
+      )}
     </Stack>
   );
 }

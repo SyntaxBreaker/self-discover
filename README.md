@@ -3,6 +3,7 @@
 This project is a web application that allows users to add, edit, and remove articles for self-development. It is built with Vite, React, Typescript, Chakra UI, and React Router. The application also implements tags, so users can easily find articles that are relevant to their interests.
 
 ## Features
+
 - Add, edit, and remove articles
 - View a list of all articles, your articles, or a list of articles in a specific tag
 - Comment system: Allow users to leave comments on articles
@@ -10,6 +11,7 @@ This project is a web application that allows users to add, edit, and remove art
 - Real-time chat functionality
 
 ## Tech Stack
+
 - Vite
 - React
 - Typescript
@@ -17,6 +19,7 @@ This project is a web application that allows users to add, edit, and remove art
 - React Router
 
 ## To use the project:
+
 - Clone the repository from GitHub
 - Install the dependencies with `npm install`
 - Change the name of the .env.example file to .env and fill in this file

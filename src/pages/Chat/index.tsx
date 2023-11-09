@@ -62,13 +62,13 @@ function Chat() {
             setChats((prevData) => [...prevData, payload.new as IChat]);
           } else if (payload.eventType === "DELETE") {
             const filteredData = chats.filter(
-              (chat) => chat.id !== payload.old.id
+              (chat) => chat.id !== payload.old.id,
             );
             setChats(filteredData);
           } else if (payload.eventType === "UPDATE") {
             const updatedChats = [...chats];
             const index = updatedChats.findIndex(
-              (item) => item.id === payload.old.id
+              (item) => item.id === payload.old.id,
             );
             if (index !== -1) {
               updatedChats[index] = payload.new as IChat;
@@ -77,7 +77,7 @@ function Chat() {
           } else {
             return;
           }
-        }
+        },
       )
       .subscribe();
 
@@ -143,13 +143,13 @@ function Chat() {
               Send
             </Button>
           </Flex>
-        ) :
+        ) : (
           <Link to="/signIn">
             <Box as={Button} colorScheme="facebook" marginTop={4} width="100%">
               Sign in
             </Box>
           </Link>
-        }
+        )}
       </Card>
     </ResponsiveContainer>
   );

@@ -83,7 +83,7 @@ function Article() {
         </Alert>
       )}
       {error || !article ? (
-        <Error errorMessage="This article doesn&apos;t exist" />
+        <Error errorMessage="This article doesn't exist" />
       ) : (
         <Box>
           <Stack

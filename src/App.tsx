@@ -13,9 +13,9 @@ function App() {
   const [articles, setArticles] = useState<IArticle[] | null>(null);
   const [error, setError] = useState<PostgrestError | null>(null);
   const [filterKeyword, setFilterKeyword] = useState("");
-  const [filteredArticles, setFilteredArticles] = useState<
-    IArticle[] | null
-  >(null);
+  const [filteredArticles, setFilteredArticles] = useState<IArticle[] | null>(
+    null,
+  );
   const [currentSorting, setCurrentSorting] = useState("latest");
 
   useEffect(() => {
@@ -46,7 +46,9 @@ function App() {
           article.title
             .toLocaleLowerCase()
             .includes(filterKeyword.toLocaleLowerCase()) ||
-          (article.tags as string[]).some(tag => tag.includes(filterKeyword.toLowerCase()))
+          (article.tags as string[]).some((tag) =>
+            tag.includes(filterKeyword.toLowerCase()),
+          ),
       );
       setFilteredArticles(filteredData ? filteredData : null);
     }
@@ -58,19 +60,22 @@ function App() {
     } else {
       setFilteredArticles(sortArticles(filteredArticles, currentSorting));
     }
-  }, [currentSorting])
+  }, [currentSorting]);
 
   return (
     <ResponsiveContainer>
-      {articles && articles.length > 0 &&
+      {articles && articles.length > 0 && (
         <Flex direction="column" gap={4}>
           <DataFilter
             filterKeyword={filterKeyword}
             setFilterKeyword={setFilterKeyword}
           />
-          <SortingOptions currentSorting={currentSorting} setCurrentSorting={setCurrentSorting} />
+          <SortingOptions
+            currentSorting={currentSorting}
+            setCurrentSorting={setCurrentSorting}
+          />
         </Flex>
-      }
+      )}
       <ArticleList
         articles={filteredArticles ? filteredArticles : articles}
         error={error}

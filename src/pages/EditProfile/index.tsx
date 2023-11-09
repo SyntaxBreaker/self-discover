@@ -87,7 +87,9 @@ function EditProfile() {
 
   return (
     <ResponsiveContainer>
-      <Heading as="h1" size="xl" textAlign="center" color="gray.700">Edit profile</Heading>
+      <Heading as="h1" size="xl" textAlign="center" color="gray.700">
+        Edit profile
+      </Heading>
       <Flex
         as="form"
         onSubmit={handleSubmit}

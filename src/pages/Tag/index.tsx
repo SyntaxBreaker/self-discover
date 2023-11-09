@@ -14,7 +14,13 @@ function Tag() {
 
   return (
     <ResponsiveContainer>
-      <Heading textAlign="center" as="h1" size="xl" color="gray.700" marginBottom={8}>
+      <Heading
+        textAlign="center"
+        as="h1"
+        size="xl"
+        color="gray.700"
+        marginBottom={8}
+      >
         Explore {tag}
       </Heading>
       <ArticleList articles={articles} error={error} />

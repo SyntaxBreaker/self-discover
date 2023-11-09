@@ -18,7 +18,7 @@ function CreateArticle() {
 
   const handleSubmit = async (
     formData: IFormData,
-    event: React.SyntheticEvent
+    event: React.SyntheticEvent,
   ) => {
     event.preventDefault();
 
@@ -45,7 +45,9 @@ function CreateArticle() {
 
   return (
     <ResponsiveContainer>
-      <Heading as="h1" size="xl" textAlign="center" color="gray.700">Create a new article</Heading>
+      <Heading as="h1" size="xl" textAlign="center" color="gray.700">
+        Create a new article
+      </Heading>
       {error && (
         <Alert status="error" padding={4} borderTopRadius={8} marginTop={8}>
           <AlertIcon />
