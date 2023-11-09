@@ -13,8 +13,9 @@ function SortingOptions({
         _hover={{ cursor: "pointer" }}
         px="4"
         py="2"
-        colorScheme={currentSorting === "latest" ? "facebook" : "white"}
+        colorScheme={currentSorting === "latest" ? "blue" : "white"}
         onClick={() => setCurrentSorting("latest")}
+        borderRadius={8}
       >
         Latest
       </Badge>
@@ -22,8 +23,9 @@ function SortingOptions({
         _hover={{ cursor: "pointer" }}
         px="4"
         py="2"
-        colorScheme={currentSorting === "top" ? "facebook" : "white"}
+        colorScheme={currentSorting === "top" ? "blue" : "white"}
         onClick={() => setCurrentSorting("top")}
+        borderRadius={8}
       >
         Top
       </Badge>
