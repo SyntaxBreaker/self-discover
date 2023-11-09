@@ -17,7 +17,7 @@ function TagList({ tags, size = "md" }: IProps) {
           <Tag
             key={tag}
             colorScheme="blue"
-            _hover={{ bg: "#2B6CB0", color: "white" }}
+            _hover={{ bg: "#2B6CB0", color: "white", cursor: "pointer" }}
             size={size}
             onClick={(e) => {
               e.preventDefault();
