@@ -81,7 +81,7 @@ function EditProfile() {
         message: "Profile updated successfully",
       });
 
-      setTimeout(() => navigate(0), 1000);
+      setTimeout(() => navigate(-1), 1000);
     }
   };
 
