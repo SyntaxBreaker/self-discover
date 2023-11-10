@@ -14,14 +14,14 @@ function Tags() {
   };
 
   const [filterKeyword, setFilterKeyword] = useState("");
-  const [filteredTags, setFilteredTags] = useState<string[] | null>(null);
+  const [filteredTags, setFilteredTags] = useState<string[]>([]);
 
   useEffect(() => {
     if (filterKeyword.length === 0) {
-      setFilteredTags(null);
+      setFilteredTags([]);
     } else {
       const filteredData = tags.filter((tag) =>
-        tag.toLocaleLowerCase().includes(filterKeyword),
+        tag.toLocaleLowerCase().includes(filterKeyword)
       );
       setFilteredTags(filteredData);
     }
@@ -48,7 +48,7 @@ function Tags() {
             />
           </Stack>
           <TagList
-            tags={filteredTags && filteredTags.length > 0 ? filteredTags : tags}
+            tags={filterKeyword.length > 0 ? filteredTags : tags}
             size="lg"
           />
         </>
