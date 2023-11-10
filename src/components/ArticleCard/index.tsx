@@ -21,10 +21,11 @@ function ArticleCard({ article }: { article: IArticle }) {
     <Card key={article.id} position="static">
       <CardHeader padding="0">
         <Image
+          loading="lazy"
           objectFit="cover"
           src={article.image}
           borderTopRadius="6px"
-          height="240px"
+          height={{ base: "300px", xl: "280px" }}
           width="full"
           alt=""
         />
