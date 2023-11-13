@@ -13,8 +13,8 @@ import {
 } from "@chakra-ui/react";
 import IArticle from "../../types/article";
 import "react-quill/dist/quill.core.css";
-import { AkarIconsThumbsUp, Fa6RegularComments } from "../Icons";
 import TagList from "../TagList";
+import ArticleStats from "../ArticleStats";
 
 function ArticleCard({ article }: { article: IArticle }) {
   return (
@@ -64,30 +64,7 @@ function ArticleCard({ article }: { article: IArticle }) {
         )}
       </CardBody>
       <CardFooter marginTop="-4">
-        <Stack
-          direction="row"
-          spacing="24px"
-          marginTop={article.tags?.length > 0 ? 0 : -4}
-        >
-          <Flex alignItems="center" gap={2}>
-            <Icon as={AkarIconsThumbsUp} />
-            <Text>
-              {article.likes && article.likes.length > 0
-                ? article.likes.length
-                : 0}{" "}
-              {article.likes?.length === 1 ? "like" : "likes"}
-            </Text>
-          </Flex>
-          <Flex alignItems="center" gap={2}>
-            <Icon as={Fa6RegularComments} />
-            <Text>
-              {article.comments && article.comments.length > 0
-                ? article.comments.length
-                : 0}{" "}
-              {article.comments?.length === 1 ? "comment" : "comments"}
-            </Text>
-          </Flex>
-        </Stack>
+        <ArticleStats article={article} />
       </CardFooter>
     </Card>
   );
