@@ -67,7 +67,7 @@ function SignIn() {
 
   useEffect(() => {
     if (user?.email) {
-      navigate("/");
+      navigate(-1);
     }
   }, [user]);
 
