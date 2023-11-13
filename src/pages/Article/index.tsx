@@ -1,27 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import IArticle from "../../types/article";
-import {
-  Alert,
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Icon,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
+import { Alert, Box, Button, Heading, Stack, Text } from "@chakra-ui/react";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import { supabase } from "../../utils/supabase";
 import DOMPurify from "isomorphic-dompurify";
-import { AkarIconsThumbsUp, Fa6RegularComments } from "../../components/Icons";
 import IComment from "../../types/comment";
 import CommentList from "../../components/CommentList";
-import toggleLike from "../../utils/toggleLike";
 import ResponsiveContainer from "../../components/ResponsiveContainer";
 import TagList from "../../components/TagList";
 import Error from "../../components/Error";
+import Feedback from "../../components/Feedback";
 
 function Article() {
   const { article, error } = useLoaderData() as {
@@ -162,46 +152,14 @@ function Article() {
               )}
             </Stack>
           )}
-          <Stack direction="row" spacing="24px" marginTop={8}>
-            <Flex
-              alignItems="center"
-              gap={2}
-              _hover={user && { cursor: "pointer" }}
-              onClick={() =>
-                user &&
-                toggleLike({
-                  table: "articles",
-                  likes: likes,
-                  setLikes: setLikes,
-                  id: article.id,
-                  userId: user.id,
-                  setStatus: setStatus,
-                })
-              }
-            >
-              <Icon as={AkarIconsThumbsUp} />
-              <Text
-                fontWeight={user && likes.includes(user.id) ? "bold" : "normal"}
-              >
-                {likes.length > 0 ? likes.length : 0}{" "}
-                {likes.length === 1 ? "like" : "likes"}
-              </Text>
-            </Flex>
-            <Flex
-              alignItems="center"
-              gap={2}
-              _hover={{ cursor: "pointer", fontWeight: "bold" }}
-              onClick={() =>
-                myRef.current?.scrollIntoView({ behavior: "smooth" })
-              }
-            >
-              <Icon as={Fa6RegularComments} />
-              <Text>
-                {comments.length > 0 ? comments.length : 0}{" "}
-                {comments.length === 1 ? "comment" : "comments"}
-              </Text>
-            </Flex>
-          </Stack>
+          <Feedback
+            likes={likes}
+            setLikes={setLikes}
+            articleID={article.id}
+            setStatus={setStatus}
+            comments={comments}
+            myRef={myRef}
+          />
           <Box ref={myRef}>
             <CommentList comments={comments} setComments={setComments} />
           </Box>
