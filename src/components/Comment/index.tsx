@@ -1,23 +1,14 @@
-import {
-  Box,
-  Button,
-  Card,
-  Flex,
-  FormControl,
-  Icon,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Card, Flex, Icon, Stack, Text } from "@chakra-ui/react";
 import IComment from "../../types/comment";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import { supabase } from "../../utils/supabase";
 import { useState } from "react";
-import ReactQuill from "react-quill";
 import DOMPurify from "dompurify";
 import { AkarIconsThumbsUp } from "../Icons";
 import toggleLike from "../../utils/toggleLike";
 import CommentHeader from "../CommentHeader";
+import CommentEditor from "../CommentEditor";
 
 function Comment({
   comment,
@@ -67,14 +58,6 @@ function Comment({
     }
   };
 
-  const modules = {
-    toolbar: [
-      ["bold", "italic", "underline", "strike", "blockquote"],
-      [{ list: "ordered" }, { list: "bullet" }],
-      ["link"],
-    ],
-  };
-
   return (
     <Flex
       direction="column"
@@ -92,26 +75,11 @@ function Comment({
         removeComment={removeComment}
       />
       {isEditing ? (
-        <Flex
-          direction="column"
-          as="form"
-          onSubmit={editComment}
-          gap={2}
-          marginTop={4}
-        >
-          <FormControl position="static">
-            <ReactQuill
-              theme="snow"
-              value={updatedComment}
-              onChange={(newContent) => setUpdatedComment(newContent)}
-              modules={modules}
-              style={{ position: "static" }}
-            />
-          </FormControl>
-          <Button alignSelf="flex-end" colorScheme="blue" type="submit">
-            Submit
-          </Button>
-        </Flex>
+        <CommentEditor
+          editComment={editComment}
+          updatedComment={updatedComment}
+          setUpdatedComment={setUpdatedComment}
+        />
       ) : (
         <Box
           letterSpacing="0.8px"
