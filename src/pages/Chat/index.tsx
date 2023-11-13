@@ -1,13 +1,4 @@
-import {
-  Button,
-  Card,
-  Flex,
-  Heading,
-  Image,
-  Stack,
-  Text,
-  Box,
-} from "@chakra-ui/react";
+import { Button, Card, Flex, Heading, Box } from "@chakra-ui/react";
 import ResponsiveContainer from "../../components/ResponsiveContainer";
 import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../context/AuthProvider";
@@ -17,8 +8,8 @@ import IChat from "../../types/chat";
 import { Link, useLoaderData } from "react-router-dom";
 import { PostgrestError } from "@supabase/supabase-js";
 import MessageContainer from "../../components/MessageContainer";
-import chattingImage from "../../assets/images/chatting.svg";
 import ChatForm from "../../components/ChatForm";
+import EmptyChat from "../../components/EmptyChat";
 
 function Chat() {
   const { chatCollection } = useLoaderData() as {
@@ -106,14 +97,7 @@ function Chat() {
           {chats.length > 0 ? (
             chats.map((chat) => <MessageContainer chat={chat} key={chat.id} />)
           ) : (
-            <Stack alignItems="center">
-              <Image boxSize="250px" src={chattingImage} alt="" />
-              <Text textAlign="center" color="gray.600">
-                Welcome to the general chat! It is a place for everyone to
-                discuss anything and everything. Please be respectful of other
-                members.
-              </Text>
-            </Stack>
+            <EmptyChat />
           )}
         </Flex>
         {user?.email ? (
