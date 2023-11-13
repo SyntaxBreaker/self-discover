@@ -155,6 +155,7 @@ function Article() {
                   onClick={() => setIsTagListExpanded(!isTagListExpanded)}
                   colorScheme="facebook"
                   variant="outline"
+                  marginTop={1}
                 >
                   {isTagListExpanded ? "Show less" : "Show more"}
                 </Button>
