@@ -1,22 +1,12 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Icon,
-  Image,
-  Link,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Flex, Image } from "@chakra-ui/react";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
-import { NavLink, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import IArticle from "../../types/article";
-import InterestList from "../../components/InterestList";
-import { TablerWorld } from "../../components/Icons";
 import ArticleList from "../../components/ArticleList";
 import { PostgrestError } from "@supabase/supabase-js";
 import ResponsiveContainer from "../../components/ResponsiveContainer";
+import ProfileInfo from "../../components/ProfileInfo";
 
 function Profile() {
   const { user } = useAuth() as IAuthContext;
@@ -44,38 +34,7 @@ function Profile() {
           alt="Your profile picture"
           borderRadius="full"
         />
-        <Flex direction="column" gap={1} flexBasis="100%">
-          <Stack
-            direction="row"
-            alignItems="center"
-            justifyContent="space-between"
-            flexWrap={{ base: "wrap", md: "nowrap" }}
-          >
-            <Text fontSize="2xl" color="gray.700">
-              {user.user_metadata.username}
-            </Text>
-            <Button
-              size="md"
-              as={NavLink}
-              to="/profile/edit"
-              colorScheme="facebook"
-            >
-              Edit profile
-            </Button>
-          </Stack>
-          {user.user_metadata.website && (
-            <Stack direction="row" alignItems="center">
-              <Icon as={TablerWorld} />
-              <Link href={user.user_metadata.website} isExternal={true}>
-                {user.user_metadata.website.split(/https?:\/\//)[1]}
-              </Link>
-            </Stack>
-          )}
-          {user.user_metadata.interests &&
-            user.user_metadata.interests.length > 0 && (
-              <InterestList interests={user.user_metadata.interests} />
-            )}
-        </Flex>
+        <ProfileInfo />
       </Flex>
       <Box marginTop={16}>
         <ArticleList articles={articles} error={error} />
