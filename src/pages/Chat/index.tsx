@@ -2,11 +2,9 @@ import {
   Button,
   Card,
   Flex,
-  FormControl,
   Heading,
   Image,
   Stack,
-  Textarea,
   Text,
   Box,
 } from "@chakra-ui/react";
@@ -20,6 +18,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { PostgrestError } from "@supabase/supabase-js";
 import MessageContainer from "../../components/MessageContainer";
 import chattingImage from "../../assets/images/chatting.svg";
+import ChatForm from "../../components/ChatForm";
 
 function Chat() {
   const { chatCollection } = useLoaderData() as {
@@ -62,13 +61,13 @@ function Chat() {
             setChats((prevData) => [...prevData, payload.new as IChat]);
           } else if (payload.eventType === "DELETE") {
             const filteredData = chats.filter(
-              (chat) => chat.id !== payload.old.id,
+              (chat) => chat.id !== payload.old.id
             );
             setChats(filteredData);
           } else if (payload.eventType === "UPDATE") {
             const updatedChats = [...chats];
             const index = updatedChats.findIndex(
-              (item) => item.id === payload.old.id,
+              (item) => item.id === payload.old.id
             );
             if (index !== -1) {
               updatedChats[index] = payload.new as IChat;
@@ -77,7 +76,7 @@ function Chat() {
           } else {
             return;
           }
-        },
+        }
       )
       .subscribe();
 
@@ -118,31 +117,11 @@ function Chat() {
           )}
         </Flex>
         {user?.email ? (
-          <Flex
-            as="form"
-            onSubmit={handleSubmit}
-            marginTop={4}
-            direction="column"
-            alignItems="center"
-            position="sticky"
-            bottom={0}
-            backgroundColor="white"
-            paddingY={2}
-            gap={2}
-          >
-            <FormControl>
-              <Textarea
-                name="message"
-                value={message}
-                onChange={(event) => setMessage(event.target.value)}
-                placeholder="Type your message here..."
-                required
-              />
-            </FormControl>
-            <Button type="submit" width="100%" colorScheme="facebook">
-              Send
-            </Button>
-          </Flex>
+          <ChatForm
+            message={message}
+            setMessage={setMessage}
+            handleSubmit={handleSubmit}
+          />
         ) : (
           <Link to="/signIn">
             <Box as={Button} colorScheme="facebook" marginTop={4} width="100%">
