@@ -17,6 +17,7 @@ import ReactQuill from "react-quill";
 import DOMPurify from "dompurify";
 import { AkarIconsThumbsUp } from "../Icons";
 import toggleLike from "../../utils/toggleLike";
+import CommentHeader from "../CommentHeader";
 
 function Comment({
   comment,
@@ -39,7 +40,7 @@ function Comment({
 
     if (!error) {
       setComments((prev) =>
-        prev.filter((element) => element.id !== comment.id),
+        prev.filter((element) => element.id !== comment.id)
       );
     }
   };
@@ -83,49 +84,13 @@ function Comment({
       padding={4}
       position="static"
     >
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
-        flexWrap="wrap"
-      >
-        <Stack direction="row" alignItems="center">
-          <Text fontSize="lg" fontWeight="bold">
-            {comment.nickname}
-          </Text>
-          <Text fontSize="sm">&#183;</Text>
-          <Text fontSize="sm">
-            {comment.created_at.split("T")[0].split("-").reverse().join(".")}
-          </Text>
-        </Stack>
-        {user && user.id === comment.author_id && (
-          <Stack direction="row">
-            <Button
-              position="static"
-              variant="outline"
-              size="sm"
-              colorScheme="facebook"
-              onClick={() => {
-                if (isEditing) {
-                  setUpdatedComment(comment.content);
-                }
-                setIsEditing(!isEditing);
-              }}
-            >
-              {!isEditing ? "Edit" : "Cancel"}
-            </Button>
-            <Button
-              position="static"
-              size="sm"
-              colorScheme="red"
-              onClick={removeComment}
-              isDisabled={isEditing}
-            >
-              Remove
-            </Button>
-          </Stack>
-        )}
-      </Stack>
+      <CommentHeader
+        comment={comment}
+        isEditing={isEditing}
+        setIsEditing={setIsEditing}
+        setUpdatedComment={setUpdatedComment}
+        removeComment={removeComment}
+      />
       {isEditing ? (
         <Flex
           direction="column"
