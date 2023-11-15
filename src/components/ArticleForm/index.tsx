@@ -12,6 +12,7 @@ import { useState } from "react";
 import IArticle from "../../types/article";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { quillToolbarConfig } from "../../utils/quillConfig";
 
 function ArticleForm({
   error,
@@ -38,15 +39,6 @@ function ArticleForm({
       ...prev,
       [event.target.name]: event.target.value,
     }));
-  };
-
-  const modules = {
-    toolbar: [
-      [{ header: [2, 3, false] }],
-      ["bold", "italic", "underline", "strike", "blockquote"],
-      [{ list: "ordered" }, { list: "bullet" }],
-      ["link"],
-    ],
   };
 
   return (
@@ -82,7 +74,7 @@ function ArticleForm({
           onChange={(newContent) =>
             setFormData((prev) => ({ ...prev, content: newContent }))
           }
-          modules={modules}
+          modules={quillToolbarConfig}
         />
       </FormControl>
       <FormControl position="static">

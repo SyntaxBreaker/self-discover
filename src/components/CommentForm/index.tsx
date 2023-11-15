@@ -6,6 +6,7 @@ import ReactQuill from "react-quill";
 import { supabase } from "../../utils/supabase";
 import { useParams } from "react-router-dom";
 import IComment from "../../types/comment";
+import { quillToolbarConfig } from "../../utils/quillConfig";
 
 function CommentForm({
   setComments,
@@ -16,14 +17,6 @@ function CommentForm({
 
   const { user } = useAuth() as IAuthContext;
   let { Id: id } = useParams();
-
-  const modules = {
-    toolbar: [
-      ["bold", "italic", "underline", "strike", "blockquote"],
-      [{ list: "ordered" }, { list: "bullet" }],
-      ["link"],
-    ],
-  };
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -66,7 +59,7 @@ function CommentForm({
           theme="snow"
           value={content}
           onChange={(newContent) => setContent(newContent)}
-          modules={modules}
+          modules={quillToolbarConfig}
           style={{ position: "static" }}
         />
       </FormControl>

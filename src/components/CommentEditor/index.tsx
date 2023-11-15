@@ -1,5 +1,6 @@
 import { Button, Flex, FormControl } from "@chakra-ui/react";
 import ReactQuill from "react-quill";
+import { quillToolbarConfig } from "../../utils/quillConfig";
 
 interface IProps {
   editComment: (e: React.SyntheticEvent) => Promise<void>;
@@ -12,14 +13,6 @@ function CommentEditor({
   updatedComment,
   setUpdatedComment,
 }: IProps) {
-  const modules = {
-    toolbar: [
-      ["bold", "italic", "underline", "strike", "blockquote"],
-      [{ list: "ordered" }, { list: "bullet" }],
-      ["link"],
-    ],
-  };
-
   return (
     <Flex
       direction="column"
@@ -33,7 +26,7 @@ function CommentEditor({
           theme="snow"
           value={updatedComment}
           onChange={(newContent) => setUpdatedComment(newContent)}
-          modules={modules}
+          modules={quillToolbarConfig}
           style={{ position: "static" }}
         />
       </FormControl>
