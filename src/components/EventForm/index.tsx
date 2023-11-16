@@ -1,4 +1,12 @@
-import { Button, Flex, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import {
+  Button,
+  Flex,
+  FormControl,
+  FormLabel,
+  Input,
+  InputGroup,
+  InputLeftAddon,
+} from "@chakra-ui/react";
 import { useState } from "react";
 import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css";
@@ -92,15 +100,18 @@ function EventForm({ error, handleSubmit }: IProps) {
         <DateRangePicker ranges={[date]} onChange={handleSelect} />
       </FormControl>
       <FormControl position="static">
-        <FormLabel>Price</FormLabel>
-        <Input
-          type="number"
-          value={formData.price}
-          name="price"
-          onChange={handleChange}
-          required
-          position="static"
-        />
+        <FormLabel>Ticket price</FormLabel>
+        <InputGroup>
+          <InputLeftAddon children="$" />
+          <Input
+            type="number"
+            value={formData.price}
+            name="price"
+            onChange={handleChange}
+            required
+            position="static"
+          />
+        </InputGroup>
       </FormControl>
       <Button
         width="100%"
