@@ -21,7 +21,6 @@ function CreateEvent() {
   ) => {
     event.preventDefault();
     const { title, description, price, startDate, endDate } = formData;
-    console.log(title, description, price, startDate, endDate);
 
     const { error } = await supabase.from("events").insert({
       title: title,
@@ -35,7 +34,7 @@ function CreateEvent() {
     if (error) {
       setError(error);
     } else {
-      navigate("/createEvent");
+      navigate(-1);
     }
   };
 
