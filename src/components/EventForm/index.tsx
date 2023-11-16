@@ -1,0 +1,117 @@
+import { Button, Flex, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { useState } from "react";
+import { DateRangePicker } from "react-date-range";
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
+import ReactQuill from "react-quill";
+import { quillToolbarConfig } from "../../utils/quillConfig";
+import { PostgrestError } from "@supabase/supabase-js";
+import { IFormData } from "../../types/event";
+
+interface IDate {
+  startDate: Date;
+  endDate: Date;
+  key: string;
+}
+
+interface IProps {
+  error: PostgrestError | null;
+  handleSubmit: (
+    formData: IFormData,
+    event: React.SyntheticEvent
+  ) => Promise<void>;
+}
+
+function EventForm({ error, handleSubmit }: IProps) {
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    price: 0,
+  });
+  const [date, setDate] = useState<IDate>({
+    startDate: new Date(),
+    endDate: new Date(),
+    key: "selection",
+  });
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  const handleSelect = (ranges: any) => {
+    const { selection } = ranges;
+
+    setDate((prev) => ({
+      ...prev,
+      startDate: selection.startDate,
+      endDate: selection.endDate,
+    }));
+  };
+
+  return (
+    <Flex
+      as="form"
+      onSubmit={(e: React.SyntheticEvent) =>
+        handleSubmit({ ...formData, ...date }, e)
+      }
+      direction="column"
+      gap={4}
+      bgColor="white"
+      padding={8}
+      borderBottomRadius={8}
+      borderRadius={error ? 0 : 8}
+      marginTop={error ? 0 : 8}
+    >
+      <FormControl position="static">
+        <FormLabel>Event title</FormLabel>
+        <Input
+          type="text"
+          value={formData.title}
+          name="title"
+          onChange={handleChange}
+          required
+          position="static"
+        />
+      </FormControl>
+      <FormControl position="static">
+        <FormLabel>Event description</FormLabel>
+        <ReactQuill
+          theme="snow"
+          value={formData.description}
+          onChange={(newContent) =>
+            setFormData((prev) => ({ ...prev, description: newContent }))
+          }
+          modules={quillToolbarConfig}
+        />
+      </FormControl>
+      <FormControl>
+        <FormLabel>Event date</FormLabel>
+        <DateRangePicker ranges={[date]} onChange={handleSelect} />
+      </FormControl>
+      <FormControl position="static">
+        <FormLabel>Price</FormLabel>
+        <Input
+          type="number"
+          value={formData.price}
+          name="price"
+          onChange={handleChange}
+          required
+          position="static"
+        />
+      </FormControl>
+      <Button
+        width="100%"
+        type="submit"
+        position="static"
+        colorScheme="facebook"
+      >
+        Submit
+      </Button>
+    </Flex>
+  );
+}
+
+export default EventForm;

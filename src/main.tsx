@@ -32,6 +32,7 @@ import Tags from "./pages/Tags/index.tsx";
 import Chat from "./pages/Chat/index.tsx";
 import FAQ from "./pages/FAQ/index.tsx";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import CreateEvent from "./pages/CreateEvent/index.tsx";
 
 function PrivateRoute() {
   const { user } = useAuth() as IAuthContext;
@@ -102,7 +103,7 @@ const router = createBrowserRouter([
 
               if (user) {
                 const { articles, error } = await getArticlesByAuthorId(
-                  user.id,
+                  user.id
                 );
 
                 return { articles, error };
@@ -138,7 +139,7 @@ const router = createBrowserRouter([
 
           const tagList = new Set();
           data?.forEach((element) =>
-            element.tags.map((tag: string) => tagList.add(tag)),
+            element.tags.map((tag: string) => tagList.add(tag))
           );
 
           return {
@@ -171,6 +172,16 @@ const router = createBrowserRouter([
         path: "/faq",
         element: <FAQ />,
       },
+      {
+        path: "/createEvent",
+        element: (
+          <Routes>
+            <Route element={<PrivateRoute />}>
+              <Route path="/" element={<CreateEvent />} />
+            </Route>
+          </Routes>
+        ),
+      },
     ],
   },
 ]);
@@ -190,5 +201,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <RouterProvider router={router} />
       </AuthProvider>
     </ChakraProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );

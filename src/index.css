@@ -40,3 +40,16 @@
 .react-markdown blockquote::after {
   content: "\201D";
 }
+
+.rdrDateRangePickerWrapper {
+  width: 100%;
+  flex-direction: column-reverse;
+}
+
+.rdrDefinedRangesWrapper {
+  display: none;
+}
+
+.rdrMonth {
+  width: 100% !important; 
+}
