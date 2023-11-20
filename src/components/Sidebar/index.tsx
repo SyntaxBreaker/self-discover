@@ -17,6 +17,7 @@ import {
   RiMentalHealthFill,
   MdiFrequentlyAskedQuestions,
   TeenyiconsHashtagOutline,
+  MaterialSymbolsDateRange,
 } from "../Icons";
 
 function Sidebar() {
@@ -63,6 +64,23 @@ function Sidebar() {
             <Icon as={MaterialSymbolsAdd} />
             <Text color="white" display={{ base: "none", lg: "inline" }}>
               Create Article
+            </Text>
+          </Box>
+        </Link>
+      </Tooltip>
+      <Tooltip label="Events" display={{ base: "initial", lg: "none" }}>
+        <Link as={NavLink} to="/events" _activeLink={{ fontWeight: "900" }}>
+          <Box
+            paddingY={2}
+            paddingX={{ base: 0, sm: 2 }}
+            _hover={{ backgroundColor: "gray.700" }}
+            display="flex"
+            alignItems="center"
+            gap={2}
+          >
+            <Icon as={MaterialSymbolsDateRange} />
+            <Text color="white" display={{ base: "none", lg: "inline" }}>
+              Events
             </Text>
           </Box>
         </Link>

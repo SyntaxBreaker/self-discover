@@ -33,6 +33,7 @@ import Chat from "./pages/Chat/index.tsx";
 import FAQ from "./pages/FAQ/index.tsx";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import CreateEvent from "./pages/CreateEvent/index.tsx";
+import Events from "./pages/Events/index.tsx";
 
 function PrivateRoute() {
   const { user } = useAuth() as IAuthContext;
@@ -173,14 +174,29 @@ const router = createBrowserRouter([
         element: <FAQ />,
       },
       {
-        path: "/createEvent",
-        element: (
-          <Routes>
-            <Route element={<PrivateRoute />}>
-              <Route path="/" element={<CreateEvent />} />
-            </Route>
-          </Routes>
-        ),
+        path: "/events",
+        children: [
+          {
+            index: true,
+            element: <Events />,
+            loader: async () => {
+              const { data, error } = await supabase.from("events").select();
+
+              return {
+                events: data,
+                error: error,
+              };
+            },
+          },
+          {
+            path: "create",
+            element: <PrivateRoute />,
+            children: [{
+              index: true,
+              element: <CreateEvent />
+            }]
+          },
+        ],
       },
     ],
   },
