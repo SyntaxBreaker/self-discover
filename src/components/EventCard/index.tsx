@@ -8,7 +8,7 @@ function EventCard({ event }: { event: IEvent }) {
     <Link to={`${event.id}`}>
       <Card size="sm">
         <CardHeader>
-          <Heading as="h2" size="md" color="gray.700">
+          <Heading as="h2" size="sm" color="gray.700">
             {event.title}
           </Heading>
         </CardHeader>
