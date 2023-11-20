@@ -1,4 +1,13 @@
-import { Box, Card, CardBody, CardFooter, CardHeader, Flex, Heading, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Flex,
+  Heading,
+  Text,
+} from "@chakra-ui/react";
 import { IEvent } from "../../types/event";
 import { Link } from "react-router-dom";
 import DOMPurify from "dompurify";
@@ -20,23 +29,35 @@ function EventCard({ event }: { event: IEvent }) {
               __html: DOMPurify.sanitize(event.description),
             }}
             style={{
-              overflow: 'hidden',
-              display: '-webkit-box',
+              overflow: "hidden",
+              display: "-webkit-box",
               WebkitLineClamp: 3,
               WebkitBoxOrient: "vertical",
-              fontSize: "14px"
+              fontSize: "14px",
             }}
           />
         </CardBody>
         <CardFooter>
           <Flex gap={8}>
             <Flex direction="column" gap={1}>
-              <Text fontSize="xs" fontWeight="bold">Start time</Text>
+              <Text fontSize="xs" fontWeight="bold">
+                Start time
+              </Text>
               <Text fontSize="sm">{event.startDate.toString()}</Text>
             </Flex>
             <Flex direction="column" gap={1}>
-              <Text fontSize="xs" fontWeight="bold">End time</Text>
+              <Text fontSize="xs" fontWeight="bold">
+                End time
+              </Text>
               <Text fontSize="sm">{event.endDate.toString()}</Text>
+            </Flex>
+            <Flex direction="column" gap={1}>
+              <Text fontSize="xs" fontWeight="bold">
+                Ticket price
+              </Text>
+              <Text fontSize="sm">
+                {event.price > 0 ? `$${event.price}` : "Free"}
+              </Text>
             </Flex>
           </Flex>
         </CardFooter>
