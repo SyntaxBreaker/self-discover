@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { PostgrestError } from "@supabase/supabase-js";
 import IFormData from "../../types/formData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import IArticle from "../../types/article";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -22,18 +22,28 @@ function ArticleForm({
   error: PostgrestError | null;
   handleSubmit: (
     formData: IFormData,
-    event: React.SyntheticEvent,
+    event: React.SyntheticEvent
   ) => Promise<void>;
   article?: IArticle;
 }) {
-  const [formData, setFormData] = useState({
-    title: article?.title ?? "",
-    content: article?.content ?? "",
-    tags: (article?.tags.toString() as string) ?? [],
+  const [formData, setFormData] = useState<IFormData>({
+    title: "",
+    content: "",
+    tags: "",
   });
 
+  useEffect(() => {
+    if (article) {
+      setFormData({
+        title: article.title,
+        content: article.content,
+        tags: article?.tags.toString() as string,
+      });
+    }
+  }, []);
+
   const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData((prev) => ({
       ...prev,
