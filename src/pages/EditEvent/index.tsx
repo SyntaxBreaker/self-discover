@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Alert, AlertIcon, Heading, Text } from "@chakra-ui/react";
+import { Alert, AlertIcon, Heading } from "@chakra-ui/react";
 import { PostgrestError } from "@supabase/supabase-js";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { IEvent, IFormData } from "../../types/event";
