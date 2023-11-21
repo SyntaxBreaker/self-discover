@@ -6,6 +6,8 @@ interface IEvent {
   price: number;
   startDate: Date;
   endDate: Date;
+  created_at: string;
+  nickname: string;
 }
 
 interface IFormData {
