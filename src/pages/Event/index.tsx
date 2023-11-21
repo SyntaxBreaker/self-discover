@@ -36,7 +36,12 @@ function Event() {
             </Stack>
             {user && user.id === event.author_id && (
               <Stack direction="row">
-                <Button size="sm" colorScheme="facebook" as={Link}>
+                <Button
+                  size="sm"
+                  colorScheme="facebook"
+                  as={Link}
+                  to={`/events/edit/${event.id}`}
+                >
                   Edit
                 </Button>
                 <Button size="sm" colorScheme="red" variant="outline">

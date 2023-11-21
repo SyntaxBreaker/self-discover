@@ -7,14 +7,14 @@ import {
   InputGroup,
   InputLeftAddon,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import ReactQuill from "react-quill";
 import { quillToolbarConfig } from "../../utils/quillConfig";
 import { PostgrestError } from "@supabase/supabase-js";
-import { IFormData } from "../../types/event";
+import { IEvent, IFormData } from "../../types/event";
 
 interface IDate {
   startDate: Date;
@@ -23,6 +23,7 @@ interface IDate {
 }
 
 interface IProps {
+  event?: IEvent;
   error: PostgrestError | null;
   handleSubmit: (
     formData: IFormData,
@@ -30,7 +31,7 @@ interface IProps {
   ) => Promise<void>;
 }
 
-function EventForm({ error, handleSubmit }: IProps) {
+function EventForm({ event, error, handleSubmit }: IProps) {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -41,6 +42,19 @@ function EventForm({ error, handleSubmit }: IProps) {
     endDate: new Date(),
     key: "selection",
   });
+
+  useEffect(() => {
+    if (event) {
+      const { title, description, price } = event;
+      if (title && description && price) {
+        setFormData({
+          title: title,
+          description: description,
+          price: price,
+        });
+      }
+    }
+  }, []);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({

@@ -36,6 +36,7 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import CreateEvent from "./pages/CreateEvent/index.tsx";
 import Events from "./pages/Events/index.tsx";
 import Event from "./pages/Event/index.tsx";
+import EditEvent from "./pages/EditEvent/index.tsx";
 
 function PrivateRoute() {
   const { user } = useAuth() as IAuthContext;
@@ -207,6 +208,14 @@ const router = createBrowserRouter([
                 element: <CreateEvent />,
               },
             ],
+          },
+          {
+            path: "edit/:Id",
+            element: <EditEvent />,
+            loader: async ({ params }) => {
+              const data = await getEventById(params.Id);
+              return data;
+            },
           },
         ],
       },
