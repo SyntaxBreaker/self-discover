@@ -1,22 +1,67 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { IEvent } from "../../types/event";
 import ResponsiveContainer from "../../components/ResponsiveContainer";
 import Error from "../../components/Error";
-import { Box, Button, Heading, Stack, Text } from "@chakra-ui/react";
+import { Alert, Box, Button, Heading, Stack, Text } from "@chakra-ui/react";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import DOMPurify from "dompurify";
+import { supabase } from "../../utils/supabase";
+import { useEffect, useState } from "react";
 
 function Event() {
   const { event, error } = useLoaderData() as {
     event: IEvent;
     error: string;
   };
+  const [status, setStatus] = useState<null | {
+    type: "success" | "error";
+    message: string;
+  }>(null);
 
   const { user } = useAuth() as IAuthContext;
+  const navigate = useNavigate();
+
+  let redirectTimeout: ReturnType<typeof setTimeout>;
+
+  const removeEvent = async () => {
+    const { error } = await supabase.from("events").delete().eq("id", event.id);
+
+    if (error) {
+      setStatus({
+        type: "error",
+        message: error.message,
+      });
+    } else {
+      setStatus({
+        type: "success",
+        message: "The event was successfully removed",
+      });
+
+      redirectTimeout = setTimeout(() => {
+        navigate(-1);
+      }, 5000);
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(redirectTimeout);
+    };
+  }, []);
 
   return (
     <ResponsiveContainer>
+      {status && (
+        <Alert
+          status={status.type}
+          marginBottom={2}
+          padding={4}
+          borderRadius={8}
+        >
+          {status.message}
+        </Alert>
+      )}
       {error || !event ? (
         <Error errorMessage="This event doesn't exist" />
       ) : (
@@ -44,7 +89,12 @@ function Event() {
                 >
                   Edit
                 </Button>
-                <Button size="sm" colorScheme="red" variant="outline">
+                <Button
+                  size="sm"
+                  colorScheme="red"
+                  variant="outline"
+                  onClick={removeEvent}
+                >
                   Remove
                 </Button>
               </Stack>
