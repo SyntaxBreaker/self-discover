@@ -15,12 +15,7 @@ import ReactQuill from "react-quill";
 import { quillToolbarConfig } from "../../utils/quillConfig";
 import { PostgrestError } from "@supabase/supabase-js";
 import { IEvent, IFormData } from "../../types/event";
-
-interface IDate {
-  startDate: Date;
-  endDate: Date;
-  key: string;
-}
+import IDate from "../../types/date";
 
 interface IProps {
   event?: IEvent;
