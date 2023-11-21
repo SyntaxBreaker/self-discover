@@ -23,6 +23,7 @@ import EditArticle from "./pages/EditArticle/index.tsx";
 import {
   getArticleById,
   getArticlesByAuthorId,
+  getEventById,
 } from "./utils/databaseOperations.ts";
 import Profile from "./pages/Profile/index.tsx";
 import { supabase } from "./utils/supabase.ts";
@@ -34,6 +35,7 @@ import FAQ from "./pages/FAQ/index.tsx";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import CreateEvent from "./pages/CreateEvent/index.tsx";
 import Events from "./pages/Events/index.tsx";
+import Event from "./pages/Event/index.tsx";
 
 function PrivateRoute() {
   const { user } = useAuth() as IAuthContext;
@@ -189,12 +191,22 @@ const router = createBrowserRouter([
             },
           },
           {
+            path: ":Id",
+            element: <Event />,
+            loader: async ({ params }) => {
+              const data = await getEventById(params.Id);
+              return data;
+            },
+          },
+          {
             path: "create",
             element: <PrivateRoute />,
-            children: [{
-              index: true,
-              element: <CreateEvent />
-            }]
+            children: [
+              {
+                index: true,
+                element: <CreateEvent />,
+              },
+            ],
           },
         ],
       },

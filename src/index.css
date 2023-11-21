@@ -53,3 +53,7 @@
 .rdrMonth {
   width: 100% !important; 
 }
+
+.react-markdown a {
+  text-decoration: underline;
+}
