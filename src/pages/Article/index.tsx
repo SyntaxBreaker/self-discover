@@ -114,16 +114,9 @@ function Article() {
               </Stack>
             )}
           </Stack>
-          <Stack
-            direction="row"
-            justify="space-between"
-            wrap="wrap"
-            marginTop={8}
-          >
-            <Heading as="h1" size="xl" color="gray.700">
-              {article.title}
-            </Heading>
-          </Stack>
+          <Heading as="h1" size="xl" color="gray.700" marginTop={8}>
+            {article.title}
+          </Heading>
           <Box
             letterSpacing="0.8px"
             marginTop={8}
