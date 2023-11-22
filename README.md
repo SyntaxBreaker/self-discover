@@ -9,6 +9,7 @@ This project is a web application that allows users to add, edit, and remove art
 - Comment system: Allow users to leave comments on articles
 - Like system: Enable users to like articles they enjoy
 - Real-time chat functionality
+- Online events: Users can promote or discover virtual events, webinars, or live streams related to articles or specific topics
 
 ## Tech Stack
 
