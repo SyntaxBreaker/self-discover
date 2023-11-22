@@ -1,6 +1,6 @@
 import { Button, Container, Heading, Image, Text } from "@chakra-ui/react";
 import { useLocation, useNavigate, useRouteError } from "react-router-dom";
-import ErrorImage from "../../assets/images/error.png";
+import ErrorImage from "../../assets/images/error.svg";
 
 export default function Error({ errorMessage }: { errorMessage?: string }) {
   const error: any = useRouteError();
@@ -9,7 +9,7 @@ export default function Error({ errorMessage }: { errorMessage?: string }) {
 
   return (
     <Container textAlign="center">
-      <Image src={ErrorImage} alt="" sizes="sm" />
+      <Image src={ErrorImage} alt="" boxSize="360px" marginX="auto" />
       <Heading as="h1" size="lg" color="gray.700">
         Sorry, an unexpected error has occured!
       </Heading>
