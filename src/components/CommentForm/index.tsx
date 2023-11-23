@@ -45,14 +45,9 @@ function CommentForm({
       direction="column"
       as="form"
       onSubmit={handleSubmit}
-      bgColor="white"
       marginTop={4}
-      padding={4}
-      borderRadius={6}
-      display="flex"
       flexDirection="column"
       gap={4}
-      boxShadow={"base"}
     >
       <FormControl position="static">
         <ReactQuill
