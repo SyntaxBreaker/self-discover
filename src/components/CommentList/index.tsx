@@ -1,4 +1,4 @@
-import { Box, Heading } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 import IComment from "../../types/comment";
 import Comment from "../Comment";
 import CommentForm from "../CommentForm";
@@ -15,7 +15,7 @@ function CommentList({
   const { user } = useAuth() as IAuthContext;
 
   return (
-    <Box marginTop={8} borderRadius={4}>
+    <Flex flexDirection="column" gap={2} marginTop={8} borderRadius={4}>
       {comments.length > 0 ||
         (user && (
           <Heading as="h2" size="md">
@@ -26,7 +26,7 @@ function CommentList({
       {comments.map((comment) => (
         <Comment comment={comment} setComments={setComments} key={comment.id} />
       ))}
-    </Box>
+    </Flex>
   );
 }
 
