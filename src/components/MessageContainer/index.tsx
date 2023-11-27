@@ -16,13 +16,13 @@ import IChat from "../../types/chat";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import { supabase } from "../../utils/supabase";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function MessageContainer({ chat }: { chat: IChat }) {
   const { user } = useAuth() as IAuthContext;
 
   const [isEditing, setIsEditing] = useState(false);
-  const [message, setMessage] = useState(chat.message);
+  const [message, setMessage] = useState<null | string>(null);
 
   const removeChatMessage = async (id: number) => {
     await supabase.from("chats").delete().eq("id", id);
@@ -39,6 +39,10 @@ function MessageContainer({ chat }: { chat: IChat }) {
       setIsEditing(false);
     }
   };
+
+  useEffect(() => {
+    setMessage(chat.message);
+  }, []);
 
   return (
     <Stack
@@ -86,7 +90,7 @@ function MessageContainer({ chat }: { chat: IChat }) {
             <FormControl>
               <Input
                 type="text"
-                value={message}
+                value={message ?? ""}
                 onChange={(e) => setMessage(e.target.value)}
                 backgroundColor="white"
               />

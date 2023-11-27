@@ -48,25 +48,19 @@ function Chat() {
         "postgres_changes",
         { event: "*", schema: "public", table: "chats" },
         (payload) => {
-          if (payload.eventType === "INSERT") {
-            setChats((prevData) => [...prevData, payload.new as IChat]);
-          } else if (payload.eventType === "DELETE") {
-            const filteredData = chats.filter(
-              (chat) => chat.id !== payload.old.id
-            );
-            setChats(filteredData);
-          } else if (payload.eventType === "UPDATE") {
-            const updatedChats = [...chats];
-            const index = updatedChats.findIndex(
-              (item) => item.id === payload.old.id
-            );
-            if (index !== -1) {
-              updatedChats[index] = payload.new as IChat;
-              setChats(updatedChats);
+          setChats((prevData) => {
+            if (payload.eventType === "INSERT") {
+              return [...prevData, payload.new as IChat];
+            } else if (payload.eventType === "DELETE") {
+              return prevData.filter((chat) => chat.id !== payload.old.id);
+            } else if (payload.eventType === "UPDATE") {
+              return prevData.map((item) =>
+                item.id === payload.old.id ? (payload.new as IChat) : item
+              );
+            } else {
+              return prevData;
             }
-          } else {
-            return;
-          }
+          });
         }
       )
       .subscribe();
