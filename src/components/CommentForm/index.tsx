@@ -21,6 +21,10 @@ function CommentForm({
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
 
+    if (content.length === 0) {
+      return;
+    }
+
     const newComment = {
       content: content,
       author_id: user.id,
@@ -58,7 +62,12 @@ function CommentForm({
           style={{ position: "static" }}
         />
       </FormControl>
-      <Button alignSelf="flex-end" colorScheme="facebook" type="submit">
+      <Button
+        alignSelf="flex-end"
+        colorScheme="facebook"
+        type="submit"
+        isDisabled={content.length === 0}
+      >
         Submit
       </Button>
     </Flex>
