@@ -18,9 +18,11 @@ function CreateArticle() {
 
   const handleSubmit = async (
     formData: IFormData,
-    event: React.SyntheticEvent,
+    event: React.SyntheticEvent
   ) => {
     event.preventDefault();
+
+    if (formData.title.length === 0 || formData.content.length === 0) return;
 
     const imageURL = await generateRandomImage();
 
