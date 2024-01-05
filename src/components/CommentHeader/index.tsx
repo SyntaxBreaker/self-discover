@@ -40,7 +40,6 @@ function CommentHeader({
         <Stack direction="row">
           <Button
             position="static"
-            variant="outline"
             size="sm"
             colorScheme="facebook"
             onClick={() => {
@@ -54,6 +53,7 @@ function CommentHeader({
           </Button>
           <Button
             position="static"
+            variant="outline"
             size="sm"
             colorScheme="red"
             onClick={removeComment}
