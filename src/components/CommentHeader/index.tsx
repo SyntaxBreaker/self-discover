@@ -7,7 +7,6 @@ interface IProps {
   comment: IComment;
   isEditing: boolean;
   setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;
-  setUpdatedComment: React.Dispatch<React.SetStateAction<string>>;
   removeComment: () => Promise<void>;
 }
 
@@ -15,7 +14,6 @@ function CommentHeader({
   comment,
   isEditing,
   setIsEditing,
-  setUpdatedComment,
   removeComment,
 }: IProps) {
   const { user } = useAuth() as IAuthContext;
@@ -36,20 +34,17 @@ function CommentHeader({
           {comment.created_at.split("T")[0].split("-").reverse().join(".")}
         </Text>
       </Stack>
-      {user && user.id === comment.author_id && (
+      {user && user.id === comment.author_id && !isEditing && (
         <Stack direction="row">
           <Button
             position="static"
             size="sm"
             colorScheme="facebook"
             onClick={() => {
-              if (isEditing) {
-                setUpdatedComment(comment.content);
-              }
-              setIsEditing(!isEditing);
+              setIsEditing(true);
             }}
           >
-            {!isEditing ? "Edit" : "Cancel"}
+            Edit
           </Button>
           <Button
             position="static"
@@ -57,7 +52,6 @@ function CommentHeader({
             size="sm"
             colorScheme="red"
             onClick={removeComment}
-            isDisabled={isEditing}
           >
             Remove
           </Button>

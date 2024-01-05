@@ -6,12 +6,14 @@ interface IProps {
   editComment: (e: React.SyntheticEvent) => Promise<void>;
   updatedComment: string;
   setUpdatedComment: React.Dispatch<React.SetStateAction<string>>;
+  setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function CommentEditor({
   editComment,
   updatedComment,
   setUpdatedComment,
+  setIsEditing,
 }: IProps) {
   return (
     <Flex
@@ -30,9 +32,20 @@ function CommentEditor({
           style={{ position: "static" }}
         />
       </FormControl>
-      <Button alignSelf="flex-end" colorScheme="blue" type="submit">
-        Submit
-      </Button>
+      <Flex gap={2} alignSelf="end">
+        <Button
+          alignSelf="flex-end"
+          colorScheme="red"
+          size="sm"
+          variant="outline"
+          onClick={() => setIsEditing(false)}
+        >
+          Cancel
+        </Button>
+        <Button alignSelf="flex-end" colorScheme="facebook" size="sm" type="submit">
+          Submit
+        </Button>
+      </Flex>
     </Flex>
   );
 }

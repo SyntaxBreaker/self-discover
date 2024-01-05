@@ -71,7 +71,6 @@ function Comment({
         comment={comment}
         isEditing={isEditing}
         setIsEditing={setIsEditing}
-        setUpdatedComment={setUpdatedComment}
         removeComment={removeComment}
       />
       {isEditing ? (
@@ -79,6 +78,7 @@ function Comment({
           editComment={editComment}
           updatedComment={updatedComment}
           setUpdatedComment={setUpdatedComment}
+          setIsEditing={setIsEditing}
         />
       ) : (
         <Box
