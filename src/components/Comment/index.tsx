@@ -39,6 +39,11 @@ function Comment({
   const editComment = async (e: React.SyntheticEvent) => {
     e.preventDefault();
 
+    if(comment.content === updatedComment) {
+      setIsEditing(false);
+      return;
+    }
+
     const { error } = await supabase
       .from("comments")
       .update({ content: updatedComment })
