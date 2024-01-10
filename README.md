@@ -18,6 +18,7 @@ This project is a web application that allows users to add, edit, and remove art
 - Typescript
 - Chakra UI
 - React Router
+- Supabase
 
 ## To use the project:
 
