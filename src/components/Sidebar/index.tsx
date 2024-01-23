@@ -28,7 +28,7 @@ function Sidebar() {
       direction="column"
       w={{ base: "52px", lg: "200px" }}
       backgroundColor="gray.900"
-      height="100vh"
+      height="100svh"
       alignItems={{ base: "center", lg: "inherit" }}
       position="sticky"
       top="0"
