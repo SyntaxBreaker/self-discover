@@ -6,6 +6,7 @@ import Error from "../../components/Error";
 import EventList from "../../components/EventList";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
+import EmptyEventList from "../../components/EmptyEventList";
 
 function Events() {
   const { events, error } = useLoaderData() as {
@@ -19,15 +20,19 @@ function Events() {
     <ResponsiveContainer>
       {error || !events ? (
         <Error errorMessage="There are no events." />
+      ) : events.length === 0 ? (
+        <EmptyEventList />
       ) : (
         <Flex flexDirection="column" gap={8}>
           <Flex justifyContent="space-between" alignItems="center">
             <Heading as="h1" size="lg" textAlign="center" color="gray.700">
               All Events
             </Heading>
-            {user && <Button size="md" colorScheme="facebook" as={Link} to={`create`}>
-              Create
-            </Button>}
+            {user && (
+              <Button size="md" colorScheme="facebook" as={Link} to={`create`}>
+                Create
+              </Button>
+            )}
           </Flex>
           <EventList events={events} />
         </Flex>
