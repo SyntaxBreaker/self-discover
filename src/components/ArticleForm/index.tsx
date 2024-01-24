@@ -5,6 +5,7 @@ import {
   FormHelperText,
   FormLabel,
   Input,
+  Textarea,
 } from "@chakra-ui/react";
 import { PostgrestError } from "@supabase/supabase-js";
 import IFormData from "../../types/formData";
@@ -89,8 +90,7 @@ function ArticleForm({
       </FormControl>
       <FormControl position="static">
         <FormLabel>Tags</FormLabel>
-        <Input
-          type="text"
+        <Textarea
           value={formData.tags}
           name="tags"
           onChange={handleChange}
