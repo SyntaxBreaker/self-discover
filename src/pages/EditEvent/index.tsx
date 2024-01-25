@@ -8,6 +8,7 @@ import { IAuthContext } from "../../types/auth";
 import ResponsiveContainer from "../../components/ResponsiveContainer";
 import EventForm from "../../components/EventForm";
 import { supabase } from "../../utils/supabase";
+import { addDays } from "date-fns";
 
 function EditEvent() {
   const [error, setError] = useState<PostgrestError | null>(null);
@@ -35,8 +36,8 @@ function EditEvent() {
         title: formData.title,
         description: formData.description,
         price: formData.price,
-        startDate: formData.startDate,
-        endDate: formData.endDate,
+        startDate: addDays(formData.startDate, 1).toISOString().slice(0, 10),
+        endDate: addDays(formData.endDate, 1).toISOString().slice(0, 10),
       })
       .eq("id", Id);
 

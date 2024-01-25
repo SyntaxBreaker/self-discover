@@ -8,6 +8,7 @@ import { IAuthContext } from "../../types/auth";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../../utils/supabase";
 import { IFormData } from "../../types/event";
+import { addDays } from "date-fns";
 
 function CreateEvent() {
   const [error, setError] = useState<PostgrestError | null>(null);
@@ -26,8 +27,8 @@ function CreateEvent() {
       title: title,
       description: description,
       price: price,
-      startDate: startDate,
-      endDate: endDate,
+      startDate: addDays(startDate, 1).toISOString().slice(0, 10),
+      endDate: addDays(endDate, 1).toISOString().slice(0, 10),
       author_id: user.id,
       nickname: user.user_metadata.username ?? user.email?.split("@")[0],
     });

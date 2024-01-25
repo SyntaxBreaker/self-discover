@@ -49,6 +49,14 @@ function EventForm({ event, error, handleSubmit }: IProps) {
         });
       }
     }
+
+    if (event?.startDate && event?.endDate) {
+      setDate((prev) => ({
+        ...prev,
+        startDate: new Date(event.startDate),
+        endDate: new Date(event.endDate),
+      }));
+    }
   }, []);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
