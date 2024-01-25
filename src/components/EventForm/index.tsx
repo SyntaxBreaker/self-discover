@@ -106,7 +106,11 @@ function EventForm({ event, error, handleSubmit }: IProps) {
       </FormControl>
       <FormControl>
         <FormLabel>Event date</FormLabel>
-        <DateRangePicker ranges={[date]} onChange={handleSelect} />
+        <DateRangePicker
+          ranges={[date]}
+          onChange={handleSelect}
+          minDate={new Date()}
+        />
       </FormControl>
       <FormControl position="static">
         <FormLabel>Ticket price</FormLabel>
