@@ -38,6 +38,7 @@ function EditEvent() {
         price: formData.price,
         startDate: addDays(formData.startDate, 1).toISOString().slice(0, 10),
         endDate: addDays(formData.endDate, 1).toISOString().slice(0, 10),
+        websiteUrl: formData.websiteUrl,
       })
       .eq("id", Id);
 

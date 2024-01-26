@@ -31,6 +31,7 @@ function EventForm({ event, error, handleSubmit }: IProps) {
     title: "",
     description: "",
     price: 0,
+    websiteUrl: "",
   });
   const [date, setDate] = useState<IDate>({
     startDate: new Date(),
@@ -40,12 +41,13 @@ function EventForm({ event, error, handleSubmit }: IProps) {
 
   useEffect(() => {
     if (event) {
-      const { title, description, price } = event;
-      if (title && description && price) {
+      const { title, description, price, websiteUrl } = event;
+      if (title && description && price && websiteUrl) {
         setFormData({
           title: title,
           description: description,
           price: price,
+          websiteUrl: websiteUrl,
         });
       }
     }
@@ -110,6 +112,17 @@ function EventForm({ event, error, handleSubmit }: IProps) {
             setFormData((prev) => ({ ...prev, description: newContent }))
           }
           modules={quillToolbarConfig}
+        />
+      </FormControl>
+      <FormControl position="static">
+        <FormLabel>Event URL</FormLabel>
+        <Input
+          type="url"
+          value={formData.websiteUrl}
+          name="websiteUrl"
+          onChange={handleChange}
+          required
+          position="static"
         />
       </FormControl>
       <FormControl>

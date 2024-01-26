@@ -21,7 +21,8 @@ function CreateEvent() {
     event: React.SyntheticEvent
   ) => {
     event.preventDefault();
-    const { title, description, price, startDate, endDate } = formData;
+    const { title, description, price, startDate, endDate, websiteUrl } =
+      formData;
 
     const { error } = await supabase.from("events").insert({
       title: title,
@@ -29,6 +30,7 @@ function CreateEvent() {
       price: price,
       startDate: addDays(startDate, 1).toISOString().slice(0, 10),
       endDate: addDays(endDate, 1).toISOString().slice(0, 10),
+      websiteUrl: websiteUrl,
       author_id: user.id,
       nickname: user.user_metadata.username ?? user.email?.split("@")[0],
     });
