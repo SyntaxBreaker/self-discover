@@ -2,12 +2,26 @@ import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { IEvent } from "../../types/event";
 import ResponsiveContainer from "../../components/ResponsiveContainer";
 import Error from "../../components/Error";
-import { Alert, Box, Button, Heading, Stack, Text } from "@chakra-ui/react";
+import {
+  Alert,
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import DOMPurify from "dompurify";
 import { supabase } from "../../utils/supabase";
 import { useEffect, useState } from "react";
+import {
+  MaterialSymbolsCalendarMonth,
+  PhCurrencyDollarSimple,
+  PhGlobe,
+} from "../../components/Icons";
+import EventInformationCard from "../../components/EventInformationCard";
 
 function Event() {
   const { event, error } = useLoaderData() as {
@@ -23,6 +37,27 @@ function Event() {
   const navigate = useNavigate();
 
   let redirectTimeout: ReturnType<typeof setTimeout>;
+  const eventDetails = [
+    {
+      icon: MaterialSymbolsCalendarMonth,
+      text: `Date: ${event.startDate.toString()}-${event.endDate.toString()}`,
+    },
+    {
+      icon: PhCurrencyDollarSimple,
+      text: `Price: ${event.price}`,
+    },
+    {
+      icon: PhGlobe,
+      text: (
+        <>
+          URL:{" "}
+          <Link to={event.websiteUrl} target="_blank">
+            {event.websiteUrl.split("https://")[1]}
+          </Link>
+        </>
+      ),
+    },
+  ];
 
   const removeEvent = async () => {
     const { error } = await supabase.from("events").delete().eq("id", event.id);
@@ -105,6 +140,14 @@ function Event() {
               {event.title}
             </Heading>
           </Box>
+          <Flex marginTop={8} gap={4} flexWrap="wrap">
+            {eventDetails.map((eventDetail) => (
+              <EventInformationCard
+                icon={eventDetail.icon}
+                text={eventDetail.text}
+              />
+            ))}
+          </Flex>
           <Box
             letterSpacing="0.8px"
             marginTop={8}
