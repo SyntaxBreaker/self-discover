@@ -9,6 +9,7 @@ import ResponsiveContainer from "../../components/ResponsiveContainer";
 import EventForm from "../../components/EventForm";
 import { supabase } from "../../utils/supabase";
 import { addDays } from "date-fns";
+import validateEventURL from "../../utils/eventURLValidator";
 
 function EditEvent() {
   const [error, setError] = useState<PostgrestError | null>(null);
@@ -32,6 +33,12 @@ function EditEvent() {
 
     const { title, description, price, startDate, endDate, websiteUrl } =
       formData;
+
+    const eventURLValidationResult = validateEventURL(websiteUrl);
+    if (!eventURLValidationResult.isValid) {
+      setError(eventURLValidationResult.data);
+      return;
+    }
 
     const { error } = await supabase
       .from("events")

@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "../../utils/supabase";
 import { IFormData } from "../../types/event";
 import { addDays } from "date-fns";
+import validateEventURL from "../../utils/eventURLValidator";
 
 function CreateEvent() {
   const [error, setError] = useState<PostgrestError | null>(null);
@@ -23,6 +24,12 @@ function CreateEvent() {
     event.preventDefault();
     const { title, description, price, startDate, endDate, websiteUrl } =
       formData;
+
+    const eventURLValidationResult = validateEventURL(websiteUrl);
+    if (!eventURLValidationResult.isValid) {
+      setError(eventURLValidationResult.data);
+      return;
+    }
 
     const { error } = await supabase.from("events").insert({
       title: title,
