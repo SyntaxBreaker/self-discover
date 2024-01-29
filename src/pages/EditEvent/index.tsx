@@ -30,15 +30,18 @@ function EditEvent() {
   const handleSubmit = async (formData: IFormData, e: React.SyntheticEvent) => {
     e.preventDefault();
 
+    const { title, description, price, startDate, endDate, websiteUrl } =
+      formData;
+
     const { error } = await supabase
       .from("events")
       .update({
-        title: formData.title,
-        description: formData.description,
-        price: formData.price,
-        startDate: addDays(formData.startDate, 1).toISOString().slice(0, 10),
-        endDate: addDays(formData.endDate, 1).toISOString().slice(0, 10),
-        websiteUrl: formData.websiteUrl,
+        title: title,
+        description: description,
+        price: price,
+        startDate: addDays(startDate, 1).toISOString().slice(0, 10),
+        endDate: addDays(endDate, 1).toISOString().slice(0, 10),
+        websiteUrl: websiteUrl,
       })
       .eq("id", Id);
 
