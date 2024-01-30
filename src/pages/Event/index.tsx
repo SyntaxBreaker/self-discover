@@ -39,14 +39,17 @@ function Event() {
   let redirectTimeout: ReturnType<typeof setTimeout>;
   const eventDetails = [
     {
+      id: 0,
       icon: MaterialSymbolsCalendarMonth,
       text: `Date: ${event.startDate.toString()}-${event.endDate.toString()}`,
     },
     {
+      id: 1,
       icon: PhCurrencyDollarSimple,
       text: `Price: ${event.price}`,
     },
     {
+      id: 2,
       icon: PhGlobe,
       text: (
         <>
@@ -143,6 +146,7 @@ function Event() {
           <Flex marginTop={8} gap={4} flexWrap="wrap">
             {eventDetails.map((eventDetail) => (
               <EventInformationCard
+                key={eventDetail.id}
                 icon={eventDetail.icon}
                 text={eventDetail.text}
               />
