@@ -14,7 +14,7 @@ function EventInformationCard({ icon, text }: IProps) {
       backgroundColor="white"
       borderRadius="md"
       boxShadow="xs"
-      width={{ base: "100%", md: "32%" }}
+      flexBasis={{ base: "100%", md: "calc(33.3% - 11px)" }}
     >
       <Icon as={icon} />
       <Text>{text}</Text>
