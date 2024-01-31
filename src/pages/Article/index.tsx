@@ -1,7 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import IArticle from "../../types/article";
-import { Alert, Box, Button, Heading, Stack, Text } from "@chakra-ui/react";
+import {
+  Alert,
+  Box,
+  Button,
+  Heading,
+  Stack,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import { supabase } from "../../utils/supabase";
@@ -12,6 +20,7 @@ import ResponsiveContainer from "../../components/ResponsiveContainer";
 import TagList from "../../components/TagList";
 import Error from "../../components/Error";
 import Feedback from "../../components/Feedback";
+import DeletionConfirmation from "../../components/DeletionConfirmation";
 
 function Article() {
   const { article, error } = useLoaderData() as {
@@ -29,10 +38,11 @@ function Article() {
 
   const { user } = useAuth() as IAuthContext;
   const myRef = useRef<HTMLDivElement | null>(null);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   let redirectTimeout: ReturnType<typeof setTimeout>;
 
-  const removeArticle = async () => {
+  const handleRemoveArticle = async () => {
     const { error } = await supabase
       .from("articles")
       .delete()
@@ -107,7 +117,7 @@ function Article() {
                   size="sm"
                   colorScheme="red"
                   variant="outline"
-                  onClick={removeArticle}
+                  onClick={onOpen}
                 >
                   Remove
                 </Button>
@@ -156,6 +166,11 @@ function Article() {
           <Box ref={myRef}>
             <CommentList comments={comments} setComments={setComments} />
           </Box>
+          <DeletionConfirmation
+            isOpen={isOpen}
+            onClose={onClose}
+            handleRemove={handleRemoveArticle}
+          />
         </Box>
       )}
     </ResponsiveContainer>

@@ -10,6 +10,7 @@ import {
   Heading,
   Stack,
   Text,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
@@ -22,6 +23,7 @@ import {
   PhGlobe,
 } from "../../components/Icons";
 import EventInformationCard from "../../components/EventInformationCard";
+import DeletionConfirmation from "../../components/DeletionConfirmation";
 
 function Event() {
   const { event, error } = useLoaderData() as {
@@ -35,6 +37,7 @@ function Event() {
 
   const { user } = useAuth() as IAuthContext;
   const navigate = useNavigate();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   let redirectTimeout: ReturnType<typeof setTimeout>;
   const eventDetails = [
@@ -62,7 +65,7 @@ function Event() {
     },
   ];
 
-  const removeEvent = async () => {
+  const handleRemoveEvent = async () => {
     const { error } = await supabase.from("events").delete().eq("id", event.id);
 
     if (error) {
@@ -131,7 +134,7 @@ function Event() {
                   size="sm"
                   colorScheme="red"
                   variant="outline"
-                  onClick={removeEvent}
+                  onClick={onOpen}
                 >
                   Remove
                 </Button>
@@ -159,6 +162,11 @@ function Event() {
             dangerouslySetInnerHTML={{
               __html: DOMPurify.sanitize(event.description),
             }}
+          />
+          <DeletionConfirmation
+            isOpen={isOpen}
+            onClose={onClose}
+            handleRemove={handleRemoveEvent}
           />
         </Box>
       )}
