@@ -4,11 +4,7 @@ import IArticle from "../../types/article";
 
 function ArticleStats({ article }: { article: IArticle }) {
   return (
-    <Stack
-      direction="row"
-      spacing="24px"
-      marginTop={article.tags?.length > 0 ? 0 : -4}
-    >
+    <Stack direction="row" spacing="24px">
       <Flex alignItems="center" gap={2}>
         <Icon as={AkarIconsThumbsUp} />
         <Text>

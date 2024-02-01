@@ -22,7 +22,7 @@ function ArticleDetails({ article }: { article: IArticle }) {
       <Heading size="lg" marginTop={4} color="gray.700">
         {article.title}
       </Heading>
-      {article.tags && (
+      {article.tags && article.tags.length > 0 && (
         <Stack direction="row" flexWrap="wrap" marginTop={4}>
           <TagList tags={article.tags.slice(0, 8)} size="md" />
           {article.tags.length > 8 && (
