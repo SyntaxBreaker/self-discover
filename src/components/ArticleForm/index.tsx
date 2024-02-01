@@ -38,7 +38,7 @@ function ArticleForm({
       setFormData({
         title: article.title,
         content: article.content,
-        tags: article?.tags.toString() as string,
+        tags: article.tags.join(", "),
       });
     }
   }, []);
