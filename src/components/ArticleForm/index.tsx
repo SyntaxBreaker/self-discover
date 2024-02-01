@@ -96,7 +96,10 @@ function ArticleForm({
           onChange={handleChange}
           position="static"
         />
-        <FormHelperText>Tags must be separated using commas.</FormHelperText>
+        <FormHelperText>
+          Please ensure tags are separated by commas and avoid using spaces
+          within tags.
+        </FormHelperText>
       </FormControl>
       <Button
         width="100%"
