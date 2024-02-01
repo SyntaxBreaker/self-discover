@@ -135,7 +135,7 @@ function Article() {
               __html: DOMPurify.sanitize(article.content),
             }}
           />
-          {article.tags && (
+          {article.tags && article.tags.length > 0 && (
             <Stack marginTop={8}>
               <TagList
                 tags={
