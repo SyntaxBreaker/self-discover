@@ -41,22 +41,20 @@ function EventForm({ event, error, handleSubmit }: IProps) {
 
   useEffect(() => {
     if (event) {
-      const { title, description, price, websiteUrl } = event;
-      if (title && description && price && websiteUrl) {
-        setFormData({
-          title: title,
-          description: description,
-          price: price,
-          websiteUrl: websiteUrl,
-        });
-      }
-    }
+      const { title, description, price, websiteUrl, startDate, endDate } =
+        event;
 
-    if (event?.startDate && event?.endDate) {
+      setFormData({
+        title: title,
+        description: description,
+        price: price,
+        websiteUrl: websiteUrl,
+      });
+
       setDate((prev) => ({
         ...prev,
-        startDate: new Date(event.startDate),
-        endDate: new Date(event.endDate),
+        startDate: new Date(startDate),
+        endDate: new Date(endDate),
       }));
     }
   }, []);
