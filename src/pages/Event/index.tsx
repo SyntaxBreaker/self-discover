@@ -44,23 +44,24 @@ function Event() {
     {
       id: 0,
       icon: MaterialSymbolsCalendarMonth,
-      text: `Date: ${event.startDate.toString()}-${event.endDate.toString()}`,
+      text: `${
+        event.startDate.toString() === event.endDate.toString()
+          ? event.startDate.toString()
+          : `${event.startDate.toString()} - ${event.endDate.toString()}`
+      }`,
     },
     {
       id: 1,
       icon: PhCurrencyDollarSimple,
-      text: `Price: ${event.price}`,
+      text: `${event.price === 0 ? "Free" : event.price}`,
     },
     {
       id: 2,
       icon: PhGlobe,
       text: (
-        <>
-          URL:{" "}
-          <Link to={event.websiteUrl} target="_blank">
-            {event.websiteUrl.split("https://")[1]}
-          </Link>
-        </>
+        <Link to={event.websiteUrl} target="_blank">
+          {event.websiteUrl.split("https://")[1]}
+        </Link>
       ),
     },
   ];
