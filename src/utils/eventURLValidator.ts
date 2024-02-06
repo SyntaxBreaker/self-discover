@@ -8,17 +8,12 @@ const validateEventURL = (url: string) => {
   if (urlRegex.test(url)) {
     return {
       isValid: true,
-      data: null,
+      message: "",
     };
   } else {
     return {
       isValid: false,
-      data: {
-        message: EVENT_INVALID_URL,
-        details: "The provided URL does not match the expected format",
-        hint: "Please make sure the URL follows the correct syntax.",
-        code: "E001",
-      },
+      message: EVENT_INVALID_URL,
     };
   }
 };
