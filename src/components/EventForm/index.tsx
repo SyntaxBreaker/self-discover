@@ -2,6 +2,7 @@ import {
   Button,
   Flex,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   Input,
   InputGroup,
@@ -13,13 +14,16 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import ReactQuill from "react-quill";
 import { quillToolbarConfig } from "../../utils/quillConfig";
-import { PostgrestError } from "@supabase/supabase-js";
 import { IEvent, IFormData } from "../../types/event";
 import IDate from "../../types/date";
+import {
+  EVENT_DESCRIPTION_REQUIRED,
+  EVENT_INVALID_URL,
+} from "../../utils/constants";
 
 interface IProps {
   event?: IEvent;
-  error: PostgrestError | null;
+  error: string | null;
   handleSubmit: (
     formData: IFormData,
     event: React.SyntheticEvent
@@ -101,7 +105,10 @@ function EventForm({ event, error, handleSubmit }: IProps) {
           position="static"
         />
       </FormControl>
-      <FormControl position="static">
+      <FormControl
+        position="static"
+        isInvalid={error === EVENT_DESCRIPTION_REQUIRED}
+      >
         <FormLabel>Event description</FormLabel>
         <ReactQuill
           theme="snow"
@@ -111,8 +118,9 @@ function EventForm({ event, error, handleSubmit }: IProps) {
           }
           modules={quillToolbarConfig}
         />
+        {error && <FormErrorMessage>{error}</FormErrorMessage>}
       </FormControl>
-      <FormControl position="static">
+      <FormControl position="static" isInvalid={error === EVENT_INVALID_URL}>
         <FormLabel>Event URL</FormLabel>
         <Input
           type="url"
@@ -122,6 +130,7 @@ function EventForm({ event, error, handleSubmit }: IProps) {
           required
           position="static"
         />
+        {error && <FormErrorMessage>{error}</FormErrorMessage>}
       </FormControl>
       <FormControl>
         <FormLabel>Event date</FormLabel>

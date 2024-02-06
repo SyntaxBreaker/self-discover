@@ -1,3 +1,5 @@
+import { EVENT_INVALID_URL } from "./constants";
+
 const validateEventURL = (url: string) => {
   const urlRegex = new RegExp(
     /^http(s)?:\/\/((\d+\.\d+\.\d+\.\d+)|(([\w-]+\.)+([a-z,A-Z][\w-]*)))(:[1-9][0-9]*)?(\/([\w-.\/:%+@&=]+[\w- .\/?:%+@&=]*)?)?(#(.*))?$/i
@@ -12,7 +14,7 @@ const validateEventURL = (url: string) => {
     return {
       isValid: false,
       data: {
-        message: "Invalid event URL.",
+        message: EVENT_INVALID_URL,
         details: "The provided URL does not match the expected format",
         hint: "Please make sure the URL follows the correct syntax.",
         code: "E001",
