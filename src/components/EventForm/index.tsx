@@ -117,6 +117,7 @@ function EventForm({ event, error, handleSubmit }: IProps) {
             setFormData((prev) => ({ ...prev, description: newContent }))
           }
           modules={quillToolbarConfig}
+          style={{border: error === EVENT_DESCRIPTION_REQUIRED ? '2px solid #E53E3E' : 'none'}}
         />
         {error && <FormErrorMessage>{error}</FormErrorMessage>}
       </FormControl>
