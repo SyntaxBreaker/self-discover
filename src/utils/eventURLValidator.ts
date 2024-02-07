@@ -2,7 +2,7 @@ import { EVENT_INVALID_URL } from "./constants";
 
 const validateEventURL = (url: string) => {
   const urlRegex = new RegExp(
-    /^http(s)?:\/\/((\d+\.\d+\.\d+\.\d+)|(([\w-]+\.)+([a-z,A-Z][\w-]*)))(:[1-9][0-9]*)?(\/([\w-.\/:%+@&=]+[\w- .\/?:%+@&=]*)?)?(#(.*))?$/i
+    /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)/i
   );
 
   if (urlRegex.test(url)) {
