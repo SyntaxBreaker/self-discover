@@ -91,8 +91,20 @@ function EventForm({ event, error, handleSubmit }: IProps) {
       bgColor="white"
       padding={8}
       borderBottomRadius={8}
-      borderRadius={error ? 0 : 8}
-      marginTop={error ? 0 : 8}
+      borderRadius={
+        error &&
+        error !== EVENT_DESCRIPTION_REQUIRED &&
+        error !== EVENT_INVALID_URL
+          ? 0
+          : 8
+      }
+      marginTop={
+        error &&
+        error !== EVENT_DESCRIPTION_REQUIRED &&
+        error !== EVENT_INVALID_URL
+          ? 0
+          : 8
+      }
     >
       <FormControl position="static">
         <FormLabel>Event title</FormLabel>
@@ -117,7 +129,12 @@ function EventForm({ event, error, handleSubmit }: IProps) {
             setFormData((prev) => ({ ...prev, description: newContent }))
           }
           modules={quillToolbarConfig}
-          style={{border: error === EVENT_DESCRIPTION_REQUIRED ? '2px solid #E53E3E' : 'none'}}
+          style={{
+            border:
+              error === EVENT_DESCRIPTION_REQUIRED
+                ? "2px solid #E53E3E"
+                : "none",
+          }}
         />
         {error && <FormErrorMessage>{error}</FormErrorMessage>}
       </FormControl>
