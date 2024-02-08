@@ -40,8 +40,6 @@ function Article() {
   const myRef = useRef<HTMLDivElement | null>(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  let redirectTimeout: ReturnType<typeof setTimeout>;
-
   const handleRemoveArticle = async () => {
     const { error } = await supabase
       .from("articles")
@@ -58,17 +56,22 @@ function Article() {
         type: "success",
         message: "The article was successfully removed",
       });
-      redirectTimeout = setTimeout(() => {
-        window.location.replace("/");
-      }, 5000);
     }
   };
 
   useEffect(() => {
+    let redirectTimeout: ReturnType<typeof setTimeout>;
+
+    if (status?.type === "success") {
+      redirectTimeout = setTimeout(() => {
+        window.location.replace("/");
+      }, 5000);
+    }
+
     return () => {
       clearTimeout(redirectTimeout);
     };
-  }, []);
+  }, [status]);
 
   return (
     <ResponsiveContainer>
