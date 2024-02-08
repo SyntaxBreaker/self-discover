@@ -39,7 +39,6 @@ function Event() {
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  let redirectTimeout: ReturnType<typeof setTimeout>;
   const eventDetails = [
     {
       id: 0,
@@ -79,18 +78,22 @@ function Event() {
         type: "success",
         message: "The event was successfully removed",
       });
-
-      redirectTimeout = setTimeout(() => {
-        navigate(-1);
-      }, 5000);
     }
   };
 
   useEffect(() => {
+    let redirectTimeout: ReturnType<typeof setTimeout>;
+
+    if (status?.type === "success") {
+      redirectTimeout = setTimeout(() => {
+        navigate(-1);
+      }, 5000);
+    }
+
     return () => {
       clearTimeout(redirectTimeout);
     };
-  }, []);
+  }, [status]);
 
   return (
     <ResponsiveContainer>
