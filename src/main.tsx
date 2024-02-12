@@ -175,6 +175,10 @@ const router = createBrowserRouter([
       {
         path: "/faq",
         element: <FAQ />,
+        loader: async () => {
+          const { data, error } = await supabase.from("FAQ").select();
+          return { faqList: data, error: error };
+        },
       },
       {
         path: "/events",
