@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import IArticle from "../../types/article";
 import {
   Alert,
@@ -7,11 +7,8 @@ import {
   Button,
   Heading,
   Stack,
-  Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useAuth } from "../../context/AuthProvider";
-import { IAuthContext } from "../../types/auth";
 import { supabase } from "../../utils/supabase";
 import DOMPurify from "isomorphic-dompurify";
 import IComment from "../../types/comment";
@@ -21,6 +18,7 @@ import TagList from "../../components/TagList";
 import Error from "../../components/Error";
 import Feedback from "../../components/Feedback";
 import DeletionConfirmation from "../../components/DeletionConfirmation";
+import ArticleHeader from "../../components/ArticleHeader";
 
 function Article() {
   const { article, error } = useLoaderData() as {
@@ -36,7 +34,6 @@ function Article() {
   const [comments, setComments] = useState<IComment[]>(article?.comments || []);
   const [isTagListExpanded, setIsTagListExpanded] = useState(false);
 
-  const { user } = useAuth() as IAuthContext;
   const myRef = useRef<HTMLDivElement | null>(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -89,44 +86,7 @@ function Article() {
         <Error errorMessage="This article doesn't exist" />
       ) : (
         <Box>
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            flexWrap="wrap"
-          >
-            <Stack direction="row" flexWrap="wrap" gap={1}>
-              <Text fontWeight="bold">Created by {article.nickname}</Text>
-              <Text>&#183;</Text>
-              <Text>
-                {article.created_at
-                  .split("T")[0]
-                  .split("-")
-                  .reverse()
-                  .join(".")}
-              </Text>
-            </Stack>
-            {user && user.id === article.author_id && (
-              <Stack direction="row">
-                <Button
-                  size="sm"
-                  colorScheme="facebook"
-                  as={Link}
-                  to={`/edit/${article.id}`}
-                >
-                  Edit
-                </Button>
-                <Button
-                  size="sm"
-                  colorScheme="red"
-                  variant="outline"
-                  onClick={onOpen}
-                >
-                  Remove
-                </Button>
-              </Stack>
-            )}
-          </Stack>
+          <ArticleHeader article={article} onOpen={onOpen} />
           <Heading as="h1" size="xl" color="gray.700" marginTop={8}>
             {article.title}
           </Heading>
