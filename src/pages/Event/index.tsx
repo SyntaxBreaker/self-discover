@@ -2,18 +2,7 @@ import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { IEvent } from "../../types/event";
 import ResponsiveContainer from "../../components/ResponsiveContainer";
 import Error from "../../components/Error";
-import {
-  Alert,
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Stack,
-  Text,
-  useDisclosure,
-} from "@chakra-ui/react";
-import { useAuth } from "../../context/AuthProvider";
-import { IAuthContext } from "../../types/auth";
+import { Alert, Box, Flex, Heading, useDisclosure } from "@chakra-ui/react";
 import DOMPurify from "dompurify";
 import { supabase } from "../../utils/supabase";
 import { useEffect, useState } from "react";
@@ -24,6 +13,7 @@ import {
 } from "../../components/Icons";
 import EventInformationCard from "../../components/EventInformationCard";
 import DeletionConfirmation from "../../components/DeletionConfirmation";
+import EventHeader from "../../components/EventHeader";
 
 function Event() {
   const { event, error } = useLoaderData() as {
@@ -35,7 +25,6 @@ function Event() {
     message: string;
   }>(null);
 
-  const { user } = useAuth() as IAuthContext;
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -111,40 +100,7 @@ function Event() {
         <Error errorMessage="This event doesn't exist" />
       ) : (
         <Box>
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            flexWrap="wrap"
-          >
-            <Stack direction="row" flexWrap="wrap" gap={1}>
-              <Text fontWeight="bold">{event.nickname}</Text>
-              <Text>&#183;</Text>
-              <Text>
-                {event.created_at.split("T")[0].split("-").reverse().join(".")}
-              </Text>
-            </Stack>
-            {user && user.id === event.author_id && (
-              <Stack direction="row">
-                <Button
-                  size="sm"
-                  colorScheme="facebook"
-                  as={Link}
-                  to={`/events/edit/${event.id}`}
-                >
-                  Edit
-                </Button>
-                <Button
-                  size="sm"
-                  colorScheme="red"
-                  variant="outline"
-                  onClick={onOpen}
-                >
-                  Remove
-                </Button>
-              </Stack>
-            )}
-          </Stack>
+          <EventHeader event={event} onOpen={onOpen} />
           <Box marginTop={8}>
             <Heading as="h1" size="xl" color="gray.700">
               {event.title}
