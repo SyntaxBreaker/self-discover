@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import {
   MaterialSymbolsAttachMoney,
   MaterialSymbolsCalendarMonth,
-  PhGlobe,
+  MaterialSymbolsGlobe,
 } from "../../components/Icons";
 import EventInformationCard from "../../components/EventInformationCard";
 import DeletionConfirmation from "../../components/DeletionConfirmation";
@@ -45,7 +45,7 @@ function Event() {
     },
     {
       id: 2,
-      icon: PhGlobe,
+      icon: MaterialSymbolsGlobe,
       text: (
         <Link to={event.websiteUrl} target="_blank">
           {event.websiteUrl.split("https://")[1]}
