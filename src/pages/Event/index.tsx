@@ -47,7 +47,11 @@ function Event() {
       id: 2,
       icon: MaterialSymbolsGlobe,
       text: (
-        <Link to={event.websiteUrl} target="_blank">
+        <Link
+          to={event.websiteUrl}
+          target="_blank"
+          style={{ textDecoration: "underline" }}
+        >
           {event.websiteUrl.split("https://")[1]}
         </Link>
       ),
