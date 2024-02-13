@@ -7,8 +7,8 @@ import DOMPurify from "dompurify";
 import { supabase } from "../../utils/supabase";
 import { useEffect, useState } from "react";
 import {
+  MaterialSymbolsAttachMoney,
   MaterialSymbolsCalendarMonth,
-  PhCurrencyDollarSimple,
   PhGlobe,
 } from "../../components/Icons";
 import EventInformationCard from "../../components/EventInformationCard";
@@ -40,7 +40,7 @@ function Event() {
     },
     {
       id: 1,
-      icon: PhCurrencyDollarSimple,
+      icon: MaterialSymbolsAttachMoney,
       text: `${event.price === 0 ? "Free" : event.price}`,
     },
     {
