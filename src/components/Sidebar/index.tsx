@@ -12,7 +12,7 @@ import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import SidebarMenu from "../SidebarMenu";
 import {
-  JamMessagesF,
+  MaterialSymbolsChatOutline,
   MaterialSymbolsAdd,
   RiMentalHealthFill,
   MdiFrequentlyAskedQuestions,
@@ -112,7 +112,7 @@ function Sidebar() {
             alignItems="center"
             gap={2}
           >
-            <Icon as={JamMessagesF} />
+            <Icon as={MaterialSymbolsChatOutline} />
             <Text color="white" display={{ base: "none", lg: "inline" }}>
               Chat
             </Text>

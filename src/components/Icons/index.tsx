@@ -107,17 +107,17 @@ function TeenyiconsHashtagOutline() {
   );
 }
 
-function JamMessagesF() {
+function MaterialSymbolsChatOutline() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="40px"
       height="40px"
-      viewBox="-2 -2.5 24 24"
+      viewBox="0 0 24 24"
     >
       <path
         fill="white"
-        d="M3.656 17.979A1 1 0 0 1 2 17.243V15a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H8.003l-4.347 2.979zM16 10.017a7.136 7.136 0 0 0 0 .369v-.37c.005-.107.006-1.447.004-4.019a3 3 0 0 0-3-2.997H5V2a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2v2.243a1 1 0 0 1-1.656.736L16 13.743v-3.726z"
+        d="M6 14h8v-2H6zm0-3h12V9H6zm0-3h12V6H6zM2 22V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18H6zm3.15-6H20V4H4v13.125zM4 16V4z"
       ></path>
     </svg>
   );
@@ -288,7 +288,7 @@ export {
   AkarIconsThumbsUp,
   Fa6RegularComments,
   TeenyiconsHashtagOutline,
-  JamMessagesF,
+  MaterialSymbolsChatOutline,
   MaterialSymbolsLightbulb,
   MaterialSymbolsAdd,
   MaterialSymbolsLogin,
