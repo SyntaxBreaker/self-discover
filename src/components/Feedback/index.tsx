@@ -34,7 +34,7 @@ function Feedback({
       <Flex
         alignItems="center"
         gap={2}
-        _hover={user && { cursor: "pointer" }}
+        _hover={user && { cursor: "pointer", transform: "scale(1.05)" }}
         onClick={() =>
           user &&
           toggleLike({
@@ -56,7 +56,7 @@ function Feedback({
       <Flex
         alignItems="center"
         gap={2}
-        _hover={{ cursor: "pointer", fontWeight: "bold" }}
+        _hover={{ cursor: "pointer", transform: "scale(1.05)" }}
         onClick={() => myRef.current?.scrollIntoView({ behavior: "smooth" })}
       >
         <Icon as={Fa6RegularComments} />
