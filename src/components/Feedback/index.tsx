@@ -1,4 +1,4 @@
-import { Stack, Flex, Icon, Text } from "@chakra-ui/react";
+import { Stack, Icon, Text, Button } from "@chakra-ui/react";
 import { AkarIconsThumbsUp, Fa6RegularComments } from "../../components/Icons";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
@@ -31,10 +31,8 @@ function Feedback({
 
   return (
     <Stack direction="row" spacing="24px" marginTop={8}>
-      <Flex
-        alignItems="center"
-        gap={2}
-        _hover={user && { cursor: "pointer", transform: "scale(1.05)" }}
+      <Button
+        fontWeight={user && likes.includes(user.id) ? "600" : "normal"}
         onClick={() =>
           user &&
           toggleLike({
@@ -46,25 +44,21 @@ function Feedback({
             setStatus: setStatus,
           })
         }
+        leftIcon={<AkarIconsThumbsUp />}
+        variant="ghost"
       >
-        <Icon as={AkarIconsThumbsUp} />
-        <Text fontWeight={user && likes.includes(user.id) ? "bold" : "normal"}>
-          {likes.length > 0 ? likes.length : 0}{" "}
-          {likes.length === 1 ? "like" : "likes"}
-        </Text>
-      </Flex>
-      <Flex
-        alignItems="center"
-        gap={2}
-        _hover={{ cursor: "pointer", transform: "scale(1.05)" }}
+        {likes.length > 0 ? likes.length : 0}{" "}
+        {likes.length === 1 ? "like" : "likes"}
+      </Button>
+      <Button
+        fontWeight="400"
         onClick={() => myRef.current?.scrollIntoView({ behavior: "smooth" })}
+        leftIcon={<Fa6RegularComments />}
+        variant="ghost"
       >
-        <Icon as={Fa6RegularComments} />
-        <Text>
-          {comments.length > 0 ? comments.length : 0}{" "}
-          {comments.length === 1 ? "comment" : "comments"}
-        </Text>
-      </Flex>
+        {comments.length > 0 ? comments.length : 0}{" "}
+        {comments.length === 1 ? "comment" : "comments"}
+      </Button>
     </Stack>
   );
 }
