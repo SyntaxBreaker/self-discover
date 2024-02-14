@@ -1,4 +1,4 @@
-import { Box, Card, Flex, Icon, Stack, Text } from "@chakra-ui/react";
+import { Box, Button, Card, Flex, Icon, Stack, Text } from "@chakra-ui/react";
 import IComment from "../../types/comment";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
@@ -39,7 +39,7 @@ function Comment({
   const editComment = async (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    if(comment.content === updatedComment) {
+    if (comment.content === updatedComment) {
       setIsEditing(false);
       return;
     }
@@ -94,11 +94,11 @@ function Comment({
           }}
         />
       )}
-      <Stack
-        direction="row"
-        alignItems="center"
+      <Button
+        size="sm"
         marginTop={2}
-        _hover={user && { cursor: "pointer" }}
+        alignSelf="flex-start"
+        fontWeight={user && likes.includes(user.id) ? "bold" : "normal"}
         onClick={() =>
           user &&
           toggleLike({
@@ -109,13 +109,12 @@ function Comment({
             userId: user.id,
           })
         }
+        leftIcon={<AkarIconsThumbsUp />}
+        variant="ghost"
       >
-        <Icon as={AkarIconsThumbsUp} />
-        <Text fontWeight={user && likes.includes(user.id) ? "bold" : "normal"}>
-          {likes.length > 0 ? likes.length : 0}{" "}
-          {likes.length === 1 ? "like" : "likes"}
-        </Text>
-      </Stack>
+        {likes.length > 0 ? likes.length : 0}{" "}
+        {likes.length === 1 ? "like" : "likes"}
+      </Button>
     </Flex>
   );
 }
