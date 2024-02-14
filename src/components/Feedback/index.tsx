@@ -30,7 +30,7 @@ function Feedback({
   const { user } = useAuth() as IAuthContext;
 
   return (
-    <Stack direction="row" spacing="24px" marginTop={8}>
+    <Stack direction="row" spacing="16px" marginTop={8}>
       <Button
         fontWeight={user && likes.includes(user.id) ? "600" : "normal"}
         onClick={() =>
@@ -45,7 +45,7 @@ function Feedback({
           })
         }
         leftIcon={<AkarIconsThumbsUp />}
-        variant="ghost"
+        size="sm"
       >
         {likes.length > 0 ? likes.length : 0}{" "}
         {likes.length === 1 ? "like" : "likes"}
@@ -54,7 +54,7 @@ function Feedback({
         fontWeight="400"
         onClick={() => myRef.current?.scrollIntoView({ behavior: "smooth" })}
         leftIcon={<Fa6RegularComments />}
-        variant="ghost"
+        size="sm"
       >
         {comments.length > 0 ? comments.length : 0}{" "}
         {comments.length === 1 ? "comment" : "comments"}
