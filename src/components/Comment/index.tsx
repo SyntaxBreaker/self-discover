@@ -110,7 +110,6 @@ function Comment({
           })
         }
         leftIcon={<AkarIconsThumbsUp />}
-        variant="ghost"
       >
         {likes.length > 0 ? likes.length : 0}{" "}
         {likes.length === 1 ? "like" : "likes"}
