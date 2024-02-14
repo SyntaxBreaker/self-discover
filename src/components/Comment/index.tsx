@@ -1,4 +1,4 @@
-import { Box, Button, Card, Flex, Icon, Stack, Text } from "@chakra-ui/react";
+import { Box, Button, Card, Flex } from "@chakra-ui/react";
 import IComment from "../../types/comment";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";

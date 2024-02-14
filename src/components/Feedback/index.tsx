@@ -1,4 +1,4 @@
-import { Stack, Icon, Text, Button } from "@chakra-ui/react";
+import { Stack, Button } from "@chakra-ui/react";
 import { AkarIconsThumbsUp, Fa6RegularComments } from "../../components/Icons";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
