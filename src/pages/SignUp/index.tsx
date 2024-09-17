@@ -94,7 +94,13 @@ function SignUp() {
             maxLength={14}
           />
         </FormControl>
-        <Button marginTop={4} width="100%" type="submit" colorScheme="facebook">
+        <Button
+          marginTop={4}
+          width="100%"
+          type="submit"
+          fontSize="sm"
+          colorScheme="facebook"
+        >
           Sign up
         </Button>
         <Text marginTop={4} fontSize="sm" align="right">
