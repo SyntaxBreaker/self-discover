@@ -97,7 +97,7 @@ function SignUp() {
         <Button marginTop={4} width="100%" type="submit" colorScheme="facebook">
           Sign up
         </Button>
-        <Text marginTop={4} align="center">
+        <Text marginTop={4} fontSize="sm" align="right">
           Already have an account?{" "}
           <ChakraLink
             as={ReactRouterLink}
