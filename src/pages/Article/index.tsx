@@ -104,7 +104,7 @@ function Article() {
                 tags={
                   isTagListExpanded ? article.tags : article.tags.slice(0, 8)
                 }
-                size="lg"
+                size="md"
               />
               {article.tags.length > 8 && (
                 <Button
