@@ -32,26 +32,19 @@ function Tags() {
       {error ? (
         <Error errorMessage={error.message} />
       ) : (
-        <>
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            marginBottom={8}
-          >
-            <Heading as="h1" size="lg" flexBasis="100%" color="gray.700">
-              Tag list
-            </Heading>
-            <DataFilter
-              filterKeyword={filterKeyword}
-              setFilterKeyword={setFilterKeyword}
-            />
-          </Stack>
+        <Stack direction="column" alignItems="center" gap={4}>
+          <Heading as="h1" size="lg" flexBasis="100%" color="gray.700">
+            Tag list
+          </Heading>
+          <DataFilter
+            filterKeyword={filterKeyword}
+            setFilterKeyword={setFilterKeyword}
+          />
           <TagList
             tags={filterKeyword.length > 0 ? filteredTags : tags}
             size="md"
           />
-        </>
+        </Stack>
       )}
     </ResponsiveContainer>
   );
