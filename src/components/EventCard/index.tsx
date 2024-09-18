@@ -43,19 +43,19 @@ function EventCard({ event }: { event: IEvent }) {
               <Text fontSize="xs" fontWeight="bold">
                 Start time
               </Text>
-              <Text fontSize="sm">{event.startDate.toString()}</Text>
+              <Text fontSize="xs">{event.startDate.toString()}</Text>
             </Flex>
             <Flex direction="column" gap={1}>
               <Text fontSize="xs" fontWeight="bold">
                 End time
               </Text>
-              <Text fontSize="sm">{event.endDate.toString()}</Text>
+              <Text fontSize="xs">{event.endDate.toString()}</Text>
             </Flex>
             <Flex direction="column" gap={1}>
               <Text fontSize="xs" fontWeight="bold">
                 Ticket price
               </Text>
-              <Text fontSize="sm">
+              <Text fontSize="xs">
                 {event.price > 0 ? `$${event.price}` : "Free"}
               </Text>
             </Flex>
