@@ -26,7 +26,7 @@ function CommentHeader({
       flexWrap="wrap"
     >
       <Stack direction="row" alignItems="center">
-        <Text fontSize="lg" fontWeight="bold">
+        <Text fontSize="sm" fontWeight="bold">
           {comment.nickname}
         </Text>
         <Text fontSize="sm">&#183;</Text>
