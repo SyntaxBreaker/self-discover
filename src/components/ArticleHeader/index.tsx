@@ -1,4 +1,4 @@
-import { Button, Stack, Text } from "@chakra-ui/react";
+import { Button, Flex, Stack, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
@@ -19,10 +19,15 @@ function ArticleHeader({ article, onOpen }: IProps) {
       alignItems="center"
       flexWrap="wrap"
     >
-      <Stack direction="row" flexWrap="wrap" gap={1}>
-        <Text fontWeight="bold">Created by {article.nickname}</Text>
+      <Stack direction="row" flexWrap="wrap" alignItems="center" gap={1}>
+        <Text as="span">
+          Created by{" "}
+          <Text as="span" fontWeight="bold">
+            {article.nickname}
+          </Text>
+        </Text>
         <Text>&#183;</Text>
-        <Text>
+        <Text fontSize="sm">
           {article.created_at.split("T")[0].split("-").reverse().join(".")}
         </Text>
       </Stack>
