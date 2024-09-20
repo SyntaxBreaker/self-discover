@@ -1,4 +1,4 @@
-import { Button, Flex, Stack, Text } from "@chakra-ui/react";
+import { Button, Stack, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
