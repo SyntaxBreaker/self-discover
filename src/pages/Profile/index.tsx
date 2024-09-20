@@ -1,4 +1,4 @@
-import { Box, Flex, Image } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import { useLoaderData } from "react-router-dom";
@@ -7,6 +7,7 @@ import ArticleList from "../../components/ArticleList";
 import { PostgrestError } from "@supabase/supabase-js";
 import ResponsiveContainer from "../../components/ResponsiveContainer";
 import ProfileInfo from "../../components/ProfileInfo";
+import ProfileAvatar from "../../components/ProfileAvatar";
 
 function Profile() {
   const { user } = useAuth() as IAuthContext;
@@ -23,17 +24,7 @@ function Profile() {
         alignItems="center"
         flexWrap={{ base: "wrap", md: "nowrap" }}
       >
-        <Image
-          boxSize="150px"
-          objectFit="cover"
-          src={
-            user.user_metadata.avatar_url
-              ? user.user_metadata.avatar_url
-              : "https://bit.ly/dan-abramov"
-          }
-          alt="Your profile picture"
-          borderRadius="full"
-        />
+        <ProfileAvatar user={user} />
         <ProfileInfo />
       </Flex>
       <Box marginTop={16}>
