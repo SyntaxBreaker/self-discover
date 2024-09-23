@@ -33,7 +33,7 @@ function EventCard({ event }: { event: IEvent }) {
               display: "-webkit-box",
               WebkitLineClamp: 3,
               WebkitBoxOrient: "vertical",
-              fontSize: "14px",
+              fontSize: "12px",
             }}
           />
         </CardBody>
