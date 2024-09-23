@@ -19,7 +19,7 @@ function ArticleCard({ article }: { article: IArticle }) {
           objectFit="cover"
           src={article.image}
           borderTopRadius="6px"
-          height={{ base: "300px", xl: "280px" }}
+          height={{ base: "320px", xl: "240px" }}
           width="full"
           alt=""
         />
