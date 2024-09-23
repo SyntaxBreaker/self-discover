@@ -26,6 +26,8 @@ function ChatForm({ message, setMessage, handleSubmit }: IProps) {
           value={message}
           onChange={(event) => setMessage(event.target.value)}
           placeholder="Type your message here..."
+          padding={2}
+          size="sm"
           required
         />
       </FormControl>
