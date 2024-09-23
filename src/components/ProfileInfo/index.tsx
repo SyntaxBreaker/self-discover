@@ -16,7 +16,7 @@ function ProfileInfo() {
         justifyContent="space-between"
         flexWrap={{ base: "wrap", md: "nowrap" }}
       >
-        <Text fontSize="2xl" color="gray.700">
+        <Text fontSize="2xl" fontWeight="bold" color="gray.700">
           {user.user_metadata.username}
         </Text>
         <Button
