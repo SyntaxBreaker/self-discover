@@ -8,10 +8,10 @@ function EmptyArticleList() {
   const { user } = useAuth() as IAuthContext;
 
   return (
-    <Flex alignSelf="center" flexDirection="column" gap={2}>
+    <Flex alignSelf="center" flexDirection="column" gap={1}>
       <Image src={postImage} alt="" boxSize="sm" />
       <Heading
-        fontSize="lg"
+        fontSize="xl"
         textAlign="center"
         fontWeight="bold"
         color="gray.700"
@@ -23,13 +23,11 @@ function EmptyArticleList() {
           ? "Start by adding a new article."
           : "Please log in to add an article."}
       </Text>
-      {
-        <Box as={Button} colorScheme="facebook" textAlign="center">
-          <Link to={user ? "/create" : "/signIn"}>
-            {user ? "Add Article" : "Sign in"}
-          </Link>
-        </Box>
-      }
+      <Box as={Button} colorScheme="facebook" textAlign="center" marginTop={4}>
+        <Link to={user ? "/create" : "/signIn"}>
+          {user ? "Add Article" : "Sign in"}
+        </Link>
+      </Box>
     </Flex>
   );
 }
