@@ -7,6 +7,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Text,
 } from "@chakra-ui/react";
 
 interface IProps {
@@ -28,13 +29,15 @@ function DeletionConfirmation({ isOpen, onClose, handleRemove }: IProps) {
         <ModalHeader>Confirm</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          Are you sure you want to delete it? This process cannot be undone.
+          <Text fontSize="sm">
+            Are you sure you want to delete it? This process cannot be undone.
+          </Text>
         </ModalBody>
         <ModalFooter gap={2}>
-          <Button onClick={onClose} variant="ghost">
+          <Button onClick={onClose} variant="ghost" size="sm">
             Cancel
           </Button>
-          <Button colorScheme="red" onClick={handleRemoveAndClose}>
+          <Button colorScheme="red" onClick={handleRemoveAndClose} size="sm">
             Delete
           </Button>
         </ModalFooter>
