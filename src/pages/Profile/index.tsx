@@ -1,4 +1,4 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import { useLoaderData } from "react-router-dom";
@@ -27,9 +27,7 @@ function Profile() {
         <ProfileAvatar user={user} />
         <ProfileInfo />
       </Flex>
-      <Box marginTop={16}>
-        <ArticleList articles={articles} error={error} />
-      </Box>
+      <ArticleList articles={articles} error={error} />
     </ResponsiveContainer>
   );
 }
