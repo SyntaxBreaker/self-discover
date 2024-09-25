@@ -2,8 +2,7 @@ import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { IEvent } from "../../types/event";
 import ResponsiveContainer from "../../components/ResponsiveContainer";
 import Error from "../../components/Error";
-import { Alert, Box, Flex, Heading, useDisclosure } from "@chakra-ui/react";
-import DOMPurify from "dompurify";
+import { Alert, useDisclosure } from "@chakra-ui/react";
 import { supabase } from "../../utils/supabase";
 import { useEffect, useState } from "react";
 import {
@@ -11,9 +10,7 @@ import {
   MaterialSymbolsCalendarMonth,
   MaterialSymbolsGlobe,
 } from "../../components/Icons";
-import EventInformationCard from "../../components/EventInformationCard";
-import DeletionConfirmation from "../../components/DeletionConfirmation";
-import EventHeader from "../../components/EventHeader";
+import EventContent from "../../components/EventContent";
 
 function Event() {
   const { event, error } = useLoaderData() as {
@@ -103,36 +100,14 @@ function Event() {
       {error || !event ? (
         <Error errorMessage="This event doesn't exist" />
       ) : (
-        <Box>
-          <EventHeader event={event} onOpen={onOpen} />
-          <Box marginTop={8}>
-            <Heading as="h1" size="xl" color="gray.700">
-              {event.title}
-            </Heading>
-          </Box>
-          <Flex marginTop={8} gap={4} flexWrap="wrap">
-            {eventDetails.map((eventDetail) => (
-              <EventInformationCard
-                key={eventDetail.id}
-                icon={eventDetail.icon}
-                text={eventDetail.text}
-              />
-            ))}
-          </Flex>
-          <Box
-            letterSpacing="0.8px"
-            marginTop={8}
-            className="react-markdown"
-            dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(event.description),
-            }}
-          />
-          <DeletionConfirmation
-            isOpen={isOpen}
-            onClose={onClose}
-            handleRemove={handleRemoveEvent}
-          />
-        </Box>
+        <EventContent
+          event={event}
+          onOpen={onOpen}
+          eventDetails={eventDetails}
+          isOpen={isOpen}
+          onClose={onClose}
+          handleRemoveEvent={handleRemoveEvent}
+        />
       )}
     </ResponsiveContainer>
   );
