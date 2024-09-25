@@ -1,24 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import IArticle from "../../types/article";
-import {
-  Alert,
-  Box,
-  Button,
-  Heading,
-  Stack,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Alert, Box, useDisclosure } from "@chakra-ui/react";
 import { supabase } from "../../utils/supabase";
-import DOMPurify from "isomorphic-dompurify";
 import IComment from "../../types/comment";
 import CommentList from "../../components/CommentList";
 import ResponsiveContainer from "../../components/ResponsiveContainer";
-import TagList from "../../components/TagList";
 import Error from "../../components/Error";
 import Feedback from "../../components/Feedback";
 import DeletionConfirmation from "../../components/DeletionConfirmation";
-import ArticleHeader from "../../components/ArticleHeader";
+import ArticleContent from "../../components/ArticleContent";
 
 function Article() {
   const { article, error } = useLoaderData() as {
@@ -86,38 +77,12 @@ function Article() {
         <Error errorMessage="This article doesn't exist" />
       ) : (
         <Box>
-          <ArticleHeader article={article} onOpen={onOpen} />
-          <Heading as="h1" size="xl" color="gray.700" marginTop={8}>
-            {article.title}
-          </Heading>
-          <Box
-            letterSpacing="0.8px"
-            marginTop={8}
-            className="react-markdown"
-            dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(article.content),
-            }}
+          <ArticleContent
+            article={article}
+            onOpen={onOpen}
+            isTagListExpanded={isTagListExpanded}
+            setIsTagListExpanded={setIsTagListExpanded}
           />
-          {article.tags && article.tags.length > 0 && (
-            <Stack marginTop={8}>
-              <TagList
-                tags={
-                  isTagListExpanded ? article.tags : article.tags.slice(0, 8)
-                }
-                size="md"
-              />
-              {article.tags.length > 8 && (
-                <Button
-                  onClick={() => setIsTagListExpanded(!isTagListExpanded)}
-                  colorScheme="facebook"
-                  variant="outline"
-                  marginTop={1}
-                >
-                  {isTagListExpanded ? "Show less" : "Show more"}
-                </Button>
-              )}
-            </Stack>
-          )}
           <Feedback
             likes={likes}
             setLikes={setLikes}
