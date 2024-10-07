@@ -88,7 +88,7 @@ function Chat() {
           ref={ref}
           paddingX={2}
         >
-          {chats.length > 0 ? (
+          {chats && chats.length > 0 ? (
             chats.map((chat) => <MessageContainer chat={chat} key={chat.id} />)
           ) : (
             <EmptyChat />
