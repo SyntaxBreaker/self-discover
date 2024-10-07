@@ -18,6 +18,7 @@ import {
   MdiFrequentlyAskedQuestions,
   TeenyiconsHashtagOutline,
   MaterialSymbolsDateRange,
+  MaterialSymbolsArticle,
 } from "../Icons";
 
 function Sidebar() {
@@ -34,7 +35,7 @@ function Sidebar() {
       top="0"
     >
       <Tooltip label="Homepage" display={{ base: "initial", lg: "none" }}>
-        <Link as={NavLink} to="/" _activeLink={{ fontWeight: "900" }}>
+        <Link as={NavLink} to="/">
           <Box
             paddingY={2}
             paddingX={{ base: 0, sm: 2 }}
@@ -51,6 +52,23 @@ function Sidebar() {
         </Link>
       </Tooltip>
       <Divider />
+      <Tooltip label="Articles" display={{ base: "initial", lg: "none" }}>
+        <Link as={NavLink} to="/" _activeLink={{ fontWeight: "900" }}>
+          <Box
+            paddingY={2}
+            paddingX={{ base: 0, sm: 2 }}
+            _hover={{ backgroundColor: "gray.700" }}
+            display="flex"
+            alignItems="center"
+            gap={2}
+          >
+            <Icon as={MaterialSymbolsArticle} />
+            <Text color="white" display={{ base: "none", lg: "inline" }}>
+              Articles
+            </Text>
+          </Box>
+        </Link>
+      </Tooltip>
       <Tooltip label="Create Post" display={{ base: "initial", lg: "none" }}>
         <Link as={NavLink} to="/create" _activeLink={{ fontWeight: "900" }}>
           <Box
