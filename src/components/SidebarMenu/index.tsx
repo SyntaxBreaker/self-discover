@@ -79,7 +79,7 @@ function SidebarMenu({ user }: { user: User }) {
         >
           Edit Profile
         </MenuItem>
-        <MenuItem onClick={signOut}>Log out</MenuItem>
+        <MenuItem onClick={signOut}>Log Out</MenuItem>
       </MenuList>
     </Menu>
   );
