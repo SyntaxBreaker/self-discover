@@ -87,7 +87,6 @@ function Comment({
         />
       ) : (
         <Box
-          letterSpacing="0.8px"
           className="react-markdown"
           dangerouslySetInnerHTML={{
             __html: DOMPurify.sanitize(comment.content),
