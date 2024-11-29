@@ -35,7 +35,7 @@ function CommentHeader({
         </Text>
       </Stack>
       {user && user.id === comment.author_id && !isEditing && (
-        <Stack direction="row">
+        <Stack direction="row" marginTop={{ base: 2, sm: 0 }}>
           <Button
             position="static"
             size="sm"

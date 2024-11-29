@@ -67,7 +67,7 @@ function Comment({
     <Flex
       direction="column"
       marginTop={4}
-      gap={1}
+      gap={{ base: 4, sm: 2 }}
       as={Card}
       padding={4}
       position="static"
@@ -95,7 +95,7 @@ function Comment({
       )}
       <Button
         size="sm"
-        marginTop={2}
+        marginTop={{ base: 0, sm: 2 }}
         alignSelf="flex-start"
         fontWeight={user && likes.includes(user.id) ? "bold" : "normal"}
         onClick={() =>
