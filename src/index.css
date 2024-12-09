@@ -11,6 +11,11 @@
   position: static !important;
 }
 
+.react-markdown p {
+  letter-spacing: normal;
+  line-height: 1.5;
+}
+
 .react-markdown h2 {
   font-size: 30px;
 }
@@ -51,7 +56,7 @@
 }
 
 .rdrMonth {
-  width: 100% !important; 
+  width: 100% !important;
 }
 
 .react-markdown a {
