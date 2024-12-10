@@ -1,14 +1,13 @@
-import { Flex, Image, Text, Box, Button, Heading } from "@chakra-ui/react";
+import { Flex, Image, Text, Button, Heading, Link } from "@chakra-ui/react";
 import postImage from "../../assets/images/post.svg";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
-import { Link } from "react-router-dom";
 
 function EmptyArticleList() {
   const { user } = useAuth() as IAuthContext;
 
   return (
-    <Flex alignSelf="center" flexDirection="column" gap={1}>
+    <Flex alignSelf="center" flexDirection="column" alignItems="center" gap={1}>
       <Image src={postImage} alt="" boxSize="sm" />
       <Heading
         fontSize="xl"
@@ -23,11 +22,11 @@ function EmptyArticleList() {
           ? "Start by adding a new article."
           : "Please log in to add an article."}
       </Text>
-      <Box as={Button} colorScheme="facebook" textAlign="center" marginTop={4}>
-        <Link to={user ? "/create" : "/signIn"}>
+      <Link href={user ? "/create" : "/signIn"} marginTop={4}>
+        <Button colorScheme="facebook" textAlign="center">
           {user ? "Add Article" : "Sign in"}
-        </Link>
-      </Box>
+        </Button>
+      </Link>
     </Flex>
   );
 }
