@@ -1,6 +1,5 @@
-import { Image, Text, Button, Flex, Heading, Box } from "@chakra-ui/react";
+import { Image, Text, Button, Flex, Heading, Link } from "@chakra-ui/react";
 import eventImage from "../../assets/images/event.svg";
-import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 
@@ -21,11 +20,11 @@ function EmptyEventList() {
       <Text textAlign="center" color="gray.600" fontSize="sm">
         There are no events yet. You can add a new event using the button below.
       </Text>
-      <Box as={Button} colorScheme="facebook" textAlign="center" marginTop={4}>
-        <Link to={user ? "/events/create" : "/signIn"}>
+      <Link href={user ? "/events/create" : "/signIn"} marginTop={4}>
+        <Button colorScheme="facebook" textAlign="center">
           {user ? "Add event" : "Sign in"}
-        </Link>
-      </Box>
+        </Button>
+      </Link>
     </Flex>
   );
 }
