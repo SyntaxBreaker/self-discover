@@ -22,7 +22,7 @@ function EmptyEventList() {
       </Text>
       <Link href={user ? "/events/create" : "/signIn"} marginTop={4}>
         <Button colorScheme="facebook" textAlign="center">
-          {user ? "Add event" : "Sign in"}
+          {user ? "Add Event" : "Sign in"}
         </Button>
       </Link>
     </Flex>
