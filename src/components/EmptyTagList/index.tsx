@@ -1,6 +1,5 @@
-import { Image, Heading, Text, Flex, Button, Box } from "@chakra-ui/react";
+import { Image, Heading, Text, Flex, Button, Link } from "@chakra-ui/react";
 import searchingImage from "../../assets/images/searching.svg";
-import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 
@@ -22,11 +21,11 @@ function EmptyTagList() {
         There are currently no tags associated with this keyword. You can add a
         new article using the button below.
       </Text>
-      <Box as={Button} colorScheme="facebook" textAlign="center" marginTop={4}>
-        <Link to={user ? "/create" : "/signIn"}>
+      <Link href={user ? "/create" : "/signIn"} marginTop={4}>
+        <Button colorScheme="facebook" textAlign="center">
           {user ? "Add Article" : "Sign in"}
-        </Link>
-      </Box>
+        </Button>
+      </Link>
     </Flex>
   );
 }
