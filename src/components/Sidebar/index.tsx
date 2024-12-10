@@ -35,7 +35,7 @@ function Sidebar() {
       top="0"
     >
       <Tooltip label="Homepage" display={{ base: "initial", lg: "none" }}>
-        <Link as={NavLink} to="/">
+        <Link as={NavLink} to="/" aria-label="Go to the homepage">
           <Box
             paddingY={2}
             paddingX={{ base: 0, sm: 2 }}
@@ -53,7 +53,12 @@ function Sidebar() {
       </Tooltip>
       <Divider />
       <Tooltip label="Articles" display={{ base: "initial", lg: "none" }}>
-        <Link as={NavLink} to="/" _activeLink={{ fontWeight: "900" }}>
+        <Link
+          as={NavLink}
+          to="/"
+          _activeLink={{ fontWeight: "900" }}
+          aria-label="Explore articles"
+        >
           <Box
             paddingY={2}
             paddingX={{ base: 0, sm: 2 }}
@@ -70,7 +75,12 @@ function Sidebar() {
         </Link>
       </Tooltip>
       <Tooltip label="Create Post" display={{ base: "initial", lg: "none" }}>
-        <Link as={NavLink} to="/create" _activeLink={{ fontWeight: "900" }}>
+        <Link
+          as={NavLink}
+          to="/create"
+          _activeLink={{ fontWeight: "900" }}
+          aria-label="Create a new post"
+        >
           <Box
             paddingY={2}
             paddingX={{ base: 0, sm: 2 }}
@@ -87,7 +97,12 @@ function Sidebar() {
         </Link>
       </Tooltip>
       <Tooltip label="Events" display={{ base: "initial", lg: "none" }}>
-        <Link as={NavLink} to="/events" _activeLink={{ fontWeight: "900" }}>
+        <Link
+          as={NavLink}
+          to="/events"
+          _activeLink={{ fontWeight: "900" }}
+          aria-label="Explore events"
+        >
           <Box
             paddingY={2}
             paddingX={{ base: 0, sm: 2 }}
@@ -104,7 +119,12 @@ function Sidebar() {
         </Link>
       </Tooltip>
       <Tooltip label="Tags" display={{ base: "initial", lg: "none" }}>
-        <Link as={NavLink} to="/tags" _activeLink={{ fontWeight: "900" }}>
+        <Link
+          as={NavLink}
+          to="/tags"
+          _activeLink={{ fontWeight: "900" }}
+          aria-label="Explore tags"
+        >
           <Box
             paddingY={2}
             paddingX={{ base: 0, sm: 2 }}
@@ -121,7 +141,12 @@ function Sidebar() {
         </Link>
       </Tooltip>
       <Tooltip label="Chat" display={{ base: "initial", lg: "none" }}>
-        <Link as={NavLink} to="/chat" _activeLink={{ fontWeight: "900" }}>
+        <Link
+          as={NavLink}
+          to="/chat"
+          _activeLink={{ fontWeight: "900" }}
+          aria-label="Go to the chat page"
+        >
           <Box
             paddingY={2}
             paddingX={{ base: 0, sm: 2 }}
@@ -138,7 +163,12 @@ function Sidebar() {
         </Link>
       </Tooltip>
       <Tooltip label="FAQ" display={{ base: "initial", lg: "none" }}>
-        <Link as={NavLink} to="/faq" _activeLink={{ fontWeight: "900" }}>
+        <Link
+          as={NavLink}
+          to="/faq"
+          _activeLink={{ fontWeight: "900" }}
+          aria-label="Go to the FAQ page"
+        >
           <Box
             paddingY={2}
             paddingX={{ base: 0, sm: 2 }}
@@ -160,7 +190,12 @@ function Sidebar() {
           <SidebarMenu user={user} />
         ) : (
           <Tooltip label="Sign in" display={{ base: "initial", lg: "none" }}>
-            <Link as={NavLink} to="/signIn" _activeLink={{ fontWeight: "900" }}>
+            <Link
+              as={NavLink}
+              to="/signIn"
+              _activeLink={{ fontWeight: "900" }}
+              aria-label="Sign in"
+            >
               <Box
                 paddingY={2}
                 paddingX={{ base: 0, sm: 2 }}
