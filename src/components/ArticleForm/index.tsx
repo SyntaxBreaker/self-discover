@@ -13,7 +13,10 @@ import { useEffect, useState } from "react";
 import IArticle from "../../types/article";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { quillToolbarConfig } from "../../utils/quillConfig";
+import {
+  addAccessibilityAttributes,
+  quillToolbarConfig,
+} from "../../utils/quill";
 import {
   ARTICLE_CONTENT_REQUIRED,
   ARTICLE_TITLE_REQUIRED,
@@ -45,6 +48,8 @@ function ArticleForm({
         tags: article.tags.join(", "),
       });
     }
+
+    addAccessibilityAttributes();
   }, []);
 
   const handleChange = (

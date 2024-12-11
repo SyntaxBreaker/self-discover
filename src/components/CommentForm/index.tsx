@@ -1,12 +1,15 @@
 import { Button, Flex, FormControl } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import ReactQuill from "react-quill";
 import { supabase } from "../../utils/supabase";
 import { useParams } from "react-router-dom";
 import IComment from "../../types/comment";
-import { quillToolbarConfig } from "../../utils/quillConfig";
+import {
+  addAccessibilityAttributes,
+  quillToolbarConfig,
+} from "../../utils/quill";
 
 function CommentForm({
   setComments,
@@ -43,6 +46,10 @@ function CommentForm({
       setContent("");
     }
   };
+
+  useEffect(() => {
+    addAccessibilityAttributes();
+  }, []);
 
   return (
     <Flex

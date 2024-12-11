@@ -13,7 +13,10 @@ import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import ReactQuill from "react-quill";
-import { quillToolbarConfig } from "../../utils/quillConfig";
+import {
+  addAccessibilityAttributes,
+  quillToolbarConfig,
+} from "../../utils/quill";
 import { IEvent, IFormData } from "../../types/event";
 import IDate from "../../types/date";
 import {
@@ -61,6 +64,8 @@ function EventForm({ event, error, handleSubmit }: IProps) {
         endDate: new Date(endDate),
       }));
     }
+
+    addAccessibilityAttributes();
   }, []);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

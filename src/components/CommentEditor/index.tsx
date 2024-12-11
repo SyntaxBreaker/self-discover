@@ -1,6 +1,10 @@
 import { Button, Flex, FormControl } from "@chakra-ui/react";
 import ReactQuill from "react-quill";
-import { quillToolbarConfig } from "../../utils/quillConfig";
+import {
+  addAccessibilityAttributes,
+  quillToolbarConfig,
+} from "../../utils/quill";
+import { useEffect } from "react";
 
 interface IProps {
   editComment: (e: React.SyntheticEvent) => Promise<void>;
@@ -15,6 +19,10 @@ function CommentEditor({
   setUpdatedComment,
   setIsEditing,
 }: IProps) {
+  useEffect(() => {
+    addAccessibilityAttributes();
+  }, []);
+
   return (
     <Flex
       direction="column"
@@ -42,7 +50,12 @@ function CommentEditor({
         >
           Cancel
         </Button>
-        <Button alignSelf="flex-end" colorScheme="facebook" size="sm" type="submit">
+        <Button
+          alignSelf="flex-end"
+          colorScheme="facebook"
+          size="sm"
+          type="submit"
+        >
           Submit
         </Button>
       </Flex>
