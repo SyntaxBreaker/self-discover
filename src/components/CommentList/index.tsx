@@ -16,12 +16,11 @@ function CommentList({
 
   return (
     <Flex flexDirection="column" gap={2} marginTop={8} borderRadius={4}>
-      {comments.length > 0 ||
-        (user && (
-          <Heading as="h2" size="md">
-            Comments
-          </Heading>
-        ))}
+      {comments.length > 0 && (
+        <Heading as="h2" size="md">
+          Comments
+        </Heading>
+      )}
       {user && <CommentForm setComments={setComments} />}
       {comments.map((comment) => (
         <Comment comment={comment} setComments={setComments} key={comment.id} />
