@@ -1,11 +1,11 @@
-import { Button, Card, Flex, Heading, Box } from "@chakra-ui/react";
+import { Button, Card, Flex, Heading, Link } from "@chakra-ui/react";
 import ResponsiveContainer from "../../components/ResponsiveContainer";
 import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import { supabase } from "../../utils/supabase";
 import IChat from "../../types/chat";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { PostgrestError } from "@supabase/supabase-js";
 import MessageContainer from "../../components/MessageContainer";
 import ChatForm from "../../components/ChatForm";
@@ -101,10 +101,10 @@ function Chat() {
             handleSubmit={handleSubmit}
           />
         ) : (
-          <Link to="/signIn">
-            <Box as={Button} colorScheme="facebook" marginTop={4} width="100%">
-              Sign in
-            </Box>
+          <Link href="/signIn" marginTop={4}>
+            <Button colorScheme="facebook" width="100%">
+              Sign In
+            </Button>
           </Link>
         )}
       </Card>
