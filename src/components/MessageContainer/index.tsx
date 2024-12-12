@@ -62,6 +62,7 @@ function MessageContainer({ chat }: { chat: IChat }) {
           fontSize="xs"
           alignItems="center"
           justifyContent="space-between"
+          gap={4}
         >
           <Text>{chat.username}</Text>
           {user?.id === chat.user_id && (
