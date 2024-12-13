@@ -42,7 +42,7 @@ function Tags() {
           />
           <TagList
             tags={filterKeyword.length > 0 ? filteredTags : tags}
-            size="md"
+            size="lg"
           />
         </Stack>
       )}
