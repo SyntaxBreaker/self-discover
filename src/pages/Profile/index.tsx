@@ -18,16 +18,18 @@ function Profile() {
 
   return (
     <ResponsiveContainer>
-      <Flex
-        direction="row"
-        gap={8}
-        alignItems="center"
-        flexWrap={{ base: "wrap", md: "nowrap" }}
-      >
-        <ProfileAvatar user={user} />
-        <ProfileInfo />
+      <Flex direction="column" gap={8}>
+        <Flex
+          direction="row"
+          gap={8}
+          alignItems="center"
+          flexWrap={{ base: "wrap", md: "nowrap" }}
+        >
+          <ProfileAvatar user={user} />
+          <ProfileInfo />
+        </Flex>
+        <ArticleList articles={articles} error={error} />
       </Flex>
-      <ArticleList articles={articles} error={error} />
     </ResponsiveContainer>
   );
 }
