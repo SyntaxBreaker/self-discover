@@ -32,7 +32,7 @@ function ArticleContent({
         }}
       />
       {article.tags && article.tags.length > 0 && (
-        <Stack marginTop={8}>
+        <Stack marginTop={4}>
           <TagList
             tags={isTagListExpanded ? article.tags : article.tags.slice(0, 8)}
             size="md"
