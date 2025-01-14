@@ -4,7 +4,6 @@ import {
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
-  Box,
   Heading,
   Text,
 } from "@chakra-ui/react";
@@ -28,14 +27,18 @@ function FAQAccordion({ faqList }: FAQAccordionProps) {
           border="none"
           borderBottom="1px solid #E2E8F0"
         >
-          <Heading as="h2" size="4xl">
-            <AccordionButton>
-              <Box as="span" flex="1" textAlign="left">
-                {faq.question}
-              </Box>
-              <AccordionIcon />
-            </AccordionButton>
-          </Heading>
+          <AccordionButton>
+            <Heading
+              as="h2"
+              fontSize="medium"
+              fontWeight="semibold"
+              flex="1"
+              textAlign="left"
+            >
+              {faq.question}
+            </Heading>
+            <AccordionIcon />
+          </AccordionButton>
           <AccordionPanel pb={4}>
             <Text fontSize="sm" color="gray.600">
               {faq.answer}
