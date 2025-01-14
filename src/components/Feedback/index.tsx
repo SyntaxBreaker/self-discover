@@ -30,7 +30,7 @@ function Feedback({
   const { user } = useAuth() as IAuthContext;
 
   return (
-    <Stack direction="row" spacing="16px" marginTop={8}>
+    <Stack direction="row" spacing="16px" marginTop={4}>
       <Button
         fontWeight={user && likes.includes(user.id) ? "600" : "normal"}
         onClick={() =>
