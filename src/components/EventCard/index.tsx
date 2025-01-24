@@ -40,22 +40,20 @@ function EventCard({ event }: { event: IEvent }) {
         <CardFooter>
           <Flex gap={8}>
             <Flex direction="column" gap={1}>
+              <Text fontSize="xs">Start time</Text>
               <Text fontSize="xs" fontWeight="bold">
-                Start time
+                {event.startDate.toString()}
               </Text>
-              <Text fontSize="xs">{event.startDate.toString()}</Text>
             </Flex>
             <Flex direction="column" gap={1}>
+              <Text fontSize="xs">End time</Text>
               <Text fontSize="xs" fontWeight="bold">
-                End time
+                {event.endDate.toString()}
               </Text>
-              <Text fontSize="xs">{event.endDate.toString()}</Text>
             </Flex>
             <Flex direction="column" gap={1}>
+              <Text fontSize="xs">Ticket price</Text>
               <Text fontSize="xs" fontWeight="bold">
-                Ticket price
-              </Text>
-              <Text fontSize="xs">
                 {event.price > 0 ? `$${event.price}` : "Free"}
               </Text>
             </Flex>
