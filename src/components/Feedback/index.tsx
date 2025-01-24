@@ -4,6 +4,7 @@ import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import toggleLike from "../../utils/toggleLike";
 import IComment from "../../types/comment";
+import { useNavigate } from "react-router-dom";
 
 interface IProps {
   likes: string[];
@@ -28,21 +29,23 @@ function Feedback({
   myRef,
 }: IProps) {
   const { user } = useAuth() as IAuthContext;
+  const navigate = useNavigate();
 
   return (
     <Stack direction="row" spacing="16px" marginTop={4}>
       <Button
         fontWeight={user && likes.includes(user.id) ? "600" : "normal"}
         onClick={() =>
-          user &&
-          toggleLike({
-            table: "articles",
-            likes: likes,
-            setLikes: setLikes,
-            id: articleID,
-            userId: user.id,
-            setStatus: setStatus,
-          })
+          user
+            ? toggleLike({
+                table: "articles",
+                likes: likes,
+                setLikes: setLikes,
+                id: articleID,
+                userId: user.id,
+                setStatus: setStatus,
+              })
+            : navigate("/SignIn")
         }
         leftIcon={<AkarIconsThumbsUp />}
         size="sm"
