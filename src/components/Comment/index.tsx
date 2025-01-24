@@ -9,6 +9,7 @@ import { AkarIconsThumbsUp } from "../Icons";
 import toggleLike from "../../utils/toggleLike";
 import CommentHeader from "../CommentHeader";
 import CommentEditor from "../CommentEditor";
+import { useNavigate } from "react-router-dom";
 
 function Comment({
   comment,
@@ -22,6 +23,7 @@ function Comment({
   const [likes, setLikes] = useState(comment.likes);
 
   const { user } = useAuth() as IAuthContext;
+  const navigate = useNavigate();
 
   const removeComment = async () => {
     const { error } = await supabase
@@ -99,14 +101,15 @@ function Comment({
         alignSelf="flex-start"
         fontWeight={user && likes.includes(user.id) ? "bold" : "normal"}
         onClick={() =>
-          user &&
-          toggleLike({
-            table: "comments",
-            likes: likes,
-            setLikes: setLikes,
-            id: comment.id,
-            userId: user.id,
-          })
+          user
+            ? toggleLike({
+                table: "comments",
+                likes: likes,
+                setLikes: setLikes,
+                id: comment.id,
+                userId: user.id,
+              })
+            : navigate("/SignIn")
         }
         leftIcon={<AkarIconsThumbsUp />}
       >
