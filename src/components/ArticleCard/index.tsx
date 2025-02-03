@@ -12,7 +12,7 @@ import ArticleDetails from "../ArticleDetails";
 
 function ArticleCard({ article }: { article: IArticle }) {
   return (
-    <Card key={article.id} position="static">
+    <Card key={article.id} position="static" _hover={{ transform: "scale(1.01)" }}>
       <CardHeader padding="0">
         <Image
           loading="lazy"
