@@ -28,10 +28,7 @@ function CreateArticle() {
 
       if (formData.title.trim().length === 0) {
         throw new Error(ARTICLE_TITLE_REQUIRED);
-      } else if (
-        formData.content.match(/(<p><br><\/p>)+/g) ||
-        formData.content.match(/<p>\s*<\/p>/)
-      ) {
+      } else if (formData.content.match(/^(<p><br><\/p>)*$/)) {
         throw new Error(ARTICLE_CONTENT_REQUIRED);
       }
 
