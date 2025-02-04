@@ -15,7 +15,7 @@ import DOMPurify from "dompurify";
 function EventCard({ event }: { event: IEvent }) {
   return (
     <Link to={`${event.id}`}>
-      <Card size="sm">
+      <Card size="sm" _hover={{ transform: "scale(1.01)" }}>
         <CardHeader>
           <Heading as="h2" size="sm" color="gray.700">
             {event.title}
