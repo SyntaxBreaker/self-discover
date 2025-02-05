@@ -72,7 +72,7 @@ function App() {
       {articles && articles.length > 0 && (
         <Flex direction="column" gap={4}>
           <Flex
-            justifyContent="space-between"
+            justifyContent={user ? "space-between" : "center"}
             flexWrap="wrap"
           >
             <Heading as="h1" size="lg" color="gray.700">
