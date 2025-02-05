@@ -33,7 +33,7 @@ function CreateEvent() {
       const eventURLValidationResult = validateEventURL(websiteUrl);
       if (!eventURLValidationResult.isValid) {
         throw new Error(eventURLValidationResult.message);
-      } else if (description.length === 0) {
+      } else if (description.match(/^(<p><br><\/p>)*$/)) {
         throw new Error(EVENT_DESCRIPTION_REQUIRED);
       }
 
