@@ -2,7 +2,11 @@ import { Button, Container, Heading, Image, Text } from "@chakra-ui/react";
 import { useLocation, useNavigate, useRouteError } from "react-router-dom";
 import ErrorImage from "../../assets/images/error.svg";
 
-export default function Error({ errorMessage }: { errorMessage?: string }) {
+interface ErrorProps {
+  errorMessage?: string;
+}
+
+export default function Error({ errorMessage }: ErrorProps) {
   const error: any = useRouteError();
   const navigate = useNavigate();
   const location = useLocation();

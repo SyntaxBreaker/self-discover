@@ -22,18 +22,16 @@ import {
   ARTICLE_TITLE_REQUIRED,
 } from "../../utils/constants";
 
-function ArticleForm({
-  error,
-  handleSubmit,
-  article,
-}: {
+interface ArticleFormProps {
   error: string | null;
   handleSubmit: (
     formData: IFormData,
     event: React.SyntheticEvent
   ) => Promise<void>;
   article?: IArticle;
-}) {
+}
+
+function ArticleForm({ error, handleSubmit, article }: ArticleFormProps) {
   const [formData, setFormData] = useState<IFormData>({
     title: "",
     content: "",

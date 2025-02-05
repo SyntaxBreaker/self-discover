@@ -11,11 +11,11 @@ import {
   quillToolbarConfig,
 } from "../../utils/quill";
 
-function CommentForm({
-  setComments,
-}: {
+interface CommentFormProps {
   setComments: React.Dispatch<React.SetStateAction<IComment[]>>;
-}) {
+}
+
+function CommentForm({ setComments }: CommentFormProps) {
   const [content, setContent] = useState("");
 
   const { user } = useAuth() as IAuthContext;

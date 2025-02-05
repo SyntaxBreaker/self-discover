@@ -1,12 +1,12 @@
 import { Button, Flex, FormControl, Textarea } from "@chakra-ui/react";
 
-interface IProps {
+interface ChatFormProps {
   message: string;
   setMessage: React.Dispatch<React.SetStateAction<string>>;
   handleSubmit: (event: React.SyntheticEvent) => Promise<void>;
 }
 
-function ChatForm({ message, setMessage, handleSubmit }: IProps) {
+function ChatForm({ message, setMessage, handleSubmit }: ChatFormProps) {
   return (
     <Flex
       as="form"

@@ -1,6 +1,10 @@
 import { Stack, Tag } from "@chakra-ui/react";
 
-function InterestList({ interests }: { interests: string[] }) {
+interface InterestListProps {
+  interests: string[];
+}
+
+function InterestList({ interests }: InterestListProps) {
   return (
     <Stack direction="row" marginTop={4} flexWrap="wrap">
       {interests.map((interest: string) => (

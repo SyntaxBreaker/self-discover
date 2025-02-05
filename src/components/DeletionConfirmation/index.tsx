@@ -10,13 +10,17 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-interface IProps {
+interface DeletionConfirmationProps {
   isOpen: boolean;
   onClose: () => void;
   handleRemove: () => Promise<void>;
 }
 
-function DeletionConfirmation({ isOpen, onClose, handleRemove }: IProps) {
+function DeletionConfirmation({
+  isOpen,
+  onClose,
+  handleRemove,
+}: DeletionConfirmationProps) {
   const handleRemoveAndClose = () => {
     handleRemove();
     onClose();

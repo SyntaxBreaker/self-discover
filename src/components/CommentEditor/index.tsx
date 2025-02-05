@@ -6,7 +6,7 @@ import {
 } from "../../utils/quill";
 import { useEffect } from "react";
 
-interface IProps {
+interface CommentEditorProps {
   editComment: (e: React.SyntheticEvent) => Promise<void>;
   updatedComment: string;
   setUpdatedComment: React.Dispatch<React.SetStateAction<string>>;
@@ -18,7 +18,7 @@ function CommentEditor({
   updatedComment,
   setUpdatedComment,
   setIsEditing,
-}: IProps) {
+}: CommentEditorProps) {
   useEffect(() => {
     addAccessibilityAttributes();
   }, []);

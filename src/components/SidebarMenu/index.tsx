@@ -13,7 +13,11 @@ import { User } from "@supabase/supabase-js";
 import { NavLink } from "react-router-dom";
 import { supabase } from "../../utils/supabase";
 
-function SidebarMenu({ user }: { user: User }) {
+interface SidebarMenuProps {
+  user: User;
+}
+
+function SidebarMenu({ user }: SidebarMenuProps) {
   const signOut = async () => {
     await supabase.auth.signOut();
   };

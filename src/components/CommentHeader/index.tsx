@@ -3,7 +3,7 @@ import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import IComment from "../../types/comment";
 
-interface IProps {
+interface CommentHeaderProps {
   comment: IComment;
   isEditing: boolean;
   setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;
@@ -15,7 +15,7 @@ function CommentHeader({
   isEditing,
   setIsEditing,
   removeComment,
-}: IProps) {
+}: CommentHeaderProps) {
   const { user } = useAuth() as IAuthContext;
 
   return (

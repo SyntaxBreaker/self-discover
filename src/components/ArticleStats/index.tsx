@@ -2,7 +2,11 @@ import { Flex, Icon, Stack, Text } from "@chakra-ui/react";
 import { AkarIconsThumbsUp, Fa6RegularComments } from "../Icons";
 import IArticle from "../../types/article";
 
-function ArticleStats({ article }: { article: IArticle }) {
+interface ArticleStatsProps {
+  article: IArticle;
+}
+
+function ArticleStats({ article }: ArticleStatsProps) {
   return (
     <Stack direction="row" spacing="24px">
       <Flex alignItems="center" gap={2}>

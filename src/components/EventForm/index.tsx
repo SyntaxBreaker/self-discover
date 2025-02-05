@@ -24,7 +24,7 @@ import {
   EVENT_INVALID_URL,
 } from "../../utils/constants";
 
-interface IProps {
+interface EventFormProps {
   event?: IEvent;
   error: string | null;
   handleSubmit: (
@@ -33,7 +33,7 @@ interface IProps {
   ) => Promise<void>;
 }
 
-function EventForm({ event, error, handleSubmit }: IProps) {
+function EventForm({ event, error, handleSubmit }: EventFormProps) {
   const [formData, setFormData] = useState({
     title: "",
     description: "",

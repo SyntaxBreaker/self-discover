@@ -6,7 +6,7 @@ import toggleLike from "../../utils/toggleLike";
 import IComment from "../../types/comment";
 import { useNavigate } from "react-router-dom";
 
-interface IProps {
+interface FeedbackProps {
   likes: string[];
   setLikes: React.Dispatch<React.SetStateAction<string[]>>;
   articleID: number;
@@ -27,7 +27,7 @@ function Feedback({
   setStatus,
   comments,
   myRef,
-}: IProps) {
+}: FeedbackProps) {
   const { user } = useAuth() as IAuthContext;
   const navigate = useNavigate();
 

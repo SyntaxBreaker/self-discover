@@ -2,7 +2,11 @@ import { Text, Flex, Icon, Heading, Stack, Tag } from "@chakra-ui/react";
 import TagList from "../TagList";
 import IArticle from "../../types/article";
 
-function ArticleDetails({ article }: { article: IArticle }) {
+interface ArticleDetailsProps {
+  article: IArticle;
+}
+
+function ArticleDetails({ article }: ArticleDetailsProps) {
   return (
     <>
       <Text fontSize="xs" fontWeight="bold">

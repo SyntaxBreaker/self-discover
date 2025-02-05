@@ -12,7 +12,11 @@ import { IEvent } from "../../types/event";
 import { Link } from "react-router-dom";
 import DOMPurify from "dompurify";
 
-function EventCard({ event }: { event: IEvent }) {
+interface EventCardProps {
+  event: IEvent;
+}
+
+function EventCard({ event }: EventCardProps) {
   return (
     <Link to={`${event.id}`}>
       <Card size="sm" _hover={{ transform: "scale(1.01)" }}>

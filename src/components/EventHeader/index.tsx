@@ -4,12 +4,12 @@ import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import { IEvent } from "../../types/event";
 
-interface IProps {
+interface EventHeaderProps {
   event: IEvent;
   onOpen: () => void;
 }
 
-function EventHeader({ event, onOpen }: IProps) {
+function EventHeader({ event, onOpen }: EventHeaderProps) {
   const { user } = useAuth() as IAuthContext;
 
   return (

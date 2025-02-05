@@ -1,12 +1,11 @@
 import { FormControl, Input } from "@chakra-ui/react";
 
-function DataFilter({
-  filterKeyword,
-  setFilterKeyword,
-}: {
+interface DataFilterProps {
   filterKeyword: string;
   setFilterKeyword: React.Dispatch<React.SetStateAction<string>>;
-}) {
+}
+
+function DataFilter({ filterKeyword, setFilterKeyword }: DataFilterProps) {
   return (
     <FormControl>
       <Input

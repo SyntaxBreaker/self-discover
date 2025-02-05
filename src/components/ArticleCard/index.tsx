@@ -10,9 +10,17 @@ import "react-quill/dist/quill.core.css";
 import ArticleStats from "../ArticleStats";
 import ArticleDetails from "../ArticleDetails";
 
-function ArticleCard({ article }: { article: IArticle }) {
+interface ArticleCardProps {
+  article: IArticle;
+}
+
+function ArticleCard({ article }: ArticleCardProps) {
   return (
-    <Card key={article.id} position="static" _hover={{ transform: "scale(1.01)" }}>
+    <Card
+      key={article.id}
+      position="static"
+      _hover={{ transform: "scale(1.01)" }}
+    >
       <CardHeader padding="0">
         <Image
           loading="lazy"

@@ -2,12 +2,12 @@ import { Stack, Tag } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import EmptyTagList from "../EmptyTagList";
 
-interface IProps {
+interface TagListProps {
   tags: string[];
   size?: "sm" | "md" | "lg";
 }
 
-function TagList({ tags, size = "md" }: IProps) {
+function TagList({ tags, size = "md" }: TagListProps) {
   const navigate = useNavigate();
 
   return (

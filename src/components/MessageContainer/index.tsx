@@ -18,7 +18,11 @@ import { IAuthContext } from "../../types/auth";
 import { supabase } from "../../utils/supabase";
 import { useEffect, useState } from "react";
 
-function MessageContainer({ chat }: { chat: IChat }) {
+interface MessageContainerProps {
+  chat: IChat;
+}
+
+function MessageContainer({ chat }: MessageContainerProps) {
   const { user } = useAuth() as IAuthContext;
 
   const [isEditing, setIsEditing] = useState(false);

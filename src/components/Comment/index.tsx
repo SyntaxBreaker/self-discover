@@ -11,13 +11,12 @@ import CommentHeader from "../CommentHeader";
 import CommentEditor from "../CommentEditor";
 import { useNavigate } from "react-router-dom";
 
-function Comment({
-  comment,
-  setComments,
-}: {
+interface CommentProps {
   comment: IComment;
   setComments: React.Dispatch<React.SetStateAction<IComment[]>>;
-}) {
+}
+
+function Comment({ comment, setComments }: CommentProps) {
   const [updatedComment, setUpdatedComment] = useState(comment.content);
   const [isEditing, setIsEditing] = useState(false);
   const [likes, setLikes] = useState(comment.likes);

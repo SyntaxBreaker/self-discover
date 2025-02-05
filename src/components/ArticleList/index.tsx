@@ -6,13 +6,12 @@ import { PostgrestError } from "@supabase/supabase-js";
 import EmptyArticleList from "../EmptyArticleList";
 import Error from "../Error";
 
-function ArticleList({
-  articles,
-  error,
-}: {
+interface ArticleListProps {
   articles: IArticle[] | null;
   error: PostgrestError | null;
-}) {
+}
+
+function ArticleList({ articles, error }: ArticleListProps) {
   return (
     <Stack marginTop={8}>
       {error ? (

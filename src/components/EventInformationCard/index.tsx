@@ -1,11 +1,11 @@
 import { Flex, Icon, Text } from "@chakra-ui/react";
 
-interface IProps {
+interface EventInformationCardProps {
   icon: () => JSX.Element;
   text: string | JSX.Element;
 }
 
-function EventInformationCard({ icon, text }: IProps) {
+function EventInformationCard({ icon, text }: EventInformationCardProps) {
   return (
     <Flex
       flexDirection="column"

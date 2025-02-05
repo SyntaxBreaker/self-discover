@@ -1,12 +1,14 @@
 import { Badge, Flex } from "@chakra-ui/react";
 
+interface SortingOptionsProps {
+  currentSorting: string;
+  setCurrentSorting: React.Dispatch<React.SetStateAction<string>>;
+}
+
 function SortingOptions({
   currentSorting,
   setCurrentSorting,
-}: {
-  currentSorting: string;
-  setCurrentSorting: React.Dispatch<React.SetStateAction<string>>;
-}) {
+}: SortingOptionsProps) {
   return (
     <Flex gap={2}>
       <Badge

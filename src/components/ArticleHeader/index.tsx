@@ -4,12 +4,12 @@ import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import IArticle from "../../types/article";
 
-interface IProps {
+interface ArticleHeaderProps {
   article: IArticle;
   onOpen: () => void;
 }
 
-function ArticleHeader({ article, onOpen }: IProps) {
+function ArticleHeader({ article, onOpen }: ArticleHeaderProps) {
   const { user } = useAuth() as IAuthContext;
 
   return (

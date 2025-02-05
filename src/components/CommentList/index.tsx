@@ -5,13 +5,12 @@ import CommentForm from "../CommentForm";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 
-function CommentList({
-  comments,
-  setComments,
-}: {
+interface CommentListProps {
   comments: IComment[];
   setComments: React.Dispatch<React.SetStateAction<IComment[]>>;
-}) {
+}
+
+function CommentList({ comments, setComments }: CommentListProps) {
   const { user } = useAuth() as IAuthContext;
 
   return (
