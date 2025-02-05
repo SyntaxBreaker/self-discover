@@ -24,8 +24,8 @@ function Events() {
         <EmptyEventList />
       ) : (
         <Flex flexDirection="column" gap={8}>
-          <Flex justifyContent="space-between" alignItems="center">
-            <Heading as="h1" size="lg" textAlign="center" color="gray.700">
+          <Flex justifyContent={user ? "space-between" : "center"} alignItems="center">
+            <Heading as="h1" size="lg" color="gray.700">
               All Events
             </Heading>
             {user && (
