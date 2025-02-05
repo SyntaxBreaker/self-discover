@@ -30,7 +30,7 @@ function Events() {
             </Heading>
             {user && (
               <Button size="md" colorScheme="facebook" as={Link} to={`create`}>
-                Create
+                Create Event
               </Button>
             )}
           </Flex>
