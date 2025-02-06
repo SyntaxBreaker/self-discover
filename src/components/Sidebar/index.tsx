@@ -74,7 +74,7 @@ function Sidebar() {
           </Box>
         </Link>
       </Tooltip>
-      <Tooltip label="Create Post" display={{ base: "initial", lg: "none" }}>
+      <Tooltip label="Create Article" display={{ base: "initial", lg: "none" }}>
         <Link
           as={NavLink}
           to="/create"
