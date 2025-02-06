@@ -20,11 +20,11 @@ function EmptyArticleList() {
       <Text fontSize="sm" textAlign="center" color="gray.600">
         {user
           ? "Start by adding a new article."
-          : "Please log in to add an article."}
+          : "Please log in to create an article."}
       </Text>
       <Link href={user ? "/create" : "/signIn"} marginTop={4}>
         <Button colorScheme="facebook" textAlign="center">
-          {user ? "Add Article" : "Sign in"}
+          {user ? "Create Article" : "Sign in"}
         </Button>
       </Link>
     </Flex>
