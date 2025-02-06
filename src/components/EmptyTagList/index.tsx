@@ -18,10 +18,14 @@ function EmptyTagList() {
         Oops! It&apos;s empty here.
       </Heading>
       <Text textAlign="center" color="gray.600" fontSize="sm" maxWidth={600}>
-        There are currently no tags associated with this keyword. You can create a
-        new article using the button below.
+        There are currently no tags associated with this keyword. You can create
+        a new article using the button below.
       </Text>
-      <Link href={user ? "/create" : "/signIn"} marginTop={4}>
+      <Link
+        href={user ? "/create" : "/signIn"}
+        marginTop={4}
+        alignSelf="center"
+      >
         <Button colorScheme="facebook" textAlign="center">
           {user ? "Create Article" : "Sign in"}
         </Button>
