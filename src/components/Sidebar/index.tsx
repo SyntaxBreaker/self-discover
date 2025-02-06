@@ -79,7 +79,7 @@ function Sidebar() {
           as={NavLink}
           to="/create"
           _activeLink={{ fontWeight: "900" }}
-          aria-label="Create a new post"
+          aria-label="Create a new article"
         >
           <Box
             paddingY={2}
