@@ -18,11 +18,11 @@ function EmptyEventList() {
         Oops! It&apos;s empty here.
       </Heading>
       <Text textAlign="center" color="gray.600" fontSize="sm">
-        There are no events yet. You can add a new event using the button below.
+        There are no events yet. You can create a new event using the button below.
       </Text>
       <Link href={user ? "/events/create" : "/signIn"} marginTop={4}>
         <Button colorScheme="facebook" textAlign="center">
-          {user ? "Add Event" : "Sign in"}
+          {user ? "Create Event" : "Sign in"}
         </Button>
       </Link>
     </Flex>
