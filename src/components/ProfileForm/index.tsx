@@ -5,6 +5,7 @@ import {
   FormControl,
   FormHelperText,
   FormLabel,
+  Image,
   Input,
 } from "@chakra-ui/react";
 import { AuthError, User } from "@supabase/supabase-js";
@@ -118,6 +119,16 @@ function ProfileForm() {
           name="avatar_url"
           onChange={handleChange}
         />
+        {userInformation.avatar_url && (
+          <Image
+            marginTop={4}
+            rounded="md"
+            h="200px"
+            w="300px"
+            fit="cover"
+            src={userInformation.avatar_url}
+          />
+        )}
       </FormControl>
       <FormControl>
         <FormLabel>Website:</FormLabel>
