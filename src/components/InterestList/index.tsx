@@ -6,7 +6,7 @@ interface InterestListProps {
 
 function InterestList({ interests }: InterestListProps) {
   return (
-    <Stack direction="row" marginTop={4} flexWrap="wrap">
+    <Stack direction="row" marginTop={2} flexWrap="wrap">
       {interests.map((interest: string) => (
         <Tag colorScheme="blue" padding={1} key={interest}>
           {interest}
