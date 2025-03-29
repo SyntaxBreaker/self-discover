@@ -12,13 +12,13 @@ import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import SidebarMenu from "../SidebarMenu";
 import {
-  MaterialSymbolsChatOutline,
-  MaterialSymbolsAdd,
-  RiMentalHealthFill,
-  MdiFrequentlyAskedQuestions,
-  TeenyiconsHashtagOutline,
-  MaterialSymbolsDateRange,
-  MaterialSymbolsArticle,
+  MessageIcon,
+  PlusIcon,
+  MentalHealthIcon,
+  FAQIcon,
+  HashtagIcon,
+  CalendarIcon,
+  ArticleIcon,
 } from "../Icons";
 
 function Sidebar() {
@@ -44,7 +44,7 @@ function Sidebar() {
             alignItems="center"
             gap={2}
           >
-            <Icon as={RiMentalHealthFill} />
+            <Icon as={MentalHealthIcon} />
             <Text color="white" display={{ base: "none", lg: "inline" }}>
               SelfDiscover
             </Text>
@@ -67,7 +67,7 @@ function Sidebar() {
             alignItems="center"
             gap={2}
           >
-            <Icon as={MaterialSymbolsArticle} />
+            <Icon as={ArticleIcon} />
             <Text color="white" display={{ base: "none", lg: "inline" }}>
               Articles
             </Text>
@@ -89,7 +89,7 @@ function Sidebar() {
             alignItems="center"
             gap={2}
           >
-            <Icon as={MaterialSymbolsAdd} />
+            <Icon as={PlusIcon} />
             <Text color="white" display={{ base: "none", lg: "inline" }}>
               Create Article
             </Text>
@@ -111,7 +111,7 @@ function Sidebar() {
             alignItems="center"
             gap={2}
           >
-            <Icon as={MaterialSymbolsDateRange} />
+            <Icon as={CalendarIcon} />
             <Text color="white" display={{ base: "none", lg: "inline" }}>
               Events
             </Text>
@@ -133,7 +133,7 @@ function Sidebar() {
             alignItems="center"
             gap={2}
           >
-            <Icon as={TeenyiconsHashtagOutline} />
+            <Icon as={HashtagIcon} />
             <Text color="white" display={{ base: "none", lg: "inline" }}>
               Tag List
             </Text>
@@ -155,7 +155,7 @@ function Sidebar() {
             alignItems="center"
             gap={2}
           >
-            <Icon as={MaterialSymbolsChatOutline} />
+            <Icon as={MessageIcon} />
             <Text color="white" display={{ base: "none", lg: "inline" }}>
               Chat
             </Text>
@@ -177,7 +177,7 @@ function Sidebar() {
             alignItems="center"
             gap={2}
           >
-            <Icon as={MdiFrequentlyAskedQuestions} />
+            <Icon as={FAQIcon} />
             <Text color="white" display={{ base: "none", lg: "inline" }}>
               FAQ
             </Text>

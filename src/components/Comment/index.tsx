@@ -5,7 +5,7 @@ import { IAuthContext } from "../../types/auth";
 import { supabase } from "../../utils/supabase";
 import { useState } from "react";
 import DOMPurify from "dompurify";
-import { AkarIconsThumbsUp } from "../Icons";
+import { LikeIcon } from "../Icons";
 import toggleLike from "../../utils/toggleLike";
 import CommentHeader from "../CommentHeader";
 import CommentEditor from "../CommentEditor";
@@ -110,7 +110,7 @@ function Comment({ comment, setComments }: CommentProps) {
               })
             : navigate("/SignIn")
         }
-        leftIcon={<AkarIconsThumbsUp />}
+        leftIcon={<LikeIcon />}
       >
         {likes.length > 0 ? likes.length : 0}{" "}
         {likes.length === 1 ? "like" : "likes"}

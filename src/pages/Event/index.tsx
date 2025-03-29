@@ -5,11 +5,7 @@ import Error from "../../components/Error";
 import { Alert, useDisclosure } from "@chakra-ui/react";
 import { supabase } from "../../utils/supabase";
 import { useEffect, useState } from "react";
-import {
-  MaterialSymbolsAttachMoney,
-  MaterialSymbolsCalendarMonth,
-  MaterialSymbolsGlobe,
-} from "../../components/Icons";
+import { MoneyIcon, MonthsIcon, WorldIcon } from "../../components/Icons";
 import EventContent from "../../components/EventContent";
 
 function Event() {
@@ -28,7 +24,7 @@ function Event() {
   const eventDetails = [
     {
       id: 0,
-      icon: MaterialSymbolsCalendarMonth,
+      icon: MonthsIcon,
       text: `${
         event.startDate.toString() === event.endDate.toString()
           ? event.startDate.toString()
@@ -37,12 +33,12 @@ function Event() {
     },
     {
       id: 1,
-      icon: MaterialSymbolsAttachMoney,
+      icon: MoneyIcon,
       text: `${event.price === 0 ? "Free" : event.price}`,
     },
     {
       id: 2,
-      icon: MaterialSymbolsGlobe,
+      icon: WorldIcon,
       text: (
         <Link
           to={event.websiteUrl}

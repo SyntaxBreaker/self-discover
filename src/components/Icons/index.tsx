@@ -1,4 +1,4 @@
-function TablerWorld() {
+function GlobeIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20,39 +20,7 @@ function TablerWorld() {
   );
 }
 
-function MaterialSymbolsCall() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="1em"
-      height="1em"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="#888888"
-        d="M19.95 21q-3.125 0-6.175-1.363t-5.55-3.862q-2.5-2.5-3.862-5.55T3 4.05q0-.45.3-.75t.75-.3H8.1q.35 0 .625.238t.325.562l.65 3.5q.05.4-.025.675T9.4 8.45L6.975 10.9q.5.925 1.187 1.787t1.513 1.663q.775.775 1.625 1.438T13.1 17l2.35-2.35q.225-.225.588-.338t.712-.062l3.45.7q.35.1.575.363T21 15.9v4.05q0 .45-.3.75t-.75.3Z"
-      ></path>
-    </svg>
-  );
-}
-
-function MaterialSymbolsFavorite() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="1em"
-      height="1em"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="#E53E3E"
-        d="m12 21l-1.45-1.3q-2.525-2.275-4.175-3.925T3.75 12.812Q2.775 11.5 2.388 10.4T2 8.15Q2 5.8 3.575 4.225T7.5 2.65q1.3 0 2.475.55T12 4.75q.85-1 2.025-1.55t2.475-.55q2.35 0 3.925 1.575T22 8.15q0 1.15-.388 2.25t-1.362 2.412q-.975 1.313-2.625 2.963T13.45 19.7L12 21Z"
-      ></path>
-    </svg>
-  );
-}
-
-function AkarIconsThumbsUp() {
+function LikeIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +42,7 @@ function AkarIconsThumbsUp() {
   );
 }
 
-function Fa6RegularComments() {
+function CommentsIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +58,7 @@ function Fa6RegularComments() {
   );
 }
 
-function TeenyiconsHashtagOutline() {
+function HashtagIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -107,7 +75,7 @@ function TeenyiconsHashtagOutline() {
   );
 }
 
-function MaterialSymbolsChatOutline() {
+function MessageIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -123,23 +91,7 @@ function MaterialSymbolsChatOutline() {
   );
 }
 
-function MaterialSymbolsLightbulb() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="40px"
-      height="40px"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="white"
-        d="M12 22q-.825 0-1.413-.588T10 20h4q0 .825-.588 1.413T12 22Zm-4-3v-2h8v2H8Zm.25-3q-1.725-1.025-2.738-2.75T4.5 9.5q0-3.125 2.188-5.313T12 2q3.125 0 5.313 2.188T19.5 9.5q0 2.025-1.012 3.75T15.75 16h-7.5Z"
-      ></path>
-    </svg>
-  );
-}
-
-function MaterialSymbolsAdd() {
+function PlusIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -152,39 +104,7 @@ function MaterialSymbolsAdd() {
   );
 }
 
-function MaterialSymbolsLogin() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="40px"
-      height="40px"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="white"
-        d="M12 21v-2h7V5h-7V3h7q.825 0 1.413.588T21 5v14q0 .825-.588 1.413T19 21h-7Zm-2-4l-1.375-1.45l2.55-2.55H3v-2h8.175l-2.55-2.55L10 7l5 5l-5 5Z"
-      ></path>
-    </svg>
-  );
-}
-
-function PhDotsThreeVertical() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="1em"
-      height="1em"
-      viewBox="0 0 256 256"
-    >
-      <path
-        fill="#888888"
-        d="M140 128a12 12 0 1 1-12-12a12 12 0 0 1 12 12Zm-12-56a12 12 0 1 0-12-12a12 12 0 0 0 12 12Zm0 112a12 12 0 1 0 12 12a12 12 0 0 0-12-12Z"
-      ></path>
-    </svg>
-  );
-}
-
-function MdiFrequentlyAskedQuestions() {
+function FAQIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -200,7 +120,7 @@ function MdiFrequentlyAskedQuestions() {
   );
 }
 
-function RiMentalHealthFill() {
+function MentalHealthIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -216,7 +136,7 @@ function RiMentalHealthFill() {
   );
 }
 
-function MaterialSymbolsDateRange() {
+function CalendarIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -232,7 +152,7 @@ function MaterialSymbolsDateRange() {
   );
 }
 
-function MaterialSymbolsCalendarMonth() {
+function MonthsIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -248,7 +168,7 @@ function MaterialSymbolsCalendarMonth() {
   );
 }
 
-function MaterialSymbolsAttachMoney() {
+function MoneyIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -265,23 +185,7 @@ function MaterialSymbolsAttachMoney() {
   );
 }
 
-function MaterialSymbolsGlobe() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="2em"
-      height="2em"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="currentColor"
-        d="M12 22q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12q0-.175-.012-.363t-.013-.312q-.125.725-.675 1.2T18 13h-2q-.825 0-1.412-.587T14 11v-1h-4V8q0-.825.588-1.412T12 6h1q0-.575.313-1.012t.762-.713q-.5-.125-1.012-.2T12 4Q8.65 4 6.325 6.325T4 12h5q1.65 0 2.825 1.175T13 16v1h-3v2.75q.5.125.988.188T12 20"
-      ></path>
-    </svg>
-  );
-}
-
-function MaterialSymbolsArticle() {
+function ArticleIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -297,23 +201,34 @@ function MaterialSymbolsArticle() {
   );
 }
 
+function WorldIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="2em"
+      height="2em"
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill="currentColor"
+        d="M12 22q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12q0-.175-.012-.363t-.013-.312q-.125.725-.675 1.2T18 13h-2q-.825 0-1.412-.587T14 11v-1h-4V8q0-.825.588-1.412T12 6h1q0-.575.313-1.012t.762-.713q-.5-.125-1.012-.2T12 4Q8.65 4 6.325 6.325T4 12h5q1.65 0 2.825 1.175T13 16v1h-3v2.75q.5.125.988.188T12 20"
+      ></path>
+    </svg>
+  );
+}
+
 export {
-  TablerWorld,
-  MaterialSymbolsCall,
-  MaterialSymbolsFavorite,
-  AkarIconsThumbsUp,
-  Fa6RegularComments,
-  TeenyiconsHashtagOutline,
-  MaterialSymbolsChatOutline,
-  MaterialSymbolsLightbulb,
-  MaterialSymbolsAdd,
-  MaterialSymbolsLogin,
-  PhDotsThreeVertical,
-  MdiFrequentlyAskedQuestions,
-  RiMentalHealthFill,
-  MaterialSymbolsDateRange,
-  MaterialSymbolsCalendarMonth,
-  MaterialSymbolsAttachMoney,
-  MaterialSymbolsGlobe,
-  MaterialSymbolsArticle,
+  GlobeIcon,
+  LikeIcon,
+  CommentsIcon,
+  HashtagIcon,
+  MessageIcon,
+  PlusIcon,
+  FAQIcon,
+  MentalHealthIcon,
+  CalendarIcon,
+  MonthsIcon,
+  MoneyIcon,
+  ArticleIcon,
+  WorldIcon,
 };

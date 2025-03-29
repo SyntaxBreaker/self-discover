@@ -1,7 +1,7 @@
 import { Flex, Stack, Text, Button, Icon, Link } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
 import InterestList from "../InterestList";
-import { TablerWorld } from "../../components/Icons";
+import { GlobeIcon } from "../../components/Icons";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 
@@ -30,7 +30,7 @@ function ProfileInfo() {
       </Stack>
       {user.user_metadata.website && (
         <Stack direction="row" alignItems="center">
-          <Icon as={TablerWorld} />
+          <Icon as={GlobeIcon} />
           <Link href={user.user_metadata.website} isExternal={true}>
             {user.user_metadata.website.split(/https?:\/\//)[1]}
           </Link>

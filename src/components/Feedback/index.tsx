@@ -1,5 +1,5 @@
 import { Stack, Button } from "@chakra-ui/react";
-import { AkarIconsThumbsUp, Fa6RegularComments } from "../../components/Icons";
+import { LikeIcon, CommentsIcon } from "../../components/Icons";
 import { useAuth } from "../../context/AuthProvider";
 import { IAuthContext } from "../../types/auth";
 import toggleLike from "../../utils/toggleLike";
@@ -47,7 +47,7 @@ function Feedback({
               })
             : navigate("/SignIn")
         }
-        leftIcon={<AkarIconsThumbsUp />}
+        leftIcon={<LikeIcon />}
         size="sm"
       >
         {likes.length > 0 ? likes.length : 0}{" "}
@@ -56,7 +56,7 @@ function Feedback({
       <Button
         fontWeight="400"
         onClick={() => myRef.current?.scrollIntoView({ behavior: "smooth" })}
-        leftIcon={<Fa6RegularComments />}
+        leftIcon={<CommentsIcon />}
         size="sm"
       >
         {comments.length > 0 ? comments.length : 0}{" "}
