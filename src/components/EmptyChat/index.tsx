@@ -5,7 +5,7 @@ function EmptyChat() {
   return (
     <Stack alignItems="center" gap={2}>
       <Image boxSize="320px" src={chattingImage} alt="" />
-      <Text fontSize="sm" color="gray.600" maxWidth={480}>
+      <Text fontSize="sm" color="gray.600" maxWidth={480} textAlign="center">
         Welcome to the general chat! It is a place for everyone to discuss
         anything and everything. Please be respectful of other members.
       </Text>
