@@ -26,7 +26,7 @@ function EmptyTagList() {
         marginTop={4}
         alignSelf="center"
       >
-        <Button colorScheme="facebook" textAlign="center">
+        <Button colorScheme="blue" textAlign="center">
           {user ? "Create Article" : "Sign in"}
         </Button>
       </Link>

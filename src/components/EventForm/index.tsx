@@ -181,7 +181,7 @@ function EventForm({ event, error, handleSubmit }: EventFormProps) {
         width="100%"
         type="submit"
         position="static"
-        colorScheme="facebook"
+        colorScheme="blue"
       >
         Submit
       </Button>

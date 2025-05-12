@@ -52,7 +52,7 @@ function CommentEditor({
         </Button>
         <Button
           alignSelf="flex-end"
-          colorScheme="facebook"
+          colorScheme="blue"
           size="sm"
           type="submit"
         >

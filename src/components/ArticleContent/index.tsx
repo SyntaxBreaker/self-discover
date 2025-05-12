@@ -40,7 +40,7 @@ function ArticleContent({
           {article.tags.length > 8 && (
             <Button
               onClick={() => setIsTagListExpanded(!isTagListExpanded)}
-              colorScheme="facebook"
+              colorScheme="blue"
               variant="outline"
               marginTop={1}
             >

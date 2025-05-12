@@ -23,7 +23,7 @@ function EmptyArticleList() {
           : "Please log in to create an article."}
       </Text>
       <Link href={user ? "/create" : "/signIn"} marginTop={4}>
-        <Button colorScheme="facebook" textAlign="center">
+        <Button colorScheme="blue" textAlign="center">
           {user ? "Create Article" : "Sign in"}
         </Button>
       </Link>

@@ -99,7 +99,7 @@ function SignUp() {
           width="100%"
           type="submit"
           fontSize="sm"
-          colorScheme="facebook"
+          colorScheme="blue"
         >
           Sign up
         </Button>

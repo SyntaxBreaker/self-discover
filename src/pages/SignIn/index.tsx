@@ -123,7 +123,7 @@ function SignIn() {
           width="100%"
           type="submit"
           fontSize="sm"
-          colorScheme="facebook"
+          colorScheme="blue"
         >
           Sign in
         </Button>

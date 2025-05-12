@@ -136,7 +136,7 @@ function ArticleForm({ error, handleSubmit, article }: ArticleFormProps) {
         width="100%"
         type="submit"
         position="static"
-        colorScheme="facebook"
+        colorScheme="blue"
       >
         Submit
       </Button>

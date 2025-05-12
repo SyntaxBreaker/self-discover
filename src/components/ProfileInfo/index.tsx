@@ -23,7 +23,7 @@ function ProfileInfo() {
           size="md"
           as={NavLink}
           to="/profile/edit"
-          colorScheme="facebook"
+          colorScheme="blue"
         >
           Edit profile
         </Button>

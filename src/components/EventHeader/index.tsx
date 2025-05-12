@@ -30,7 +30,7 @@ function EventHeader({ event, onOpen }: EventHeaderProps) {
         <Stack direction="row">
           <Button
             size="sm"
-            colorScheme="facebook"
+            colorScheme="blue"
             as={Link}
             to={`/events/edit/${event.id}`}
           >

@@ -102,7 +102,7 @@ function Chat() {
           />
         ) : (
           <Link href="/signIn" marginTop={4}>
-            <Button colorScheme="facebook" width="100%">
+            <Button colorScheme="blue" width="100%">
               Sign In
             </Button>
           </Link>

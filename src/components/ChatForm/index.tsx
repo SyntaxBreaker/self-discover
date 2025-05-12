@@ -31,7 +31,7 @@ function ChatForm({ message, setMessage, handleSubmit }: ChatFormProps) {
           required
         />
       </FormControl>
-      <Button type="submit" width="100%" colorScheme="facebook">
+      <Button type="submit" width="100%" colorScheme="blue">
         Send
       </Button>
     </Flex>

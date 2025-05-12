@@ -29,7 +29,7 @@ function Events() {
               All Events
             </Heading>
             {user && (
-              <Button size="md" colorScheme="facebook" as={Link} to={`create`}>
+              <Button size="md" colorScheme="blue" as={Link} to={`create`}>
                 Create Event
               </Button>
             )}

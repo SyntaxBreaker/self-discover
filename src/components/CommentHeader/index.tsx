@@ -39,7 +39,7 @@ function CommentHeader({
           <Button
             position="static"
             size="sm"
-            colorScheme="facebook"
+            colorScheme="blue"
             onClick={() => {
               setIsEditing(true);
             }}

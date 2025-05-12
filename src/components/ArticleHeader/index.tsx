@@ -35,7 +35,7 @@ function ArticleHeader({ article, onOpen }: ArticleHeaderProps) {
         <Stack direction="row">
           <Button
             size="sm"
-            colorScheme="facebook"
+            colorScheme="blue"
             as={Link}
             to={`/edit/${article.id}`}
           >

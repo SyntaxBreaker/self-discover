@@ -21,7 +21,7 @@ function EmptyEventList() {
         There are no events yet. You can create a new event using the button below.
       </Text>
       <Link href={user ? "/events/create" : "/signIn"} marginTop={4}>
-        <Button colorScheme="facebook" textAlign="center">
+        <Button colorScheme="blue" textAlign="center">
           {user ? "Create Event" : "Sign in"}
         </Button>
       </Link>

@@ -151,7 +151,7 @@ function ProfileForm() {
           Interests must be separated using commas.
         </FormHelperText>
       </FormControl>
-      <Button width="100%" type="submit" colorScheme="facebook">
+      <Button width="100%" type="submit" colorScheme="blue">
         Submit
       </Button>
     </Flex>

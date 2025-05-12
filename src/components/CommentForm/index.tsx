@@ -71,7 +71,7 @@ function CommentForm({ setComments }: CommentFormProps) {
       </FormControl>
       <Button
         alignSelf="flex-end"
-        colorScheme="facebook"
+        colorScheme="blue"
         type="submit"
         isDisabled={content.length === 0}
       >
