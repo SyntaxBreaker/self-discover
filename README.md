@@ -27,3 +27,6 @@ This project is a web application that allows users to add, edit, and remove art
 - Change the name of the .env.example file to .env and fill in this file
 - Run the development server with `npm run dev`
 - Open the application in your browser at `localhost:5173`
+
+## Author
+- **[SyntaxBreaker]**: [[GitHub](https://www.github.com/SyntaxBreaker)] [[Website](https://syntaxbreaker.netlify.app)]
